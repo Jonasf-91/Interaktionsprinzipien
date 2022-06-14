@@ -25,67 +25,81 @@
 
         <!-- row of arrows -->
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow0"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow0"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="0"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow1"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow1"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="1"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow2"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow2"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="2"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow3"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow3"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="3"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow4"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow4"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="4"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow5"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow5"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="5"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
-        <ImageView
-            android:id="@+id/iv_four_connect_arrow6"
+        <ImageButton
+            android:id="@+id/ib_four_connect_arrow6"
             android:layout_width="@dimen/four_connect_box_size"
             android:layout_height="@dimen/four_connect_box_size"
             android:layout_row="0"
             android:layout_column="6"
             android:contentDescription="@string/four_connect_arrow"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/four_connect_arrow" />
 
         <!-- playboard with boxes starts -->
@@ -854,7 +868,7 @@
             android:layout_row="6"
             android:layout_column="5"
             android:contentDescription="@string/four_connect_coin"
-            app:srcCompat="@drawable/four_connect_coin_test" />
+            app:srcCompat="@drawable/four_connect_empty_coin" />
 
         <ImageView
             android:id="@+id/iv_four_connect_coin_row6_column6"
