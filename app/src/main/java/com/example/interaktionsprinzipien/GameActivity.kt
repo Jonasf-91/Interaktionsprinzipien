@@ -1,68 +1,40 @@
 package com.example.interaktionsprinzipien
 
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
+
+import android.content.Context
 import android.os.Bundle
-import android.widget.TextView
+import android.os.CountDownTimer
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_game.*
 
 
-class GameActivity : AppCompatActivity(), SensorEventListener{
+class GameActivity : AppCompatActivity(){
+    private lateinit var countDownTimer: CountDownTimer
+    private var countDownProgress : Int = 0
+    private var countDownStart : Int = 6
 
-
-    private lateinit var mSensorManager : SensorManager
-    private lateinit var mAccelerometer: Sensor
-
-    private lateinit var square: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("Game activity")
         setContentView(R.layout.activity_game)
 
-       square = findViewById(R.id.coin)
-
-        setUpSensor()
-
+        startCountdown()
 
     }
 
-    private fun setUpSensor(){
-        //initialize sensor variables
-        mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mSensorManager.unregisterListener(this)
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
-        if(event?.sensor?.type == Sensor.TYPE_ACCELEROMETER){
-            val sides = event.values[0]
-            val upDown = event.values[1]
-
-            square.apply{
-                x -= sides * 3f
-                y += upDown * 3f
+    private fun startCountdown(){
+        countDownTimer = object : CountDownTimer(10000, 1000){
+            override fun onTick(p0: Long) {
+                countDownProgress ++
+                tv_countdown.text = (countDownStart - countDownProgress).toString()
+                //TODO add sound ticker
             }
 
-            square
-        }
-
-    }
-
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        return
+            override fun onFinish() {
+                //TODO get text from string.xml instead of hard-coding
+                tv_countdown.text = "Entscheide Dich!"
+                //TODO add sound highlight
+            }
+        }.start()
     }
 }

@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <GridLayout
+        android:id="@+id/gridLayout_connect_four_board"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:layout_margin="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="9dp"
+        android:columnCount="7"
+        android:rowCount="7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <!-- row of arrows -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_arrow6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="0"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_arrow"
+            app:srcCompat="@drawable/four_connect_arrow" />
+
+        <!-- playboard with boxes starts -->
+        <!-- first row -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row1_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <!-- second row -->
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row2_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row2_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row2_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row2_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row2_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_row2_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row2_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <!-- third row -->
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row3_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <!-- fourth row -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row4_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <!-- fifth row -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row5_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <!-- sixth row -->
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_empty_box_row6_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_box"
+            app:srcCompat="@drawable/four_connect_box" />
+
+        <!-- playboard with empty coins starts -->
+        <!-- first row -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row1_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="1"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <!-- second row -->
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row2_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="2"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <!-- third row -->
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row3_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="3"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <!-- fourth row -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row4_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="4"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <!-- fifth row -->
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin"
+            tools:ignore="TooManyViews" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row5_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="5"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <!-- sixth row -->
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column0"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="0"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column1"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="1"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column2"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="2"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column3"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="3"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column4"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="4"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column5"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="5"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_coin_test" />
+
+        <ImageView
+            android:id="@+id/iv_four_connect_coin_row6_column6"
+            android:layout_width="@dimen/four_connect_box_size"
+            android:layout_height="@dimen/four_connect_box_size"
+            android:layout_row="6"
+            android:layout_column="6"
+            android:contentDescription="@string/four_connect_coin"
+            app:srcCompat="@drawable/four_connect_empty_coin" />
+
+
+    </GridLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,19 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#222222"
     tools:context=".GameActivity">
 
     <TextView
-        android:id="@+id/coin"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Game Activity"
-        android:layout_centerInParent="true"
-        android:background="#555555"
-        android:textColor="@color/white"
+        android:id="@+id/tv_countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/four_connect_general_margin"
+        android:layout_marginTop="@dimen/four_connect_general_margin"
+        android:layout_marginEnd="@dimen/four_connect_general_margin"
+        android:layout_marginBottom="@dimen/four_connect_general_margin"
+        android:drawableTop="@drawable/ic_timer"
         android:gravity="center"
+        android:text="@string/four_connect_time_placeholder"
+        android:textColor="#003FAD"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:ignore="UseCompatTextViewDrawableXml" />
+
+    <include
+        layout="@layout/activity_game_four_connect_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_countdown"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/four_connect_general_margin"
+        android:layout_marginTop="@dimen/four_connect_general_margin"
+        android:layout_marginEnd="@dimen/four_connect_general_margin"
+        android:layout_marginBottom="@dimen/four_connect_general_margin"
         />
-
-
 </RelativeLayout>

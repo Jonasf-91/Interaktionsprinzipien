@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Interaktionsprinzipien</string>
+    <string name="four_connect_arrow">Pfeil zum Drücken</string>
+    <string name="four_connect_box">Box für Coins</string>
+    <string name="four_connect_coin">Coin</string>
+    <string name="four_connect_time_placeholder">10</string>
+    <string name="four_connect_warning_to_decide">Entscheide Dich!</string>
 </resources>
