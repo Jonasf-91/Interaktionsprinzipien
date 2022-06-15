@@ -8,7 +8,7 @@
 
 
     <com.example.coin.CoinView
-        android:id="@+id/coinView"
+        android:id="@+id/coinViewColor"
         android:layout_width="fill_parent"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,17 +24,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinView" />
+        app:layout_constraintTop_toBottomOf="@+id/coinViewColor"
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
-        android:id="@+id/backBtn"
+        android:id="@+id/nextToCornerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="back"
+        android:text="@string/nextBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinView"
+        app:layout_constraintTop_toBottomOf="@+id/coinViewColor"
         app:layout_constraintVertical_bias="0.689" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

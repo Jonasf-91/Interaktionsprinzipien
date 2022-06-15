@@ -8,7 +8,7 @@
     tools:context=".EditorActivity">
 
     <com.example.coin.CoinView
-        android:id="@+id/coinView2"
+        android:id="@+id/coinViewEditor"
         android:layout_width="fill_parent"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
         app:layout_constraintVertical_bias="0.389" />
 
 
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnDrawMenu"
         app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
         app:layout_constraintVertical_bias="0.202"
         android:contentDescription="@string/editorBtnColorDesc" />
 
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
         app:layout_constraintVertical_bias="0.202"
         android:contentDescription="@string/editorBtnDrawDesc" />
 
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toEndOf="@+id/btnDrawMenu"
-        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
         app:layout_constraintVertical_bias="0.156"
         android:contentDescription="@string/editorBtnCornerDesc" />
 

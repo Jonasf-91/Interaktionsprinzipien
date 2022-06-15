@@ -10,6 +10,7 @@
     <string name="editorBtnColorDesc">Farbe</string>
     <string name="editorBtnDrawDesc">Zeichnen</string>
     <string name="editorBtnCornerDesc">Eckenanzahl</string>
+    <string name="nextBtn">weiter</string>
 
     <string name="four_connect_btn_options">Optionen</string>
     <string name="four_connect_btn_help">Hilfe</string>

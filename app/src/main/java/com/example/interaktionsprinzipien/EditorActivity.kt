@@ -19,12 +19,21 @@ class EditorActivity : AppCompatActivity() {
         if (intent.getParcelableExtra<Coin>("coin") != null) {
             coin = intent.getParcelableExtra("coin")!!
         }
-        val coinView : CoinView = findViewById(R.id.coinView2)
+        val coinView : CoinView = findViewById(R.id.coinViewEditor)
         coinView.update(coin)
 
         val btnColorMenu = findViewById<ImageButton>(R.id.btnColorMenu)
         btnColorMenu.setOnClickListener {
             val intent = Intent(this, EditorColorActivity::class.java).apply{
+                putExtra("coin", coin)
+
+            }
+            startActivity(intent)
+        }
+
+        val btnCornerMenu = findViewById<ImageButton>(R.id.btnCornerMenu)
+        btnCornerMenu.setOnClickListener {
+            val intent = Intent(this, EditorCornerActivity::class.java).apply{
                 putExtra("coin", coin)
 
             }

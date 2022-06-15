@@ -23,7 +23,7 @@ class EditorColorActivity : AppCompatActivity() {
         if (intent.getParcelableExtra<Coin>("coin") != null) {
             coin = intent.getParcelableExtra("coin")!!
         }
-        val coinView : CoinView = findViewById(R.id.coinView)
+        val coinView : CoinView = findViewById(R.id.coinViewColor)
         coinView.update(coin)
 
         val changeColorBtn = findViewById<Button>(R.id.changeColorBtn)
@@ -33,11 +33,10 @@ class EditorColorActivity : AppCompatActivity() {
             coinView.update(coin)
         }
 
-        val btnBack = findViewById<Button>(R.id.backBtn)
-        btnBack.setOnClickListener {
-            val intent = Intent(this, EditorActivity::class.java).apply {
+        val nextBtn = findViewById<Button>(R.id.nextToCornerBtn)
+        nextBtn.setOnClickListener {
+            val intent = Intent(this, EditorCornerActivity::class.java).apply {
                 putExtra("coin", coin)
-
             }
             startActivity(intent)
         }
