@@ -7,7 +7,7 @@
     tools:context=".EditorColorActivity">
 
 
-    <com.example.shapedrawable.CoinView
+    <com.example.coin.CoinView
         android:id="@+id/coinView"
         android:layout_width="fill_parent"
         android:layout_height="300dp"
@@ -25,4 +25,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coinView" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinView"
+        app:layout_constraintVertical_bias="0.689" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

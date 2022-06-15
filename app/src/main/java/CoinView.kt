@@ -1,4 +1,4 @@
-package com.example.shapedrawable
+package com.example.coin
 
 import android.content.Context
 import android.graphics.Canvas
@@ -15,28 +15,30 @@ class CoinView(context:Context, attributeSet: AttributeSet)
 
     private var x = 540
     private var y = 350
+    var coin = Coin()
 
     override fun onDraw(canvas: Canvas) {
 
-        val path = createPath(8, 250f)
+        val path = createPolygon(coin.corners, 250f)
         val paint = Paint()
 
-        val color = randomColor()
+        //val color = randomColor()
 
+        // draw Fill
         paint.setStyle(Paint.Style.FILL)
-        paint.setColor(color)
+        paint.setColor(coin.fillColor)
         canvas.drawPath(path, paint)
 
+        // draw Stroke
         paint.setStyle(Paint.Style.STROKE)
-        paint.setColor(manipulateColor(color,0.8f))
+        paint.setColor(coin.strokeColor)
         paint.setStrokeWidth(20f)
         paint.setStrokeCap(Paint.Cap.ROUND)
-
         canvas.drawPath(path, paint)
 
     }
 
-    fun createPath(sides: Int, radius: Float): Path {
+    fun createPolygon(sides: Int, radius: Float): Path {
         val path = Path()
         val angle = 2.0 * Math.PI / sides
         path.moveTo(
@@ -51,23 +53,23 @@ class CoinView(context:Context, attributeSet: AttributeSet)
         return path
     }
 
-    fun randomColor(): Int {
-       val rnd = Random()
-       return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+    fun setRandomColor(){
+        coin.setColor(randomColor())
+        invalidate()
+        requestLayout()
     }
 
-    fun manipulateColor(color: Int, factor: Float): Int {
-        val a = Color.alpha(color)
-        val r = Math.round(Color.red(color) * factor)
-        val g = Math.round(Color.green(color) * factor)
-        val b = Math.round(Color.blue(color) * factor)
-        return Color.argb(
-            a,
-            Math.min(r, 255),
-            Math.min(g, 255),
-            Math.min(b, 255)
-        )
+    fun randomColor(): Int {
+        val rnd = Random()
+        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
     }
+
+    fun update(newCoin:Coin){
+        coin = newCoin
+        invalidate()
+        requestLayout()
+    }
+
 
 
 }

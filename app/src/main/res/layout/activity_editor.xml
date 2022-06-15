@@ -4,73 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DDDDDD"
+    android:background="@color/white"
     tools:context=".EditorActivity">
+
+    <com.example.coin.CoinView
+        android:id="@+id/coinView2"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-250dp"
         android:text="@string/createCoin"
+        android:textColor="#2196F3"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/coinView2"
         app:layout_constraintVertical_bias="0.389" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:background="#FFFFFF"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
 
     <ImageButton
         android:id="@+id/btnColorMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginBottom="344dp"
-        android:src="@android:drawable/ic_menu_view"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/color_button_01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDrawMenu"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintVertical_bias="0.202"
+        android:contentDescription="@string/editorBtnColorDesc" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnDrawMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="87dp"
-        android:layout_marginBottom="346dp"
-        android:text="@string/editorBtnDrawMenu"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/draw_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintVertical_bias="0.202"
+        android:contentDescription="@string/editorBtnDrawDesc" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnCornerMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="346dp"
-        android:text="@string/editorBtnCornerMenu"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/corner_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toEndOf="@+id/btnDrawMenu"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/coinView2"
+        app:layout_constraintVertical_bias="0.156"
+        android:contentDescription="@string/editorBtnCornerDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
