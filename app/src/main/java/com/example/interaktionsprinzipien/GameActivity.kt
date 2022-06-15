@@ -19,9 +19,12 @@ import kotlin.math.abs
 class GameActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var countDownTimer: CountDownTimer
 
-    private var player1 =R.drawable.four_connect_player1
-    private var player2 =R.drawable.four_connect_player2
+    private var player1 = R.drawable.four_connect_player1
+    private var player1Sign = 1
+    private var player2Sign = 2
+    private var player2 = R.drawable.four_connect_player2
     private var currentPlayer = player1
+    private var currentSign = 1
 
     private lateinit var mSensorManager : SensorManager
     private lateinit var mAccelerometer: Sensor
@@ -39,7 +42,14 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var coinHasPosition = false
     private var columnForCoin = -1
 
-    private var virtualBoard = arrayOf(5,5,5,5,5,5,5)
+    private var virtualBoard = arrayOf(
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0)
+    )
     private lateinit var board : Array<Array<ImageView>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -171,11 +181,17 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     val row = getRowNumber(columnForCoin)
                     if(row != -1){
                         placeCoinOnBoard(row,columnForCoin)
-                        switchPlayer()
                         coinHasPosition = false
                         resetArrows()
                         countDownTimer.cancel()
-                        startCountdown()
+                        if(gameIsOver()){
+                            //TODO Spiel ist zuende
+                            Toast.makeText(this, "Spiel ist vorbei", Toast.LENGTH_SHORT).show()
+                        }else{
+                            switchPlayer()
+                            startCountdown()
+                        }
+
                     }
                 }
 
@@ -220,19 +236,103 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun getRowNumber(column : Int) : Int {
-        val num = virtualBoard[column]
-        if(num < 0){
-            Toast.makeText(this, "Die Spalte ist voll", Toast.LENGTH_SHORT).show()
-            return -1
-        }else{
-                virtualBoard[column] = num - 1
-                return num
+        for(rowIndex in virtualBoard.size-1 downTo 0){
+            if(virtualBoard[rowIndex][column] == 0){
+                virtualBoard[rowIndex][column] = currentSign
+                return rowIndex
+                }
             }
-    }
+        Toast.makeText(this, "Die Spalte ist voll", Toast.LENGTH_SHORT).show()
+        return -1
+        }
+
 
     private fun switchPlayer(){
         if(currentPlayer == player1){
             currentPlayer = player2
-        }else currentPlayer = player1
+            currentSign = player2Sign
+        }else{
+            currentPlayer = player1
+            currentSign = player1Sign
+        }
+
+    }
+
+    private fun gameIsOver() : Boolean{
+        if(checkRowsOfVirtualBoard())return true
+        if(checkColumnsOfVirtualBoard()) return true
+        if(checkDiagnoalOfVirtualBoard()) return true
+        return false
+    }
+
+    private fun checkDiagnoalOfVirtualBoard(): Boolean {
+        val maxX = virtualBoard.size
+        val maxY = virtualBoard[0].size
+        val directions = arrayOf(arrayOf(1,0), arrayOf(1,-1), arrayOf(1,1), arrayOf(0,1))
+        for(d in directions){
+            val dx = d[0]
+            val dy = d[1]
+            for(x in 0 until maxX-1){
+                for(y in 0 until maxY-1){
+                    val lastX = x + 3*dx
+                    val lastY = y + 3*dy
+                    if(lastX in 0 until maxX && lastY in 0 until maxY){
+                        val check = virtualBoard[x][y]
+                        if(
+                            check != 0 &&
+                            check == virtualBoard[x+dx][y+dy] &&
+                            check == virtualBoard[x+2*dx][y+2*dy] &&
+                            check == virtualBoard[lastX][lastY]
+                            )return true
+                    }
+                }
+
+            }
+        }
+        return false
+    }
+
+    private fun checkRowsOfVirtualBoard() : Boolean{
+        var currentSign: Int
+        var lastSign = 0
+        var counter = 0
+        for(i in virtualBoard.size-1 downTo  0 ){
+            for(j in 0 until virtualBoard[i].size-1) {
+                currentSign = virtualBoard[i][j]
+                if (currentSign == lastSign && currentSign != 0){
+                    counter++
+                    if (counter == 4) {
+                        return true
+                    }
+                }else {
+                    counter = 1
+                }
+                lastSign = currentSign
+
+            }
+        }
+        return false
+    }
+
+    private fun checkColumnsOfVirtualBoard() : Boolean{
+        var currentSign: Int
+        var lastSign = 0
+        var counter = 0
+
+        for(j in 0 until virtualBoard[0].size-1){
+            for(i in virtualBoard.size-1 downTo  0 ){
+                currentSign = virtualBoard[i][j]
+                if (currentSign == lastSign && currentSign != 0) {
+                    counter++
+                    if (counter == 4) {
+                        return true
+                    }
+                }else {
+                        counter = 1
+                }
+                lastSign = currentSign
+            }
+        }
+        return false
     }
 }
