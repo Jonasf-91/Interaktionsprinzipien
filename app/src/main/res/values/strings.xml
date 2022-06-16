@@ -11,7 +11,8 @@
     <string name="editorBtnDrawDesc">Zeichnen</string>
     <string name="editorBtnCornerDesc">Eckenanzahl</string>
     <string name="nextBtn">weiter</string>
-
+    <string name="resetBtn">Zurücksetzen</string>
+    <string name="nextLevelBtn">Level beenden</string>
     <string name="four_connect_btn_options">Optionen</string>
     <string name="four_connect_btn_help">Hilfe</string>
     <string name="log_in_activity">Log In Activity</string>
@@ -40,4 +41,5 @@
     <string name="saveButton">Speichern</string>
     <string name="CancelButton">Abbrechen</string>
     <string name="copyrightHsd">Copyright HSD</string>
+    <string name="four_connect_btn_next">Weiter</string>
 </resources>

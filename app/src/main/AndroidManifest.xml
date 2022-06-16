@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Interaktionsprinzipien"
         tools:targetApi="31">
         <activity
+            android:name=".StressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditorDrawActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditorCornerActivity"
             android:exported="false" />
         <activity

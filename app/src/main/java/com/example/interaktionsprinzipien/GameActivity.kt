@@ -11,16 +11,20 @@ import android.os.CountDownTimer
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
 import kotlin.math.abs
 
 
 class GameActivity : AppCompatActivity(), SensorEventListener {
+
     private lateinit var countDownTimer: CountDownTimer
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
     private val playerTwo = Player(2,R.drawable.four_connect_player2, )
-    private var currentPlayer = playerOne
+    private val computer = FourConnectCalculator()
+    private var currentPlayer = playerTwo
 
 
     private lateinit var mSensorManager : SensorManager
@@ -59,13 +63,32 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
 
         buildBoard()
-        //starts OnClickListener for all arrowButtons
-        setUpArrowButtons()
-
-        //starts Countdown for the time above the playboard
-        startCountdown()
 
         setUpSensor()
+
+        startFourConnect()
+
+    }
+
+    private fun computerToMove() {
+        val column = computer.calculateMove(virtualBoard)
+        if(column == -1){
+            Toast.makeText(this, "Alles voll oder Fehler?", Toast.LENGTH_LONG).show()
+        }else{
+            val row = getRowNumber(column)
+            if(row != -1){
+                placeCoinOnBoard(row, column)
+                if(gameIsOver(row, column)){
+                    //TODO Spiel ist zuende
+                    Toast.makeText(this, "Spiel ist zuende. "+  currentPlayer.name+  " hat gewonnen", Toast.LENGTH_LONG).show()
+
+                }else{
+                    switchPlayer()
+                    setUpArrowButtons()
+                    startCountdown()
+                }
+            }
+        }
     }
 
     private fun startCountdown(){
@@ -87,48 +110,48 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun setUpArrowButtons(){
-        ib_four_connect_arrow0.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow0.setImageResource(currentPlayer.img)
-            column = 0
-            coinOnArrow = true
-        }
-        ib_four_connect_arrow1.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow1.setImageResource(currentPlayer.img)
-            column = 1
-            coinOnArrow = true
-        }
-        ib_four_connect_arrow2.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow2.setImageResource(currentPlayer.img)
-            column = 2
-            coinOnArrow = true
-        }
-        ib_four_connect_arrow3.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow3.setImageResource(currentPlayer.img)
-            column = 3
-            coinOnArrow = true
-        }
-        ib_four_connect_arrow4.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow4.setImageResource(currentPlayer.img)
-            column = 4
-            coinOnArrow = true
-        }
-        ib_four_connect_arrow5.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow5.setImageResource(currentPlayer.img)
-            column = 5
-            coinOnArrow = true
-        }
-        ib_four_connect_arrow6.setOnClickListener {
-            resetArrows()
-            ib_four_connect_arrow6.setImageResource(currentPlayer.img)
-            column = 6
-            coinOnArrow = true
-        }
+            ib_four_connect_arrow0.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow0.setImageResource(currentPlayer.img)
+                column = 0
+                coinOnArrow = true
+            }
+            ib_four_connect_arrow1.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow1.setImageResource(currentPlayer.img)
+                column = 1
+                coinOnArrow = true
+            }
+            ib_four_connect_arrow2.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow2.setImageResource(currentPlayer.img)
+                column = 2
+                coinOnArrow = true
+            }
+            ib_four_connect_arrow3.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow3.setImageResource(currentPlayer.img)
+                column = 3
+                coinOnArrow = true
+            }
+            ib_four_connect_arrow4.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow4.setImageResource(currentPlayer.img)
+                column = 4
+                coinOnArrow = true
+            }
+            ib_four_connect_arrow5.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow5.setImageResource(currentPlayer.img)
+                column = 5
+                coinOnArrow = true
+            }
+            ib_four_connect_arrow6.setOnClickListener {
+                resetArrows()
+                ib_four_connect_arrow6.setImageResource(currentPlayer.img)
+                column = 6
+                coinOnArrow = true
+            }
     }
 
     private fun resetArrows(){
@@ -174,8 +197,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     (coinOnArrow && xDifference > shakeThreshold  && zDifference > shakeThreshold) ||
                     (coinOnArrow && zDifference > shakeThreshold  && yDifference > shakeThreshold)
                 ){
-                    playFourConnect()
-
+                    finishPlayersMove()
                 }
             }
             lastX = currentX
@@ -294,7 +316,14 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     class Player(val id : Int, val img : Int, var name : String = "Computer")
 
-    private fun playFourConnect(){
+    private fun startFourConnect(){
+        if(currentPlayer.id == 1){
+            setUpArrowButtons()
+            startCountdown()
+        }else computerToMove()
+    }
+
+    private fun finishPlayersMove(){
         val row = getRowNumber(column)
         if(row != -1){
             placeCoinOnBoard(row,column)
@@ -304,9 +333,10 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             if(gameIsOver(row, column)){
                 //TODO Spiel ist zuende
                 Toast.makeText(this, "Spiel ist zuende. "+  currentPlayer.name+  " hat gewonnen", Toast.LENGTH_LONG).show()
+                four_connect_btn_next.isVisible = true
             }else{
                 switchPlayer()
-                startCountdown()
+                computerToMove()
             }
         }
     }

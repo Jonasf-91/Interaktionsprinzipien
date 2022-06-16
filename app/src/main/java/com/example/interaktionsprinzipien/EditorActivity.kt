@@ -39,6 +39,38 @@ class EditorActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
+
+        val btnDrawMenu = findViewById<ImageButton>(R.id.btnDrawMenu)
+        btnDrawMenu.setOnClickListener {
+            val intent = Intent(this, EditorDrawActivity::class.java).apply{
+                putExtra("coin", coin)
+
+            }
+            startActivity(intent)
+        }
+
+        val resetBtn = findViewById<Button>(R.id.resetBtn)
+        resetBtn.setOnClickListener {
+            coin = Coin()
+            coinView.update(coin)
+
+        }
+
+        val nextLevelBtn = findViewById<Button>(R.id.nextLevelBtn)
+        nextLevelBtn.setOnClickListener {
+            val intent = Intent(this, StressActivity::class.java).apply {
+                putExtra("coin", coin)
+            }
+            startActivity(intent)
+        }
+
+        val nextBtn = findViewById<Button>(R.id.nextToColorBtn)
+        nextBtn.setOnClickListener {
+            val intent = Intent(this, EditorColorActivity::class.java).apply {
+                putExtra("coin", coin)
+            }
+            startActivity(intent)
+        }
     }
 
 

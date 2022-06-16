@@ -39,9 +39,9 @@ class EditorCornerActivity : AppCompatActivity() {
             textView.text = coin.corners.toString()
         }
 
-        val nextBtn = findViewById<Button>(R.id.nextToEditorBtn)
+        val nextBtn = findViewById<Button>(R.id.nextToDrawBtn)
         nextBtn.setOnClickListener {
-            val intent = Intent(this, EditorActivity::class.java).apply {
+            val intent = Intent(this, EditorDrawActivity::class.java).apply {
                 putExtra("coin", coin)
             }
             startActivity(intent)
