@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Stresslevel"
+        android:text="@string/stresslevel"
         android:textColor="@color/colorPrimary"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
@@ -37,27 +37,30 @@
         android:id="@+id/text_view_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="60"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="70sp"
         app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar"
-        tools:text="60" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.533" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorAccent"
+        android:background="#363749"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:paddingLeft="30dp"
         android:paddingTop="30dp"
         android:paddingRight="30dp"
-        android:text="Sie sind ein ungeduldiger Technologiefeind und ein Kontrollfreak. Halten Sie sich von billigen Apps wie SkyGo oder Studentensoftware fern. Wie wäre es für Software auch mal etwas zu bezahlen?"
+        android:text="@string/result100"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
@@ -70,7 +73,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:padding="10dp"
-        android:text="Ergebnis"
+        android:text="@string/result"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -79,6 +82,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintVertical_bias="0.298" />
+
+    <Button
+        android:id="@+id/button_decr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="- 10%"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+
+    <Button
+        android:id="@+id/button_incr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ 10%"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
