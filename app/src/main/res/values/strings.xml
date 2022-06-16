@@ -14,4 +14,30 @@
 
     <string name="four_connect_btn_options">Optionen</string>
     <string name="four_connect_btn_help">Hilfe</string>
+    <string name="log_in_activity">Log In Activity</string>
+    <string name="birthdate">Geburtsdatum:</string>
+    <string name="birthdayStartDay">01</string>
+    <string name="birthdayStartYear">1970</string>
+    <string name="birthdayStartMonth">01</string>
+    <string name="plusSign">+</string>
+    <string name="yearOfBirth">Geburtsjahr</string>
+    <string name="monthOfBirth">Geburtsmonat</string>
+    <string name="day_of_birth">Geburtstag</string>
+    <string name="userName">Benutzername:</string>
+    <string name="userNameHint">Hans</string>
+    <string name="firstLastName">Vor- und Nachname</string>
+    <string name="exampleMaxMustermann">Beispiel: Max Musternann</string>
+    <string name="eMail">E-Mail:</string>
+    <string name="at">\@</string>
+    <string name="emailFirstPartHint">mustermann</string>
+    <string name="emailDomainHint">gmail</string>
+    <string name="emailTopLevelDomainHint">de</string>
+    <string name="emailPoint">.</string>
+    <string name="textFirstCheckBox">Bitte anhaken, wenn sie fortfahren möchten. Damit bestätigen Sie, dass Sie fortfahren möchten und das ist sehr wichtig, da ansonsten nicht fortgefahren werden kann. ​</string>
+    <string name="textSecondCheckBox">Ich, Max Mustermann, stimme den AGBs, den Datenschutzbedingungen und der Überprüfung meiner Intelligenz um keinen Preis zu. ​</string>
+    <string name="sose2022">SoSe2022</string>
+    <string name="nextStep">voran</string>
+    <string name="saveButton">Speichern</string>
+    <string name="CancelButton">Abbrechen</string>
+    <string name="copyrightHsd">Copyright HSD</string>
 </resources>
