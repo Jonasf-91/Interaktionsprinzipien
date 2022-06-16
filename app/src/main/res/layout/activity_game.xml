@@ -43,9 +43,21 @@
         />
 
     <include
+        android:id="@+id/four_connect_layout_include"
         layout="@layout/activity_game_four_connect_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_countdown"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/four_connect_btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/four_connect_btn_next"
+        android:layout_below="@+id/four_connect_layout_include"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/four_connect_general_margin"
+        />
 </RelativeLayout>
