@@ -18,13 +18,10 @@ import kotlin.math.abs
 
 class GameActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var countDownTimer: CountDownTimer
+    private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
+    private val playerTwo = Player(2,R.drawable.four_connect_player2, )
+    private var currentPlayer = playerOne
 
-    private var player1 = R.drawable.four_connect_player1
-    private var player1Sign = 1
-    private var player2Sign = 2
-    private var player2 = R.drawable.four_connect_player2
-    private var currentPlayer = player1
-    private var currentSign = 1
 
     private lateinit var mSensorManager : SensorManager
     private lateinit var mAccelerometer: Sensor
@@ -39,8 +36,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var yDifference = 0F
     private var zDifference = 0F
     private var shakeThreshold = 5F
-    private var coinHasPosition = false
-    private var columnForCoin = -1
+    private var coinOnArrow = false
+    private var column = -1
 
     private var virtualBoard = arrayOf(
         arrayOf(0,0,0,0,0,0,0),
@@ -92,45 +89,45 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private fun setUpArrowButtons(){
         ib_four_connect_arrow0.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow0.setImageResource(currentPlayer)
-            columnForCoin = 0
-            coinHasPosition = true
+            ib_four_connect_arrow0.setImageResource(currentPlayer.img)
+            column = 0
+            coinOnArrow = true
         }
         ib_four_connect_arrow1.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow1.setImageResource(currentPlayer)
-            columnForCoin = 1
-            coinHasPosition = true
+            ib_four_connect_arrow1.setImageResource(currentPlayer.img)
+            column = 1
+            coinOnArrow = true
         }
         ib_four_connect_arrow2.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow2.setImageResource(currentPlayer)
-            columnForCoin = 2
-            coinHasPosition = true
+            ib_four_connect_arrow2.setImageResource(currentPlayer.img)
+            column = 2
+            coinOnArrow = true
         }
         ib_four_connect_arrow3.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow3.setImageResource(currentPlayer)
-            columnForCoin = 3
-            coinHasPosition = true
+            ib_four_connect_arrow3.setImageResource(currentPlayer.img)
+            column = 3
+            coinOnArrow = true
         }
         ib_four_connect_arrow4.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow4.setImageResource(currentPlayer)
-            columnForCoin = 4
-            coinHasPosition = true
+            ib_four_connect_arrow4.setImageResource(currentPlayer.img)
+            column = 4
+            coinOnArrow = true
         }
         ib_four_connect_arrow5.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow5.setImageResource(currentPlayer)
-            columnForCoin = 5
-            coinHasPosition = true
+            ib_four_connect_arrow5.setImageResource(currentPlayer.img)
+            column = 5
+            coinOnArrow = true
         }
         ib_four_connect_arrow6.setOnClickListener {
             resetArrows()
-            ib_four_connect_arrow6.setImageResource(currentPlayer)
-            columnForCoin = 6
-            coinHasPosition = true
+            ib_four_connect_arrow6.setImageResource(currentPlayer.img)
+            column = 6
+            coinOnArrow = true
         }
     }
 
@@ -173,28 +170,13 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 zDifference = abs(lastZ-currentZ)
 
                 if(
-                    (coinHasPosition && xDifference > shakeThreshold  && yDifference > shakeThreshold) ||
-                    (coinHasPosition && xDifference > shakeThreshold  && zDifference > shakeThreshold) ||
-                    (coinHasPosition && zDifference > shakeThreshold  && yDifference > shakeThreshold)
+                    (coinOnArrow && xDifference > shakeThreshold  && yDifference > shakeThreshold) ||
+                    (coinOnArrow && xDifference > shakeThreshold  && zDifference > shakeThreshold) ||
+                    (coinOnArrow && zDifference > shakeThreshold  && yDifference > shakeThreshold)
                 ){
+                    playFourConnect()
 
-                    val row = getRowNumber(columnForCoin)
-                    if(row != -1){
-                        placeCoinOnBoard(row,columnForCoin)
-                        coinHasPosition = false
-                        resetArrows()
-                        countDownTimer.cancel()
-                        if(gameIsOver()){
-                            //TODO Spiel ist zuende
-                            Toast.makeText(this, "Spiel ist vorbei", Toast.LENGTH_SHORT).show()
-                        }else{
-                            switchPlayer()
-                            startCountdown()
-                        }
-
-                    }
                 }
-
             }
             lastX = currentX
             lastY = currentY
@@ -227,18 +209,17 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             arrayOf(
                 iv_four_connect_coin_row6_column0, iv_four_connect_coin_row6_column1, iv_four_connect_coin_row6_column2,iv_four_connect_coin_row6_column3,iv_four_connect_coin_row6_column4,iv_four_connect_coin_row6_column5,iv_four_connect_coin_row6_column6
             )
-
         )
     }
 
     private fun placeCoinOnBoard(row : Int, column : Int){
-        board[row][column].setImageResource(currentPlayer)
+        board[row][column].setImageResource(currentPlayer.img)
     }
 
     private fun getRowNumber(column : Int) : Int {
         for(rowIndex in virtualBoard.size-1 downTo 0){
             if(virtualBoard[rowIndex][column] == 0){
-                virtualBoard[rowIndex][column] = currentSign
+                virtualBoard[rowIndex][column] = currentPlayer.id
                 return rowIndex
                 }
             }
@@ -248,19 +229,16 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
 
     private fun switchPlayer(){
-        if(currentPlayer == player1){
-            currentPlayer = player2
-            currentSign = player2Sign
+        if(currentPlayer == playerOne){
+            currentPlayer = playerTwo
         }else{
-            currentPlayer = player1
-            currentSign = player1Sign
+            currentPlayer = playerOne
         }
-
     }
 
-    private fun gameIsOver() : Boolean{
-        if(checkRowsOfVirtualBoard())return true
-        if(checkColumnsOfVirtualBoard()) return true
+    private fun gameIsOver(row : Int, column: Int) : Boolean{
+        if(checkRowOfVirtualBoard(row))return true
+        if(checkColumnOfVirtualBoard(column)) return true
         if(checkDiagnoalOfVirtualBoard()) return true
         return false
     }
@@ -286,53 +264,51 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                             )return true
                     }
                 }
-
             }
         }
         return false
     }
 
-    private fun checkRowsOfVirtualBoard() : Boolean{
-        var currentSign: Int
-        var lastSign = 0
-        var counter = 0
-        for(i in virtualBoard.size-1 downTo  0 ){
-            for(j in 0 until virtualBoard[i].size-1) {
-                currentSign = virtualBoard[i][j]
-                if (currentSign == lastSign && currentSign != 0){
-                    counter++
-                    if (counter == 4) {
-                        return true
-                    }
-                }else {
-                    counter = 1
-                }
-                lastSign = currentSign
+    private fun checkRowOfVirtualBoard(row : Int) : Boolean{
 
-            }
-        }
-        return false
-    }
-
-    private fun checkColumnsOfVirtualBoard() : Boolean{
-        var currentSign: Int
-        var lastSign = 0
         var counter = 0
 
-        for(j in 0 until virtualBoard[0].size-1){
-            for(i in virtualBoard.size-1 downTo  0 ){
-                currentSign = virtualBoard[i][j]
-                if (currentSign == lastSign && currentSign != 0) {
-                    counter++
-                    if (counter == 4) {
-                        return true
-                    }
-                }else {
-                        counter = 1
-                }
-                lastSign = currentSign
-            }
+        for(i in 0 until virtualBoard[0].size){
+            if(virtualBoard[row][i] == currentPlayer.id)counter++
+            else counter = 0
+            if(counter >= 4)return true
         }
         return false
     }
+
+    private fun checkColumnOfVirtualBoard(column : Int) : Boolean{
+        var counter = 0
+
+        for(element in virtualBoard){
+            if(element[column] == currentPlayer.id)counter++
+            else counter = 0
+            if(counter >= 4)return true
+        }
+        return false
+    }
+
+    class Player(val id : Int, val img : Int, var name : String = "Computer")
+
+    private fun playFourConnect(){
+        val row = getRowNumber(column)
+        if(row != -1){
+            placeCoinOnBoard(row,column)
+            coinOnArrow = false
+            resetArrows()
+            countDownTimer.cancel()
+            if(gameIsOver(row, column)){
+                //TODO Spiel ist zuende
+                Toast.makeText(this, "Spiel ist zuende. "+  currentPlayer.name+  " hat gewonnen", Toast.LENGTH_LONG).show()
+            }else{
+                switchPlayer()
+                startCountdown()
+            }
+        }
+    }
+
 }
