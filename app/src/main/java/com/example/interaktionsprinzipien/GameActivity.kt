@@ -22,8 +22,16 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var countDownTimer: CountDownTimer
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
-    private val playerTwo = Player(2,R.drawable.four_connect_player2, )
-    private val computer = FourConnectCalculator()
+    private val playerTwo = Player(2,R.drawable.four_connect_player2 )
+    private var virtualBoard = arrayOf(
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0)
+    )
+    private val computer = FourConnectCalculator(2 )
     private var currentPlayer = playerTwo
 
 
@@ -43,14 +51,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var coinOnArrow = false
     private var column = -1
 
-    private var virtualBoard = arrayOf(
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0)
-    )
+
     private lateinit var board : Array<Array<ImageView>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,12 +72,17 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun computerToMove() {
-        val column = computer.calculateMove(virtualBoard)
+
+        var virtualBoard2 = copyBoard(virtualBoard)
+        val column = computer.calculateMove(virtualBoard2)
+        println("Spalte: " + column)
+
         if(column == -1){
             Toast.makeText(this, "Alles voll oder Fehler?", Toast.LENGTH_LONG).show()
         }else{
             val row = getRowNumber(column)
             if(row != -1){
+
                 placeCoinOnBoard(row, column)
                 if(gameIsOver(row, column)){
                     //TODO Spiel ist zuende
@@ -317,6 +323,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     class Player(val id : Int, val img : Int, var name : String = "Computer")
 
     private fun startFourConnect(){
+        //TODO start annoying music
         if(currentPlayer.id == 1){
             setUpArrowButtons()
             startCountdown()
@@ -339,6 +346,22 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 computerToMove()
             }
         }
+    }
+
+    private fun copyBoard(board : Array<Array<Int>>):Array<Array<Int>>{
+        var newBoard = arrayOf(
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0)
+        )
+
+        for(element in board.indices){
+            newBoard[element] = board[element].copyOf()
+        }
+        return newBoard
     }
 
 }
