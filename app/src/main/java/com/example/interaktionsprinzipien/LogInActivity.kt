@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import org.w3c.dom.Text
 import java.time.LocalDate
 import java.util.*
 
@@ -39,7 +38,7 @@ class LogInActivity : AppCompatActivity() {
         }
 
         nextStepButton.setOnClickListener {
-            val intent = Intent(this, EditorActivity::class.java)
+            val intent = Intent(this, StressActivity::class.java)
             startActivity(intent)
         }
 
