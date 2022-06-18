@@ -6,8 +6,6 @@ class FourConnectCalculator ( private val depth : Int = 0) {
     var winningList = mutableListOf<Pair<Int, Int>>()
     var rows = 6
     var columns = 7
-    var iterations = 0
-
 
     fun calculateMove(virtualBoard: Array<Array<Int>>) : Int{
 
@@ -22,7 +20,6 @@ class FourConnectCalculator ( private val depth : Int = 0) {
         val board = FourConnectBoard(this, virtualBoard)
 
         if(!board.isFull() &&  scoreEnd != board.score() && scoreEnd != -board.score() ){ //
-            iterations = 0 //Reset iterations
             val computerMove = maximizePlay(board, depth)
                 return computerMove[0]
 
@@ -43,8 +40,6 @@ class FourConnectCalculator ( private val depth : Int = 0) {
         for(column in 0 until columns){
             val newBoard = board.copy()
             if(newBoard.place(column)){
-                iterations++
-                println(iterations)
                 val nextMove = minimizePlay(newBoard, currentDepth-1, alpha, beta)
 
                 if(max[0] == -1 || nextMove[1] > max[1]){
@@ -72,7 +67,6 @@ class FourConnectCalculator ( private val depth : Int = 0) {
         for(column in 0 until columns){
             val newBoard = board.copy()
             if(newBoard.place(column)){
-                iterations++
                 val nextMove = maximizePlay(newBoard, currentDepth-1, alpha, beta)
 
                 if(min[0] == -1 || nextMove[1] < min[1]){

@@ -75,7 +75,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
         val virtualBoard2 = copyBoard(virtualBoard)
         val column = computer.calculateMove(virtualBoard2)
-        println("Spalte: " + column)
 
         if(column == -1){
             Toast.makeText(this, "Alles voll oder Fehler?", Toast.LENGTH_LONG).show()
