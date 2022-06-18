@@ -3,12 +3,8 @@ package com.example.interaktionsprinzipien
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import java.time.LocalDate
-import java.util.*
 
 class LogInActivity : AppCompatActivity() {
 
@@ -24,12 +20,20 @@ class LogInActivity : AppCompatActivity() {
         setUpUsername()
         setUpEmail()
 
+        var allInputsValidated = false;
+
         val saveButton = findViewById<Button>(R.id.buttonSave)
         val cancelButton = findViewById<Button>(R.id.buttonCancel)
         val nextStepButton = findViewById<TextView>(R.id.nextStepButton)
 
         saveButton.setOnClickListener {
-            Toast.makeText(applicationContext, "Alles wurde erfolgreich gespeichert!", Toast.LENGTH_LONG).show()
+            if (checkAllInputs()){
+                allInputsValidated = true;
+                Toast.makeText(applicationContext, "Alles wurde erfolgreich gespeichert!", Toast.LENGTH_LONG).show()
+            }else {
+                allInputsValidated = false;
+                Toast.makeText(applicationContext, "Fehler bei deinen Eingaben, bitte beheben!", Toast.LENGTH_LONG).show()
+            }
         }
 
         cancelButton.setOnClickListener {
@@ -38,12 +42,45 @@ class LogInActivity : AppCompatActivity() {
         }
 
         nextStepButton.setOnClickListener {
-            val intent = Intent(this, StressActivity::class.java)
-            startActivity(intent)
+
+            if (allInputsValidated){
+                val intent = Intent(this, QuizActivity::class.java)
+                startActivity(intent)
+            } else {
+                val dialog = ValidateErrorDialogFragment()
+                dialog.show(supportFragmentManager, "customDialog")
+            }
         }
 
 
+    }
 
+    private fun checkAllInputs(): Boolean {
+        val firstLastNameInput = findViewById<EditText>(R.id.firstLastNameField);
+        val firstLastName = firstLastNameInput.text.toString();
+        if (firstLastName == ""){
+            return false;
+        }
+
+        val firstPartOfEmailInput = findViewById<EditText>(R.id.emailFirstPart);
+        val secondPartOfEmailInput = findViewById<EditText>(R.id.emailSecondPart);
+        val thirdPartOfEmailInput = findViewById<EditText>(R.id.emailTopLevelDomain);
+
+        if (firstPartOfEmailInput.text.toString() == "" || secondPartOfEmailInput.text.toString() == ""){
+            return false
+        }
+        val email = firstPartOfEmailInput.text.toString() + "@" + secondPartOfEmailInput.text.toString() +  "." +thirdPartOfEmailInput.text.toString();
+
+        // Email senden :)
+
+        val checkboxNextStep = findViewById<CheckBox>(R.id.checkBoxNextStep);
+        val checkBoxCancel = findViewById<CheckBox>(R.id.checkBoxCancel);
+
+        if(checkBoxCancel.isChecked || !checkboxNextStep.isChecked){
+            return false
+        }
+
+        return true;
     }
 
     private fun setUpUsername(){

@@ -237,7 +237,7 @@
         tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBoxNextStep"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -250,7 +250,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailFirstPart" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkBoxCancel"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -259,7 +259,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxNextStep" />
 
     <Button
         android:id="@+id/buttonSave"
@@ -272,7 +272,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCancel" />
 
     <Button
         android:id="@+id/buttonCancel"
