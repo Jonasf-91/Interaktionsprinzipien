@@ -6,7 +6,7 @@ class FourConnectCalculator ( private val depth : Int = 0) {
     var winningList = mutableListOf<Pair<Int, Int>>()
     var rows = 6
     var columns = 7
-
+    
     fun calculateMove(virtualBoard: Array<Array<Int>>) : Int{
 
         if(depth == 0){

@@ -105,6 +105,7 @@
         <!-- playboard with boxes starts -->
         <!-- first row -->
 
+        <!--
         <ImageView
             android:id="@+id/iv_four_connect_empty_box_row1_column0"
             android:layout_width="@dimen/four_connect_box_size"
@@ -168,7 +169,7 @@
             android:contentDescription="@string/four_connect_box"
             app:srcCompat="@drawable/four_connect_box" />
 
-        <!-- second row -->
+
         <ImageView
             android:id="@+id/iv_four_connect_empty_box_row2_column0"
             android:layout_width="@dimen/four_connect_box_size"
@@ -232,7 +233,7 @@
             android:contentDescription="@string/four_connect_box"
             app:srcCompat="@drawable/four_connect_box" />
 
-        <!-- third row -->
+
         <ImageView
             android:id="@+id/iv_four_connect_empty_box_row3_column0"
             android:layout_width="@dimen/four_connect_box_size"
@@ -296,7 +297,6 @@
             android:contentDescription="@string/four_connect_box"
             app:srcCompat="@drawable/four_connect_box" />
 
-        <!-- fourth row -->
 
         <ImageView
             android:id="@+id/iv_four_connect_empty_box_row4_column0"
@@ -361,7 +361,6 @@
             android:contentDescription="@string/four_connect_box"
             app:srcCompat="@drawable/four_connect_box" />
 
-        <!-- fifth row -->
 
         <ImageView
             android:id="@+id/iv_four_connect_empty_box_row5_column0"
@@ -426,7 +425,6 @@
             android:contentDescription="@string/four_connect_box"
             app:srcCompat="@drawable/four_connect_box" />
 
-        <!-- sixth row -->
         <ImageView
             android:id="@+id/iv_four_connect_empty_box_row6_column0"
             android:layout_width="@dimen/four_connect_box_size"
@@ -490,6 +488,7 @@
             android:contentDescription="@string/four_connect_box"
             app:srcCompat="@drawable/four_connect_box" />
 
+        -->
         <!-- playboard with empty coins starts -->
         <!-- first row -->
 
@@ -877,7 +876,8 @@
             android:layout_row="6"
             android:layout_column="6"
             android:contentDescription="@string/four_connect_coin"
-            app:srcCompat="@drawable/four_connect_empty_coin" />
+            app:srcCompat="@drawable/four_connect_empty_coin"
+            />
 
 
     </GridLayout>
