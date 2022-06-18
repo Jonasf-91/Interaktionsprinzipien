@@ -19,11 +19,11 @@ class FourConnectCalculator ( private val depth : Int = 0) {
     }
 
     private fun generateComputerDecision(virtualBoard: Array<Array<Int>>) :Int {
-        val board = FourConnectBoard(this, virtualBoard, depth)
+        val board = FourConnectBoard(this, virtualBoard)
 
         if(!board.isFull() &&  scoreEnd != board.score() && scoreEnd != -board.score() ){ //
             iterations = 0 //Reset iterations
-            var computerMove = maximizePlay(board, depth)
+            val computerMove = maximizePlay(board, depth)
                 return computerMove[0]
 
         }
@@ -31,21 +31,21 @@ class FourConnectCalculator ( private val depth : Int = 0) {
     }
 
     private fun maximizePlay(board: FourConnectBoard, currentDepth: Int, _alpha : Int = -100000, _beta : Int = 100000): Array<Int> {
-        var score = board.score()
+        val score = board.score()
         var alpha = _alpha
-        var beta = _beta
+        val beta = _beta
         if(board.isFinished(currentDepth, score)){
             return arrayOf(-1, score)
         }
 
-        var max = arrayOf(-1, -99999)
+        val max = arrayOf(-1, -99999)
 
         for(column in 0 until columns){
-            var newBoard = board.copy()
+            val newBoard = board.copy()
             if(newBoard.place(column)){
                 iterations++
                 println(iterations)
-                var nextMove = minimizePlay(newBoard, currentDepth-1, alpha, beta)
+                val nextMove = minimizePlay(newBoard, currentDepth-1, alpha, beta)
 
                 if(max[0] == -1 || nextMove[1] > max[1]){
                     max[0] = column
@@ -60,20 +60,20 @@ class FourConnectCalculator ( private val depth : Int = 0) {
     }
 
     private fun minimizePlay(board: FourConnectBoard, currentDepth: Int, _alpha: Int = -100000, _beta : Int = 100000): Array<Int> {
-        var score = board.score()
-        var alpha = _alpha
+        val score = board.score()
+        val alpha = _alpha
         var beta = _beta
         if(board.isFinished(currentDepth, score)){
             return arrayOf(-1, score)
         }
 
-        var min = arrayOf(-1, 99999)
+        val min = arrayOf(-1, 99999)
 
         for(column in 0 until columns){
-            var newBoard = board.copy()
+            val newBoard = board.copy()
             if(newBoard.place(column)){
                 iterations++
-                var nextMove = maximizePlay(newBoard, currentDepth-1, alpha, beta)
+                val nextMove = maximizePlay(newBoard, currentDepth-1, alpha, beta)
 
                 if(min[0] == -1 || nextMove[1] < min[1]){
                     min[0] = column

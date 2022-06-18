@@ -31,7 +31,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         arrayOf(0,0,0,0,0,0,0),
         arrayOf(0,0,0,0,0,0,0)
     )
-    private val computer = FourConnectCalculator(2 )
+    private val computer = FourConnectCalculator(6 )
     private var currentPlayer = playerTwo
 
 
@@ -73,7 +73,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private fun computerToMove() {
 
-        var virtualBoard2 = copyBoard(virtualBoard)
+        val virtualBoard2 = copyBoard(virtualBoard)
         val column = computer.calculateMove(virtualBoard2)
         println("Spalte: " + column)
 
@@ -349,7 +349,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun copyBoard(board : Array<Array<Int>>):Array<Array<Int>>{
-        var newBoard = arrayOf(
+        val newBoard = arrayOf(
             arrayOf(0,0,0,0,0,0,0),
             arrayOf(0,0,0,0,0,0,0),
             arrayOf(0,0,0,0,0,0,0),
