@@ -3,10 +3,7 @@ package com.example.interaktionsprinzipien
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import java.time.LocalDate
 import java.util.*
 
@@ -29,7 +26,11 @@ class LogInActivity : AppCompatActivity() {
         val nextStepButton = findViewById<TextView>(R.id.nextStepButton)
 
         saveButton.setOnClickListener {
-            Toast.makeText(applicationContext, "Alles wurde erfolgreich gespeichert!", Toast.LENGTH_LONG).show()
+            if (checkAllInputs()){
+                Toast.makeText(applicationContext, "Alles wurde erfolgreich gespeichert!", Toast.LENGTH_LONG).show()
+            }else {
+                Toast.makeText(applicationContext, "Fehler bei deinen Eingaben, bitte beheben!", Toast.LENGTH_LONG).show()
+            }
         }
 
         cancelButton.setOnClickListener {
@@ -42,8 +43,34 @@ class LogInActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
 
+    private fun checkAllInputs(): Boolean {
+        val firstLastNameInput = findViewById<EditText>(R.id.firstLastNameField);
+        val firstLastName = firstLastNameInput.text.toString();
+        if (firstLastName == ""){
+            return false;
+        }
 
+        val firstPartOfEmailInput = findViewById<EditText>(R.id.emailFirstPart);
+        val secondPartOfEmailInput = findViewById<EditText>(R.id.emailSecondPart);
+        val thirdPartOfEmailInput = findViewById<EditText>(R.id.emailTopLevelDomain);
+
+        if (firstPartOfEmailInput.text.toString() == "" || secondPartOfEmailInput.text.toString() == ""){
+            return false
+        }
+        val email = firstPartOfEmailInput.text.toString() + "@" + secondPartOfEmailInput.text.toString() +  "." +thirdPartOfEmailInput.text.toString();
+
+        // Email senden :)
+
+        val checkboxNextStep = findViewById<CheckBox>(R.id.checkBoxNextStep);
+        val checkBoxCancel = findViewById<CheckBox>(R.id.checkBoxCancel);
+
+        if(checkBoxCancel.isChecked || !checkboxNextStep.isChecked){
+            return false
+        }
+
+        return true;
     }
 
     private fun setUpUsername(){
