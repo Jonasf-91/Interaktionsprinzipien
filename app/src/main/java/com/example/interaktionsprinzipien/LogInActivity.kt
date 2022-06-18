@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import java.time.LocalDate
-import java.util.*
 
 class LogInActivity : AppCompatActivity() {
 
@@ -21,14 +20,18 @@ class LogInActivity : AppCompatActivity() {
         setUpUsername()
         setUpEmail()
 
+        var allInputsValidated = false;
+
         val saveButton = findViewById<Button>(R.id.buttonSave)
         val cancelButton = findViewById<Button>(R.id.buttonCancel)
         val nextStepButton = findViewById<TextView>(R.id.nextStepButton)
 
         saveButton.setOnClickListener {
             if (checkAllInputs()){
+                allInputsValidated = true;
                 Toast.makeText(applicationContext, "Alles wurde erfolgreich gespeichert!", Toast.LENGTH_LONG).show()
             }else {
+                allInputsValidated = false;
                 Toast.makeText(applicationContext, "Fehler bei deinen Eingaben, bitte beheben!", Toast.LENGTH_LONG).show()
             }
         }
@@ -39,9 +42,16 @@ class LogInActivity : AppCompatActivity() {
         }
 
         nextStepButton.setOnClickListener {
-            val intent = Intent(this, StressActivity::class.java)
-            startActivity(intent)
+
+            if (allInputsValidated){
+                val intent = Intent(this, QuizActivity::class.java)
+                startActivity(intent)
+            } else {
+                val dialog = ValidateErrorDialogFragment()
+                dialog.show(supportFragmentManager, "customDialog")
+            }
         }
+
 
     }
 

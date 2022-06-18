@@ -9,7 +9,7 @@
     tools:context=".StressActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewQuestion"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:background="#BF5C5C"
@@ -31,10 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewQuestion">
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/textViewQeuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?​"
@@ -42,34 +42,38 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/option1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Aufgabenangemessen"
+            android:backgroundTint="@android:color/darker_gray"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/option2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/darker_gray"
             android:text="Benutzerbindung" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/option3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/darker_gray"
             android:text="Steuerbarkeit​" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/option4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/darker_gray"
             android:text="Robustheit gegen Benutzerfehler​" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/checkInputs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
