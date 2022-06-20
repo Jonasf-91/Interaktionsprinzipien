@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.example.coin.Coin
-import com.example.coin.CoinView
+import com.example.coin.com.example.coin.Coin
+import com.example.coin.com.example.coin.CoinView
 
 
 class EditorCornerActivity : AppCompatActivity() {

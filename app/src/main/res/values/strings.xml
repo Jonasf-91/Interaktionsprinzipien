@@ -43,7 +43,8 @@
     <string name="copyrightHsd">Copyright HSD</string>
     <string name="four_connect_btn_next">Weiter</string>
     <string name="stresslevel">Frust-o-meter</string>
-    <string name="result">Ergebnis</string>
+    <string name="result">Auswertung</string>
+    <string name="updateBtn">aktualisieren</string>
     <string name="result100">Sie sind ein ungeduldiger Technologiefeind und ein Kontrollfreak. Halten Sie sich von billigen Apps wie SkyGo oder Studentensoftware fern. Wie wäre es für Software auch mal etwas zu bezahlen?</string>
     <string name="result75">Sie sollten an ihrem Anger-Management arbeiten. Gehen Sie doch mal in die Sauna oder schließen sich im Keller ein.</string>
     <string name="result50">Ein gesundes Maß an Skepsis und ein gewisser Anspruch, das gefällt mir, Sie sind engagiert.</string>

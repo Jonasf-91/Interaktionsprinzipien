@@ -8,7 +8,7 @@
     tools:context=".EditorActivity">
 
 
-    <com.example.coin.CoinView
+    <com.example.coin.com.example.coin.CoinView
         android:id="@+id/coinViewEditor"
         android:layout_width="fill_parent"
         android:layout_height="300dp"

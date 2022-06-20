@@ -37,7 +37,7 @@ class StressActivity : AppCompatActivity() {
         text_view_progress.text = progr.toString()
 
         if (progr<=25)
-            editTextTextMultiLine.setText(getResources().getString(R.string.result25))
+            editTextTextMultiLine.setText(resources.getString(R.string.result25))
         else if (progr<=50)
             editTextTextMultiLine.setText(getResources().getString(R.string.result50))
         else if (progr<=75)

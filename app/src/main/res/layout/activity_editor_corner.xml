@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     tools:context=".EditorCornerActivity">
 
-    <com.example.coin.CoinView
+    <com.example.coin.com.example.coin.CoinView
         android:id="@+id/coinViewCorner"
         android:layout_width="fill_parent"
         android:layout_height="300dp"

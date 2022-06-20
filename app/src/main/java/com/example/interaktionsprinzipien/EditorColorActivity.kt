@@ -2,13 +2,12 @@ package com.example.interaktionsprinzipien
 
 import android.content.Intent
 import android.graphics.Color
-import com.example.coin.CoinView
+import com.example.coin.com.example.coin.CoinView
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
-import com.example.coin.Coin
+import com.example.coin.com.example.coin.Coin
 import java.util.*
 
 

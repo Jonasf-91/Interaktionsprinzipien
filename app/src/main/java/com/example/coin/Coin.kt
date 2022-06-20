@@ -1,22 +1,21 @@
-package com.example.coin
+package com.example.coin.com.example.coin
 
-import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Path
 import android.os.Parcel
 import android.os.Parcelable
-import java.util.*
 
 class Coin() :Parcelable{
     var fillColor = Color.WHITE
     var strokeColor = manipulateColor(fillColor, 0.8f)
     var corners = 8
-    var print = "none"
+    var print = Path()
 
     constructor(parcel: Parcel) : this() {
         fillColor = parcel.readInt()
         strokeColor = parcel.readInt()
         corners = parcel.readInt()
-        print = parcel.readString().toString()
+
     }
 
     fun setColor(color:Int){
@@ -45,7 +44,7 @@ class Coin() :Parcelable{
         dest?.writeInt(fillColor)
         dest?.writeInt(strokeColor)
         dest?.writeInt(corners)
-        dest?.writeString(print)
+
 
     }
 

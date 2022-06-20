@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import com.example.coin.Coin
-import com.example.coin.CoinView
-import java.io.Serializable
+import com.example.coin.com.example.coin.Coin
+import com.example.coin.com.example.coin.CoinView
 
 class EditorActivity : AppCompatActivity() {
 
