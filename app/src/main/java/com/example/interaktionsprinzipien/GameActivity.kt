@@ -8,10 +8,14 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.coin.com.example.interaktionsprinzipien.FourConnectBoard
 import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
@@ -22,9 +26,19 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var countDownTimer: CountDownTimer
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
-    private val playerTwo = Player(2,R.drawable.four_connect_player2, )
-    private val computer = FourConnectCalculator()
+    private val playerTwo = Player(2,R.drawable.four_connect_player2 )
+    private var virtualBoard = arrayOf(
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0),
+        arrayOf(0,0,0,0,0,0,0)
+    )
+    private val depth = 4
+    private val computer = FourConnectCalculator(depth )
     private var currentPlayer = playerTwo
+    val animation: Animation = AlphaAnimation(1F, 0F)
 
 
     private lateinit var mSensorManager : SensorManager
@@ -43,14 +57,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var coinOnArrow = false
     private var column = -1
 
-    private var virtualBoard = arrayOf(
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0),
-        arrayOf(0,0,0,0,0,0,0)
-    )
+
     private lateinit var board : Array<Array<ImageView>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,17 +78,19 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun computerToMove() {
-        val column = computer.calculateMove(virtualBoard)
+
+        val virtualBoard2 = copyBoard(virtualBoard)
+        val column = computer.calculateMove(virtualBoard2)
+
         if(column == -1){
             Toast.makeText(this, "Alles voll oder Fehler?", Toast.LENGTH_LONG).show()
         }else{
             val row = getRowNumber(column)
             if(row != -1){
+
                 placeCoinOnBoard(row, column)
                 if(gameIsOver(row, column)){
-                    //TODO Spiel ist zuende
-                    Toast.makeText(this, "Spiel ist zuende. "+  currentPlayer.name+  " hat gewonnen", Toast.LENGTH_LONG).show()
-
+                    showResult()
                 }else{
                     switchPlayer()
                     setUpArrowButtons()
@@ -89,6 +98,81 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 }
             }
         }
+    }
+
+    private fun showResult() {
+
+        blinkWinningList()
+        tv_four_connect_result.text = writeResultText()
+        tv_four_connect_result.isVisible = true
+        setUpNextButton()
+
+    }
+
+    private fun blinkWinningList() {
+         //to change visibility from visible to invisible
+        animation.duration = 400 //1 second duration for each animation cycle
+        animation.interpolator = LinearInterpolator()
+        animation.repeatCount = Animation.INFINITE //repeating indefinitely
+        animation.repeatMode = Animation.REVERSE //animation will start from end point once ended.
+
+        for(element in 0 until 4){
+            val row = computer.winningList[element].first
+            val column = computer.winningList[element].second
+            board[row][column].startAnimation(animation)
+        }
+    }
+
+    private fun setUpNextButton() {
+        if(currentPlayer.id == 1){
+            four_connect_btn_next.text = "Weiter"
+            four_connect_btn_next.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }else{
+            four_connect_btn_next.text = "Noch mal"
+            four_connect_btn_next.setOnClickListener {
+
+                restartGame()
+            }
+        }
+        four_connect_btn_next.isVisible = true
+    }
+
+    private fun restartGame() {
+        currentPlayer = playerTwo
+        for(row in virtualBoard.indices){
+            for(column in 0 until virtualBoard[0].size){
+                virtualBoard[row][column] = 0
+                board[row][column].setImageResource(R.drawable.four_connect_empty_coin)
+            }
+        }
+        animation.cancel()
+        four_connect_btn_next.isVisible = false
+        tv_four_connect_result.isVisible = false
+        startFourConnect()
+
+    }
+
+    private fun writeResultText() : String {
+        var text = ""
+        if(currentPlayer.id == 1) {
+            when (depth) {
+                0 -> text =
+                    "Auf der Schwierigkeitsstufe gewinnt ein kleines Kind gegen den Computer.\nJetzt spiel bitte mal richtig."
+                2 -> text =
+                    "Ja, gewonnen hast Du.\nAber jetzt hab mal bisschen Anspruch und erhöhe die Schwierigkeit.\nDann wollen wir sehen, wer zuletzt lacht "
+                4 -> text =
+                    "Nicht schlecht. Du scheinst ein kluges Köpfchen zu sein.\nAber gewinnst du auch gegen die größte Schwierigkeit?"
+                6 -> text =
+                    "Herzlichen Glückwunsch! Du bist ein wahrer Champion im Vier Gewinnt.\nUnd wir müssen jetzt mal schauen, dass wir den Algortihmus verbessern.\nSO kann das nicht weitergehen."
+
+            }
+        }else {
+               text =  "Netter Versuch.\nAber vielleicht versuchst du es noch mal."
+            }
+            return text
     }
 
     private fun startCountdown(){
@@ -317,6 +401,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     class Player(val id : Int, val img : Int, var name : String = "Computer")
 
     private fun startFourConnect(){
+         //TODO start annoying music
         if(currentPlayer.id == 1){
             setUpArrowButtons()
             startCountdown()
@@ -331,14 +416,28 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             resetArrows()
             countDownTimer.cancel()
             if(gameIsOver(row, column)){
-                //TODO Spiel ist zuende
-                Toast.makeText(this, "Spiel ist zuende. "+  currentPlayer.name+  " hat gewonnen", Toast.LENGTH_LONG).show()
-                four_connect_btn_next.isVisible = true
+                showResult()
             }else{
                 switchPlayer()
                 computerToMove()
             }
         }
+    }
+
+    private fun copyBoard(board : Array<Array<Int>>):Array<Array<Int>>{
+        val newBoard = arrayOf(
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0),
+            arrayOf(0,0,0,0,0,0,0)
+        )
+
+        for(element in board.indices){
+            newBoard[element] = board[element].copyOf()
+        }
+        return newBoard
     }
 
 }

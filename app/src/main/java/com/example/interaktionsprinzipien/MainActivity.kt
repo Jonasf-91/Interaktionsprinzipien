@@ -32,5 +32,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, EditorActivity::class.java)
             startActivity(intent)
         }
+        val quizActivityBtn = findViewById<Button>(R.id.quizActivityBtn)
+        quizActivityBtn.setOnClickListener {
+            val intent = Intent(this, QuizActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
