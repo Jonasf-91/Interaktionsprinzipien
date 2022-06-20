@@ -1,8 +1,6 @@
 package com.example.interaktionsprinzipien
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.SpannableStringBuilder
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_stress.*
 
@@ -39,13 +37,13 @@ class StressActivity : AppCompatActivity() {
         text_view_progress.text = progr.toString()
 
         if (progr<=25)
-            editTextTextMultiLine.setText("@string/result25")
+            editTextTextMultiLine.setText(getResources().getString(R.string.result25))
         else if (progr<=50)
-            editTextTextMultiLine.setText("@string/result50")
+            editTextTextMultiLine.setText(getResources().getString(R.string.result50))
         else if (progr<=75)
-            editTextTextMultiLine.setText("@string/result75")
+            editTextTextMultiLine.setText(getResources().getString(R.string.result75))
         else if (progr<=100)
-            editTextTextMultiLine.setText("@string/result100")
+            editTextTextMultiLine.setText(getResources().getString(R.string.result100))
 
     }
 
