@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/quiz01" />
+        />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -37,7 +37,7 @@
             android:id="@+id/textViewQeuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?​"
+            android:text="Frage"
             android:textAlignment="center"
             android:textSize="18sp" />
 

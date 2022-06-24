@@ -6,62 +6,70 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 class QuizActivity : AppCompatActivity() {
 
-    val options: MutableMap<Button, Boolean> = HashMap()
+    private val quizButtons = mutableListOf<Button>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
 
-        options[option1] = false;
-        options[option2] = false;
-        options[option3] = false;
-        options[option4] = false;
+        //---------- Define your Question and Answers here ----------
+        val myAnswers = mutableListOf<Answer>();
+        myAnswers.add(Answer("Aufgabenangemessen", true))
+        myAnswers.add(Answer("Benutzerbindung", false))
+        myAnswers.add(Answer("Steuerbarakeit", true))
+        myAnswers.add(Answer("Robust gegen Benutzerfehler", true))
 
-        option1.setOnClickListener {
-            switchOption(option1);
-        }
+        val question = Question(
+            "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+            myAnswers,
+            R.drawable.quiz01
+        )
+        //------------------------------------------------------------
 
-        option2.setOnClickListener {
-            switchOption(option2);
-        }
+        quizButtons.add(option1)
+        quizButtons.add(option2)
+        quizButtons.add(option3)
+        quizButtons.add(option4)
 
-        option3.setOnClickListener {
-            switchOption(option3);
-        }
+        nameLabelsAndButtons(question)
 
-        option4.setOnClickListener {
-            switchOption(option4);
-        }
 
         checkInputs.setOnClickListener {
-            if (check(first = true, second = false, third = false, fourth = true)){
+            if (question.isCorrect()){
                 Toast.makeText(applicationContext, "Alles richtig!", Toast.LENGTH_LONG).show()
             }else{
-                Toast.makeText(applicationContext, "Da ist was noch nichr richtig!", Toast.LENGTH_LONG).show()
+                val dialog = QuizErrorDialogFragment()
+                dialog.show(supportFragmentManager, "customDialog")
             }
         }
 
-        }
+    }
 
-    private fun switchOption(button: Button) {
-        if (options[button] == true) {
-            button.setBackgroundColor(Color.GRAY);
-            options[button] = false;
-        }else {
-            button.setBackgroundColor(Color.rgb(75,181,67));
-            options[button] = true;
+    private fun nameLabelsAndButtons(question :Question){
+        val answers = question.getAnswers()
+        textViewQeuestion.text = question.getQuestionText()
+        imageViewQuestion.setImageDrawable(ContextCompat.getDrawable(this, question.image))
+
+        for ((index, button) in quizButtons.withIndex()){
+            button.text = answers[index].name
+            button.setOnClickListener {
+                val current = answers[index].switchSelection()
+                if (current){
+                    button.setBackgroundColor(Color.rgb(75,181,67))
+                }else{
+                    button.setBackgroundColor(Color.GRAY)
+
+                }
+            }
         }
     }
 
-    private fun check(first:Boolean, second:Boolean, third:Boolean, fourth:Boolean): Boolean {
-        if(options[option1] == first && options[option2] == second && options[option3] == third && options[option4] == fourth){
-            return true;
-        }
-        return false;
-    }
+
+
 }
