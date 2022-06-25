@@ -53,14 +53,12 @@
         android:id="@+id/tv_four_connect_result"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:background="#CCFFFFFF"
         android:backgroundTintMode="multiply"
-        android:textSize="18sp"
         android:textColor="@color/black"
-        android:visibility="invisible"
-        />
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/four_connect_btn_next"

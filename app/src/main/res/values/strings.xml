@@ -49,5 +49,12 @@
     <string name="result75">Sie sollten an ihrem Anger-Management arbeiten. Gehen Sie doch mal in die Sauna oder schließen sich im Keller ein.</string>
     <string name="result50">Ein gesundes Maß an Skepsis und ein gewisser Anspruch, das gefällt mir, Sie sind engagiert.</string>
     <string name="result25">Haaaalloooo. Sind Sie wach? Kann jemand mal die 112 anrufen? Sie sind offensichtlich innerlich längst gestorben und nichts kann sie aus der ewigen Ruhe bringen.</string>
-
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
+    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consetetur sadipscing elitr?</string>
+    <string name="answerPlaceholder">Antwort</string>
+    <string name="answerQuiz01"><![CDATA[<html>
+                       <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum inkrementirern des Datums ist für eine konforable Nutzung unzureichend. <br/><br/>
+                       <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
+                       <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
+                       </html>]]></string>
 </resources>

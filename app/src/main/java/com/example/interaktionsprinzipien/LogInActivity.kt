@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.example.quiz.Answer
+import com.example.quiz.Question
 import java.time.LocalDate
 
 class LogInActivity : AppCompatActivity() {
@@ -11,10 +13,41 @@ class LogInActivity : AppCompatActivity() {
     enum class EditTarget {
         DAY, MONTH, YEAR
     }
+    private val questions = arrayListOf<Question>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+
+        // ------------- Define Questions for Quiz -----------------
+        questions.add(
+            Question(
+            "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+            getString(R.string.answerQuiz01),
+            listOf(
+                Answer("Aufgabenangemessen", true),
+                Answer("Benutzerbindung", false),
+                Answer("Steuerbarakeit", true),
+                Answer("Robust gegen Benutzerfehler", true),
+            ),
+            R.drawable.quiz01
+        )
+        )
+
+        questions.add(
+            Question(
+            "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
+            getString(R.string.answerQuiz01),
+            listOf(
+                Answer("Steuerbarakeit", true),
+                Answer("Robust gegen Benutzerfehler", true),
+                Answer("Benutzerbindung", false),
+                Answer("Aufgabenangemessen", true),
+            ),
+            R.drawable.quiz02)
+        )
+
+        // --------------------------------------------------------
 
         setUpBirthday()
         setUpUsername()
@@ -44,15 +77,16 @@ class LogInActivity : AppCompatActivity() {
         nextStepButton.setOnClickListener {
 
             if (allInputsValidated){
-                val intent = Intent(this, QuizActivity::class.java)
+                val intent = Intent(this, QuizActivity::class.java).apply{
+                    putParcelableArrayListExtra("questions", questions)
+                }
                 startActivity(intent)
+
             } else {
                 val dialog = ValidateErrorDialogFragment()
                 dialog.show(supportFragmentManager, "customDialog")
             }
         }
-
-
     }
 
     private fun checkAllInputs(): Boolean {
