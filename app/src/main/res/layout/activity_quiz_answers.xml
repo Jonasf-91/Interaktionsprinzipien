@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,28 +39,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/darker_gray"
-            android:text="@string/answerPlaceholder" />
+            android:text="@string/answerPlaceholder"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/option2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/darker_gray"
-            android:text="@string/answerPlaceholder" />
+            android:text="@string/answerPlaceholder"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/option3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/darker_gray"
-            android:text="@string/answerPlaceholder" />
+            android:text="@string/answerPlaceholder"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/option4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/darker_gray"
-            android:text="@string/answerPlaceholder" />
+            android:text="@string/answerPlaceholder"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/editTextAnswer01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/editTextAnswer02"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/editTextAnswer03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/editTextAnswer04"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:visibility="gone" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

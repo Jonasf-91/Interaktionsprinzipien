@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.quiz.Answer
+import com.example.quiz.Question
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +36,43 @@ class MainActivity : AppCompatActivity() {
         }
         val quizActivityBtn = findViewById<Button>(R.id.quizActivityBtn)
         quizActivityBtn.setOnClickListener {
-            val intent = Intent(this, QuizActivity::class.java)
+
+            //Questions for Testing Activity
+            val questions = arrayListOf<Question>()
+            questions.add(
+                Question(
+                    "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+                    getString(R.string.answerQuiz01),
+                    listOf(
+                        Answer("A", true),
+                        Answer("B", false),
+                        Answer("C", true),
+                        Answer("D", true),
+                    ),
+                    R.drawable.quiz01,
+                    true
+                ),
+            )
+
+            questions.add(
+                Question(
+                    "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
+                    getString(R.string.answerQuiz01),
+                    listOf(
+                        Answer("Steuerbarakeit", true),
+                        Answer("Robust gegen Benutzerfehler", true),
+                        Answer("Benutzerbindung", false),
+                        Answer("Aufgabenangemessen", true),
+                    ),
+                    R.drawable.quiz02,
+                false
+                ),
+            )
+
+
+            val intent = Intent(this, QuizActivity::class.java).apply{
+                putParcelableArrayListExtra("questions", questions)
+            }
             startActivity(intent)
         }
     }

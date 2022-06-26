@@ -14,6 +14,20 @@ class Answer(val name: String? , private val isCorrect: Boolean, private var isS
     public fun isSelectionCorrect() : Boolean {
         return isCorrect == isSelected
     }
+
+    public fun isSelectionCorrect(answers : MutableList<String>) : Boolean {
+        if (!isCorrect){
+            return true
+        }
+        if (name != null){
+            if( answers.contains(name.lowercase())){
+                answers.remove(name.lowercase())
+                return true
+            }
+        }
+        return false
+    }
+
     public fun switchSelection() : Boolean {
         isSelected = !isSelected
         return  isSelected

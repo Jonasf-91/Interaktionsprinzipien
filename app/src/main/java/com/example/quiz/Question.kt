@@ -2,15 +2,18 @@ package com.example.quiz
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.view.textservice.TextInfo
+import android.widget.EditText
 
-class Question (private val questionText: String? = "", private val solutionText: String? = "", private val answers: List<Answer>?, val image : Int) : Parcelable{
+class Question (private val questionText: String? = "", private val solutionText: String? = "", private val answers: List<Answer>?, val image : Int, val isSelfInput : Boolean = false) : Parcelable{
 
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.createTypedArrayList(Answer),
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readBoolean(),
     ) {
     }
 
@@ -25,6 +28,24 @@ class Question (private val questionText: String? = "", private val solutionText
             }
         }
         return true
+    }
+
+    public fun isCorrect(textAnswers : List<EditText>) : Boolean {
+        val textSolutions = mutableListOf<String>()
+        for (answer in textAnswers){
+            if (answer.text.toString() != "") {
+                textSolutions.add(answer.text.toString().lowercase())
+            }
+        }
+
+        if (answers != null) {
+            for (answer: Answer in answers) {
+                if (!answer.isSelectionCorrect(textSolutions)){
+                    return false
+                }
+            }
+        }
+        return textSolutions.isEmpty()
     }
 
     public fun getSolutionText() : String {
@@ -50,6 +71,7 @@ class Question (private val questionText: String? = "", private val solutionText
         parcel.writeString(solutionText)
         parcel.writeTypedList(answers)
         parcel.writeInt(image)
+        parcel.writeBoolean(isSelfInput)
     }
 
     override fun describeContents(): Int {
