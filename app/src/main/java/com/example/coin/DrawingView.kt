@@ -20,19 +20,9 @@ class DrawingView(context:Context, attributeSet: AttributeSet)
     lateinit var extraBitmap: Bitmap
 
     private val backgroundColor = ResourcesCompat.getColor(resources,R.color.colorBackground, null)
-    private val STROKE_WIDTH = 12f
-    private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
-    private val paint = Paint().apply {
-        color = drawColor
-        // Smooths out edges of what is drawn without affecting shape.
-        isAntiAlias = true
-        // Dithering affects how colors with higher-precision than the device are down-sampled.
-        isDither = true
-        style = Paint.Style.STROKE // default: FILL
-        strokeJoin = Paint.Join.ROUND // default: MITER
-        strokeCap = Paint.Cap.ROUND // default: BUTT
-        strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
-    }
+    private val STROKE_WIDTH = 20f
+            var drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
+            var paint = Paint()
     var path = Path()
     private var motionTouchEventX = 0f
     private var motionTouchEventY = 0f
@@ -51,6 +41,17 @@ class DrawingView(context:Context, attributeSet: AttributeSet)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        paint = Paint().apply {
+            color = drawColor
+            // Smooths out edges of what is drawn without affecting shape.
+            isAntiAlias = true
+            // Dithering affects how colors with higher-precision than the device are down-sampled.
+            isDither = true
+            style = Paint.Style.STROKE // default: FILL
+            strokeJoin = Paint.Join.ROUND // default: MITER
+            strokeCap = Paint.Cap.ROUND // default: BUTT
+            strokeWidth = STROKE_WIDTH // default: Hairline-width (really thin)
+        }
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
 
     }

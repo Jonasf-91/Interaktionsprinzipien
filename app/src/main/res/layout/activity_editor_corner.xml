@@ -7,14 +7,17 @@
     android:background="#FFFFFF"
     tools:context=".EditorActivity">
 
-    <com.example.coin.com.example.coin.CoinView
-        android:id="@+id/coinViewCorner"
-        android:layout_width="fill_parent"
+    <include
+        android:id="@+id/cvIncludeCorner"
+        layout="@layout/coin_view_include"
+        android:layout_width="0dp"
         android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/moreCornersBtn"
@@ -26,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewCorner"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeCorner"
         app:layout_constraintVertical_bias="0.326" />
 
     <Button
@@ -39,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.623"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewCorner"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeCorner"
         app:layout_constraintVertical_bias="0.326" />
 
     <Button
@@ -50,19 +53,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewCorner"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeCorner"
         app:layout_constraintVertical_bias="0.845" />
 
     <TextView
         android:id="@+id/cornerCounterView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/at"
+        android:text="TextView"
+        android:textColor="@color/purple_200"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/moreCornersBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewCorner" />
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeCorner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,16 +13,17 @@ class CoinView(context:Context, attributeSet: AttributeSet)
     private var x = 540
     private var y = 400
     var coin = Coin()
-    var printPath = Path()
-    lateinit var printBitmap: Bitmap
-    lateinit var printCanvas: Canvas
+    var printBitmap: Bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+    lateinit var coinBitmap: Bitmap
+    lateinit var coinCanvas: Canvas
     val paint = Paint()
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
 
-        printBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-        printCanvas = Canvas(printBitmap)
+        coinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        coinCanvas = Canvas(coinBitmap)
+
 
 
 
@@ -30,26 +31,29 @@ class CoinView(context:Context, attributeSet: AttributeSet)
 
     override fun onDraw(canvas: Canvas) {
 
+        coinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        coinCanvas = Canvas(coinBitmap)
         val path = createPolygon(coin.corners, 250f)
 
 
         // draw Fill
         paint.setStyle(Paint.Style.FILL)
         paint.setColor(coin.fillColor)
-        canvas.drawPath(path, paint)
+        coinCanvas.drawPath(path, paint)
 
         // draw Stroke
         paint.setStyle(Paint.Style.STROKE)
         paint.setColor(coin.strokeColor)
         paint.setStrokeWidth(20f)
         paint.setStrokeCap(Paint.Cap.ROUND)
-        canvas.drawPath(path, paint)
+        coinCanvas.drawPath(path, paint)
 
         // draw finger path
-        paint.setStrokeWidth(10f)
         val positionX = (width/2)-printBitmap.width/2
         val positionY = (height/2)-printBitmap.height/2
-        canvas.drawBitmap(printBitmap, positionX.toFloat(), positionY.toFloat(), null)
+        coinCanvas.drawBitmap(printBitmap, positionX.toFloat(), positionY.toFloat(), null)
+
+        canvas.drawBitmap(coinBitmap,0f, 0f, null)
     }
 
     fun createPolygon(sides: Int, radius: Float): Path {
@@ -81,7 +85,7 @@ class CoinView(context:Context, attributeSet: AttributeSet)
     fun update(newCoin: Coin){
         coin = newCoin
         invalidate()
-        requestLayout()
+
     }
 
     fun update(){
@@ -92,7 +96,14 @@ class CoinView(context:Context, attributeSet: AttributeSet)
     fun updatePrint(bitmap : Bitmap){
         printBitmap = bitmap
         invalidate()
-        requestLayout()
+
+    }
+
+    fun update(newCoin:Coin, bitmap : Bitmap){
+        printBitmap = bitmap
+        coin = newCoin
+        invalidate()
+
     }
 
 

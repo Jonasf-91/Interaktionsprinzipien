@@ -7,24 +7,27 @@
     android:background="#FFFFFF"
     tools:context=".EditorActivity">
 
-    <com.example.coin.com.example.coin.CoinView
-        android:id="@+id/coinViewDraw"
-        android:layout_width="fill_parent"
+    <include
+        android:id="@+id/cvIncludeDraw"
+        layout="@layout/coin_view_include"
+        android:layout_width="0dp"
         android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.example.coin.DrawingView
         android:id="@+id/drawingView"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        app:layout_constraintBottom_toBottomOf="@+id/coinViewDraw"
+        app:layout_constraintBottom_toBottomOf="@+id/cvIncludeDraw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/coinViewDraw" />
+        app:layout_constraintTop_toTopOf="@+id/cvIncludeDraw" />
 
 
     <Button
@@ -35,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewDraw"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeDraw"
         app:layout_constraintVertical_bias="0.845" />
 
     <Button
@@ -44,11 +47,11 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/purple_200"
         android:text="@string/updateBtn"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nextToEditorBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewDraw"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeDraw"
+        app:layout_constraintVertical_bias="0.876" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

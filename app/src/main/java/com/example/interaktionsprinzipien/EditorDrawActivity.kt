@@ -9,6 +9,7 @@ import com.example.coin.DrawingView
 import com.example.coin.com.example.coin.Coin
 import com.example.coin.com.example.coin.CoinView
 import kotlinx.android.synthetic.main.activity_editor_draw.*
+import kotlinx.android.synthetic.main.coin_view_include.*
 
 class EditorDrawActivity : AppCompatActivity() {
 
@@ -21,11 +22,12 @@ class EditorDrawActivity : AppCompatActivity() {
             coin = intent.getParcelableExtra("coin")!!
         }
 
-        coinViewDraw.update(coin)
+
+        coinViewAll.update(coin)
 
 
         updateDrawingBtn.setOnClickListener {
-            coinViewDraw.updatePrint(drawingView.extraBitmap)
+            coinViewAll.updatePrint(drawingView.extraBitmap)
             drawingView.cleanBitmap()
         }
 

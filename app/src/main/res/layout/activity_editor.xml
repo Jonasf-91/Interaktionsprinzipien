@@ -8,14 +8,17 @@
     tools:context=".EditorActivity">
 
 
-    <com.example.coin.com.example.coin.CoinView
-        android:id="@+id/coinViewEditor"
-        android:layout_width="fill_parent"
+    <include
+        android:id="@+id/cvIncludeEditor"
+        layout="@layout/coin_view_include"
+        android:layout_width="0dp"
         android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView
@@ -29,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor" />
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeEditor" />
 
     <ImageButton
         android:id="@+id/btnCornerMenu"
@@ -44,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeEditor"
         app:layout_constraintVertical_bias="0.273" />
 
     <ImageButton
@@ -63,7 +66,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnCornerMenu"
         app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeEditor"
         app:layout_constraintVertical_bias="0.273" />
 
     <ImageButton
@@ -81,7 +84,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toEndOf="@+id/btnCornerMenu"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeEditor"
         app:layout_constraintVertical_bias="0.231" />
 
     <Button
@@ -115,7 +118,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewEditor"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeEditor"
         app:layout_constraintVertical_bias="0.845" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

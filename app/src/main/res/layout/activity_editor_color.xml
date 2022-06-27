@@ -8,25 +8,27 @@
     tools:context=".EditorActivity">
 
 
-    <com.example.coin.com.example.coin.CoinView
-        android:id="@+id/coinViewColor"
-        android:layout_width="fill_parent"
+    <include
+        android:id="@+id/cvIncludeColor"
+        layout="@layout/coin_view_include"
+        android:layout_width="0dp"
         android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/changeColorBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="292dp"
         android:text="@string/changeColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewColor"
-        app:layout_constraintVertical_bias="0.224" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/nextToCornerBtn"
@@ -37,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewColor"
+        app:layout_constraintTop_toBottomOf="@+id/cvIncludeColor"
         app:layout_constraintVertical_bias="0.845" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
