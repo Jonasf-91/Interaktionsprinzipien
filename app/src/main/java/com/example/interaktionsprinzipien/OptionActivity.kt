@@ -1,12 +1,14 @@
 package com.example.interaktionsprinzipien
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 
 class OptionActivity : AppCompatActivity() {
 
+    var global = GlobalClass()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +29,20 @@ class OptionActivity : AppCompatActivity() {
 
         var saved = false
 
+        toggleMusic.isChecked = true
+
+
+        if(toggleMusic.isChecked){
+            playSound()
+        }
+
 
         toggleMusic.setOnClickListener {
             if(toggleMusic.isChecked){
-                //MUSIK ANMACHEN
+                playSound()
             }
             else{
-                //MUSIK AUSMACHEN
+                stopSound()
             }
         }
 
@@ -107,6 +116,37 @@ class OptionActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun playSound() {
+        if (global.player == null) {
+            global.player = MediaPlayer.create(this, R.raw.water)
+            global.player!!.isLooping = true
+            global.player!!.start()
+        }
+        if(global.player?.isPlaying == false){
+            global.player!!.start()
+        }
+    }
+
+    fun pauseSound() {
+        if (global.player?.isPlaying == true) global.player?.pause()
+    }
+
+    fun stopSound() {
+        if (global.player != null) {
+            global.player!!.stop()
+            global.player!!.release()
+            global.player = null
+        }
+    }
+
+    /*override fun onStop() {
+        super.onStop()
+        if (global.player != null) {
+            global.player!!.release()
+            global.player = null
+        }
+    }*/
 
     private fun setCoins() {
         val coinAmount = findViewById<EditText>(R.id.coinAmount);
