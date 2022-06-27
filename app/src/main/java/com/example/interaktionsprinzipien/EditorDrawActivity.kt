@@ -26,6 +26,7 @@ class EditorDrawActivity : AppCompatActivity() {
 
         updateDrawingBtn.setOnClickListener {
             coinViewDraw.updatePrint(drawingView.extraBitmap)
+            drawingView.cleanBitmap()
         }
 
         val nextBtn = findViewById<Button>(R.id.nextToEditorBtn)

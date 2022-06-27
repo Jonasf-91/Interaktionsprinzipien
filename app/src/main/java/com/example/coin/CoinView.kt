@@ -13,8 +13,10 @@ class CoinView(context:Context, attributeSet: AttributeSet)
     private var x = 540
     private var y = 400
     var coin = Coin()
+    var printPath = Path()
     lateinit var printBitmap: Bitmap
     lateinit var printCanvas: Canvas
+    val paint = Paint()
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
@@ -22,12 +24,14 @@ class CoinView(context:Context, attributeSet: AttributeSet)
         printBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         printCanvas = Canvas(printBitmap)
 
+
+
     }
 
     override fun onDraw(canvas: Canvas) {
 
         val path = createPolygon(coin.corners, 250f)
-        val paint = Paint()
+
 
         // draw Fill
         paint.setStyle(Paint.Style.FILL)
@@ -42,8 +46,10 @@ class CoinView(context:Context, attributeSet: AttributeSet)
         canvas.drawPath(path, paint)
 
         // draw finger path
-        paint.setStrokeWidth(5f)
-        canvas.drawBitmap(printBitmap, 0f, 0f, paint)
+        paint.setStrokeWidth(10f)
+        val positionX = (width/2)-printBitmap.width/2
+        val positionY = (height/2)-printBitmap.height/2
+        canvas.drawBitmap(printBitmap, positionX.toFloat(), positionY.toFloat(), null)
     }
 
     fun createPolygon(sides: Int, radius: Float): Path {

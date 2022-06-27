@@ -21,6 +21,7 @@
     <string name="birthdayStartYear">1970</string>
     <string name="birthdayStartMonth">01</string>
     <string name="plusSign">+</string>
+    <string name="minusSign">-</string>
     <string name="yearOfBirth">Geburtsjahr</string>
     <string name="monthOfBirth">Geburtsmonat</string>
     <string name="day_of_birth">Geburtstag</string>

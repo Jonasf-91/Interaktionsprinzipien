@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".EditorCornerActivity">
+    tools:context=".EditorActivity">
 
     <com.example.coin.com.example.coin.CoinView
         android:id="@+id/coinViewCorner"
@@ -20,7 +20,7 @@
         android:id="@+id/moreCornersBtn"
         android:layout_width="60dp"
         android:layout_height="70dp"
-        android:text="+"
+        android:text="@string/plusSign"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/lessCornersBtn"
         android:layout_width="60dp"
         android:layout_height="70dp"
-        android:text="-"
+        android:text="@string/minusSign"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
         android:id="@+id/cornerCounterView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/at"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/moreCornersBtn"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,19 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".EditorDrawActivity">
-
-    <com.example.coin.DrawingView
-        android:id="@+id/drawingView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/nextToEditorBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinViewDraw"
-        app:layout_constraintVertical_bias="0.0" />
+    tools:context=".EditorActivity">
 
     <com.example.coin.com.example.coin.CoinView
         android:id="@+id/coinViewDraw"
@@ -28,6 +16,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.example.coin.DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        app:layout_constraintBottom_toBottomOf="@+id/coinViewDraw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coinViewDraw" />
 
 
     <Button

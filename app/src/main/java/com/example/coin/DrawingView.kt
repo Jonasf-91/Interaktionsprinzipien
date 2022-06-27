@@ -1,10 +1,7 @@
 package com.example.coin
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -21,6 +18,7 @@ class DrawingView(context:Context, attributeSet: AttributeSet)
 
     private lateinit var extraCanvas: Canvas
     lateinit var extraBitmap: Bitmap
+
     private val backgroundColor = ResourcesCompat.getColor(resources,R.color.colorBackground, null)
     private val STROKE_WIDTH = 12f
     private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
@@ -46,17 +44,14 @@ class DrawingView(context:Context, attributeSet: AttributeSet)
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
-
         extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         extraCanvas = Canvas(extraBitmap)
-        extraCanvas.drawColor(backgroundColor)
-        //if (::extraBitmap.isInitialized) extraBitmap.recycle()
+
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawBitmap(extraBitmap, 0f, 0f, null)
-
 
     }
 
@@ -91,6 +86,7 @@ class DrawingView(context:Context, attributeSet: AttributeSet)
             // Draw the path in the extra bitmap to cache it.
             extraCanvas.drawPath(path, paint)
 
+
         }
         invalidate()
 
@@ -100,12 +96,10 @@ class DrawingView(context:Context, attributeSet: AttributeSet)
         path.reset()
     }
 
-
-
-
-
-
-
-
+    fun cleanBitmap(){
+        extraBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        extraCanvas = Canvas(extraBitmap)
+        invalidate()
+    }
 
 }
