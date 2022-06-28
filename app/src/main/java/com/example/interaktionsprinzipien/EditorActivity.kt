@@ -1,15 +1,14 @@
 package com.example.interaktionsprinzipien
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.coin.DrawingView
 import com.example.coin.com.example.coin.Coin
 import com.example.coin.com.example.coin.CoinView
@@ -18,12 +17,16 @@ import kotlinx.android.synthetic.main.activity_editor_color.*
 import kotlinx.android.synthetic.main.activity_editor_corner.*
 import kotlinx.android.synthetic.main.activity_editor_draw.*
 import kotlinx.android.synthetic.main.coin_view_include.*
+import java.io.ByteArrayOutputStream
+import java.io.FileOutputStream
+import java.io.IOException
 import java.util.*
 
 class EditorActivity : AppCompatActivity() {
 
     var coin = Coin()
     lateinit var printBitmap : Bitmap
+    var fileName : String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +71,11 @@ class EditorActivity : AppCompatActivity() {
         }
         val nextLevelBtn = findViewById<Button>(R.id.nextLevelBtn)
         nextLevelBtn.setOnClickListener {
+            val coinView : CoinView = findViewById(R.id.coinViewAll)
+            fileName = createImageFromBitmap(coinView.coinBitmap)
+
             val intent = Intent(this, StressActivity::class.java).apply {
-                putExtra("coin", coin)
+                putExtra("myCoin", fileName)
             }
             startActivity(intent)
         }
@@ -155,6 +161,22 @@ class EditorActivity : AppCompatActivity() {
     fun randomColor(): Int {
         val rnd = Random()
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+    }
+
+    fun createImageFromBitmap(bitmap: Bitmap): String? {
+        var fileName: String? = "myCoin" //no .png or .jpg needed
+        try {
+            val bytes = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+            val fo: FileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE)
+            fo.write(bytes.toByteArray())
+            // remember close file output
+            fo.close()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            fileName = null
+        }
+        return fileName
     }
 
 

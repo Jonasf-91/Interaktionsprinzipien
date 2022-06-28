@@ -11,14 +11,13 @@
     <include
         android:id="@+id/cvIncludeColor"
         layout="@layout/coin_view_include"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.100000024" />
 
     <Button
         android:id="@+id/changeColorBtn"
@@ -41,5 +40,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvIncludeColor"
         app:layout_constraintVertical_bias="0.845" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wähle eine Farbe!"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/nextToCornerBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeColorBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

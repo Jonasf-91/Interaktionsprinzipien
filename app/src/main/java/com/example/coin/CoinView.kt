@@ -20,7 +20,8 @@ class CoinView(context:Context, attributeSet: AttributeSet)
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
-
+        x = width/2
+        y = height/2
         coinBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         coinCanvas = Canvas(coinBitmap)
 

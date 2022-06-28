@@ -1,8 +1,10 @@
 package com.example.interaktionsprinzipien
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_stress.*
+import java.io.File
 
 
 class StressActivity : AppCompatActivity() {
@@ -15,6 +17,11 @@ class StressActivity : AppCompatActivity() {
 
         updateProgressBar()
 
+        val fileName = intent.getStringExtra("myCoin")!!
+
+        val filePath: File = getFileStreamPath(fileName)
+        val d = Drawable.createFromPath(filePath.toString())
+        imageViewTest.setBackground(d)
         //val button_incr = findViewById<Button>(R.id.button_incr)
         button_incr.setOnClickListener {
             if (progr <= 90) {
