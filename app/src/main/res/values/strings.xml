@@ -58,17 +58,17 @@
                        <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
                        <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
                        </html>]]></string>
-    <string name="sound">Sound</string>
+    <string name="volume">Lautstärke</string>
     <string name="music">Musik</string>
     <string name="coins">Coins</string>
     <string name="help">Hilfe</string>
-    <string name="graphics">Grafik</string>
+    <string name="resolution">Auflösung</string>
     <string name="speed">Schnelligkeit</string>
     <string name="onOff">on/off</string>
     <string name="offOn">off/on</string>
     <string name="on">on</string>
     <string name="off">off</string>
-    <string name="display">unterstützte Displaygrößen</string>
+    <string name="display">Displaygröße</string>
     <string name="developers">Entwickelt von Hannes Richter, Jonas Feige, Michael Jesenko, Yasin Atasoy</string>
     <string name="vierVerliert">Vier Verliert</string>
     <string name="start">Start</string>
