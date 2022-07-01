@@ -77,7 +77,7 @@ class QuizActivity : AppCompatActivity() {
         if (questionsIterator.hasNext())
             return nameLabelsAndButtons(questionsIterator.next())
 
-        val intent = Intent(this, StressResultActivity::class.java)
+        val intent = Intent(this, StressMeasureActivity::class.java)
         startActivity(intent)
         return null
     }
@@ -112,7 +112,7 @@ class QuizActivity : AppCompatActivity() {
             }
         }
 
-        return question;
+        return question
     }
 
     private fun clearAndHideAllInputs(){
