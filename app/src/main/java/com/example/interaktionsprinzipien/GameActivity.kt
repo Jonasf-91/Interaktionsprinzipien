@@ -15,7 +15,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.coin.com.example.interaktionsprinzipien.FourConnectBoard
 import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
@@ -25,6 +24,8 @@ import kotlin.math.abs
 class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var countDownTimer: CountDownTimer
+    private val maxCoinNumber = 6
+    private var currentCoinNumber = 0
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
     private val playerTwo = Player(2,R.drawable.four_connect_player2 )
     private var virtualBoard = arrayOf(
@@ -89,8 +90,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             if(row != -1){
 
                 placeCoinOnBoard(row, column)
-                if(gameIsOver(row, column)){
-                    showResult()
+                if(fourInRow(row, column)){
+                    showResult(currentPlayer.id)
                 }else{
                     switchPlayer()
                     setUpArrowButtons()
@@ -100,10 +101,12 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    private fun showResult() {
+    private fun showResult(result : Int) {
 
-        blinkWinningList()
-        tv_four_connect_result.text = writeResultText()
+        if(result == 1 || result == 2){
+            blinkWinningList()
+        }
+        tv_four_connect_result.text = writeResultText(result)
         tv_four_connect_result.isVisible = true
         setUpNextButton()
 
@@ -155,9 +158,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
-    private fun writeResultText() : String {
+    private fun writeResultText(result : Int) : String {
         var text = ""
-        if(currentPlayer.id == 1) {
+        if(result == 1) {
             when (depth) {
                 0 -> text =
                     "Auf der Schwierigkeitsstufe gewinnt ein kleines Kind gegen den Computer.\nJetzt spiel bitte mal richtig."
@@ -169,9 +172,11 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     "Herzlichen Glückwunsch! Du bist ein wahrer Champion im Vier Gewinnt.\nUnd wir müssen jetzt mal schauen, dass wir den Algortihmus verbessern.\nSO kann das nicht weitergehen."
 
             }
-        }else {
+        }else if(result == 2) {
                text =  "Netter Versuch.\nAber vielleicht versuchst du es noch mal."
-            }
+            }else{
+                text = "Deine Coins sind alle.\nEinfach nicht so geizig sein."
+        }
             return text
     }
 
@@ -342,7 +347,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    private fun gameIsOver(row : Int, column: Int) : Boolean{
+    private fun fourInRow(row : Int, column: Int) : Boolean{
         if(checkRowOfVirtualBoard(row))return true
         if(checkColumnOfVirtualBoard(column)) return true
         if(checkDiagnoalOfVirtualBoard()) return true
@@ -412,12 +417,16 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         val row = getRowNumber(column)
         if(row != -1){
             placeCoinOnBoard(row,column)
+            currentCoinNumber++
             coinOnArrow = false
             resetArrows()
             countDownTimer.cancel()
-            if(gameIsOver(row, column)){
-                showResult()
-            }else{
+            if(fourInRow(row, column)){
+                showResult(currentPlayer.id)
+            }else if(currentCoinNumber >= maxCoinNumber){
+                showResult(-1)
+            }
+            else{
                 switchPlayer()
                 computerToMove()
             }
