@@ -77,7 +77,7 @@ class QuizActivity : AppCompatActivity() {
         if (questionsIterator.hasNext())
             return nameLabelsAndButtons(questionsIterator.next())
 
-        val intent = Intent(this, StressActivity::class.java)
+        val intent = Intent(this, StressResultActivity::class.java)
         startActivity(intent)
         return null
     }

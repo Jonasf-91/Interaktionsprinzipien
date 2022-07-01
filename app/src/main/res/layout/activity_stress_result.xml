@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".StressActivity">
+    tools:context=".StressResultActivity">
 
 
 
@@ -85,29 +85,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-        app:layout_constraintVertical_bias="0.298" />
-
-    <Button
-        android:id="@+id/button_decr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="- 10%"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
-
-    <Button
-        android:id="@+id/button_incr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+ 10%"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <ImageView
         android:id="@+id/imageViewTest"

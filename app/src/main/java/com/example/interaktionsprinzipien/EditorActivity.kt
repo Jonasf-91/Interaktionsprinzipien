@@ -12,14 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.coin.DrawingView
 import com.example.coin.com.example.coin.Coin
 import com.example.coin.com.example.coin.CoinView
-import kotlinx.android.synthetic.main.activity_editor.*
-import kotlinx.android.synthetic.main.activity_editor_color.*
-import kotlinx.android.synthetic.main.activity_editor_corner.*
-import kotlinx.android.synthetic.main.activity_editor_draw.*
-import kotlinx.android.synthetic.main.coin_view_include.*
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
-import java.io.IOException
 import java.util.*
 
 class EditorActivity : AppCompatActivity() {
@@ -27,6 +21,8 @@ class EditorActivity : AppCompatActivity() {
     var coin = Coin()
     lateinit var printBitmap : Bitmap
     var fileName : String? = ""
+    val dangerColor = Color.RED
+    val standardColor = Color.DKGRAY
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,9 +70,7 @@ class EditorActivity : AppCompatActivity() {
             val coinView : CoinView = findViewById(R.id.coinViewAll)
             fileName = createImageFromBitmap(coinView.coinBitmap)
 
-            val intent = Intent(this, StressActivity::class.java).apply {
-                putExtra("myCoin", fileName)
-            }
+            val intent = Intent(this, StressMeasureActivity::class.java)
             startActivity(intent)
         }
         val nextToColorBtn = findViewById<Button>(R.id.nextToColorBtn)
@@ -111,18 +105,41 @@ class EditorActivity : AppCompatActivity() {
         textView.text = coin.corners.toString()
         // BUTTONS CORNER //
         val moreCornersBtn = findViewById<Button>(R.id.moreCornersBtn)
+        val lessCornersBtn = findViewById<Button>(R.id.lessCornersBtn)
         moreCornersBtn.setOnClickListener {
             coin.corners++
             val coinView : CoinView = findViewById(R.id.coinViewAll)
             coinView.update(coin, printBitmap)
-            cornerCounterView.text = coin.corners.toString()
+            textView.textSize = 50f
+            textView.setTextColor(standardColor)
+            textView.text = coin.corners.toString()
+            lessCornersBtn.setOnClickListener {
+                textView.textSize = 20f
+                textView.text = "Du wolltest doch mehr"
+                textView.setTextColor(dangerColor)
+            }
         }
-        val lessCornersBtn = findViewById<Button>(R.id.lessCornersBtn)
+
         lessCornersBtn.setOnClickListener {
-            coin.corners--
             val coinView : CoinView = findViewById(R.id.coinViewAll)
             coinView.update(coin, printBitmap)
-            cornerCounterView.text = coin.corners.toString()
+            textView.textSize = 50f
+            textView.text = coin.corners.toString()
+            textView.setTextColor(standardColor)
+            if(coin.corners>3){
+                coin.corners--
+            } else{
+                textView.textSize = 20f
+                textView.text = "Reicht jetzt auch mal!"
+                textView.setTextColor(dangerColor)
+            }
+
+            moreCornersBtn.setOnClickListener {
+                textView.textSize = 20f
+                textView.text = "Du wolltest doch weniger"
+                textView.setTextColor(dangerColor)
+            }
+
         }
         val nextToDrawBtn = findViewById<Button>(R.id.nextToDrawBtn)
         nextToDrawBtn.setOnClickListener {
@@ -167,7 +184,7 @@ class EditorActivity : AppCompatActivity() {
         var fileName: String? = "myCoin" //no .png or .jpg needed
         try {
             val bytes = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
             val fo: FileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE)
             fo.write(bytes.toByteArray())
             // remember close file output

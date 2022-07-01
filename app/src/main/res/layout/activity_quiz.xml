@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarSize="20dp"
-    tools:context=".StressActivity">
+    tools:context=".StressResultActivity">
 
     <ImageView
         android:id="@+id/imageViewQuestion"

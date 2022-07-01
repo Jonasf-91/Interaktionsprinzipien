@@ -1,46 +1,38 @@
 package com.example.interaktionsprinzipien
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_stress.*
+import com.example.quiz.StressScore
+import kotlinx.android.synthetic.main.activity_stress_result.*
 import java.io.File
 
 
-class StressActivity : AppCompatActivity() {
+class StressResultActivity : AppCompatActivity() {
 
     private var progr = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stress)
+        setContentView(R.layout.activity_stress_result)
 
+
+        progr = StressScore.amount
         updateProgressBar()
 
-        val fileName = intent.getStringExtra("myCoin")!!
+        //val fileName = intent.getStringExtra("myCoin")!!
+        //val filePath: File = getFileStreamPath(fileName)
+        //val d = Drawable.createFromPath(filePath.toString())
+        //imageViewTest.setBackground(d)
 
-        val filePath: File = getFileStreamPath(fileName)
-        val d = Drawable.createFromPath(filePath.toString())
-        imageViewTest.setBackground(d)
-        //val button_incr = findViewById<Button>(R.id.button_incr)
-        button_incr.setOnClickListener {
-            if (progr <= 90) {
-                progr += 10
-                updateProgressBar()
-            }
-        }
 
-        //val button_decr = findViewById<Button>(R.id.button_decr)
-        button_decr.setOnClickListener {
-            if (progr >= 10) {
-                progr -= 10
-                updateProgressBar()
-            }
-        }
     }
 
     private fun updateProgressBar() {
-        progress_bar.progress = progr
+        val percentage = (progr * 100) / 40
+        progress_bar.progress = percentage
         text_view_progress.text = progr.toString()
 
         if (progr<=25)

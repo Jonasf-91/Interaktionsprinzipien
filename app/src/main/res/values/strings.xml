@@ -72,5 +72,7 @@
     <string name="developers">Entwickelt von Hannes Richter, Jonas Feige, Michael Jesenko, Yasin Atasoy</string>
     <string name="vierVerliert">Vier Verliert</string>
     <string name="start">Start</string>
+    <string name="stressScore">stresslevel</string>
+
 
 </resources>
