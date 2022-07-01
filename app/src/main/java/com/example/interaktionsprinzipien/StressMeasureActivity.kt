@@ -15,6 +15,7 @@ class StressMeasureActivity : AppCompatActivity() {
         setContentView(R.layout.activity_stress_measure)
 
         val score = findViewById<TextView>(R.id.textViewStressAmount)
+        StressScore.level++
 
         val seekBar = findViewById<SeekBar>(R.id.seekBar)
         seekBar?.setOnSeekBarChangeListener(object :
@@ -37,13 +38,19 @@ class StressMeasureActivity : AppCompatActivity() {
 
         score.text = seekBar.progress.toString()
 
-        val toQuizBtn = findViewById<Button>(R.id.toQuizBtn)
-        toQuizBtn.setOnClickListener {
+        val nextBtn = findViewById<Button>(R.id.nextBtn)
+        nextBtn.setOnClickListener {
 
             StressScore.amount += seekBar.progress
 
 
-            val intent = Intent(this, StressResultActivity::class.java)
+            when(StressScore.level){
+                1 -> intent = Intent(this, EditorActivity::class.java)
+                2 -> intent = Intent(this, OptionActivity::class.java)
+                3 -> intent = Intent(this, GameActivity::class.java)
+                4 -> intent = Intent(this, StressResultActivity::class.java)
+                else -> intent = Intent(this, StressResultActivity::class.java)
+            }
             startActivity(intent)
         }
 

@@ -12,9 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.coin.DrawingView
 import com.example.coin.com.example.coin.Coin
 import com.example.coin.com.example.coin.CoinView
+import com.example.quiz.Answer
+import com.example.quiz.Question
 import java.io.ByteArrayOutputStream
 import java.io.FileOutputStream
 import java.util.*
+
 
 class EditorActivity : AppCompatActivity() {
 
@@ -24,11 +27,43 @@ class EditorActivity : AppCompatActivity() {
     val dangerColor = Color.RED
     val standardColor = Color.DKGRAY
 
+    private val questions = arrayListOf<Question>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editor)
         setEditorButtons()
         printBitmap = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888)
+
+        // ------------- Define Questions for Quiz -----------------
+        questions.add(
+            Question(
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Aufgabenangemessen", true),
+                    Answer("Benutzerbindung", false),
+                    Answer("Steuerbarakeit", true),
+                    Answer("Robust gegen Benutzerfehler", true),
+                ),
+                R.drawable.quiz01
+            )
+        )
+
+        questions.add(
+            Question(
+                "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Steuerbarakeit", true),
+                    Answer("Robust gegen Benutzerfehler", true),
+                    Answer("Benutzerbindung", false),
+                    Answer("Aufgabenangemessen", true),
+                ),
+                R.drawable.quiz02)
+        )
+
+        // --------------------------------------------------------
 
     }
 
@@ -70,7 +105,9 @@ class EditorActivity : AppCompatActivity() {
             val coinView : CoinView = findViewById(R.id.coinViewAll)
             fileName = createImageFromBitmap(coinView.coinBitmap)
 
-            val intent = Intent(this, StressMeasureActivity::class.java)
+            val intent = Intent(this, QuizActivity::class.java).apply{
+                putParcelableArrayListExtra("questions", questions)
+            }
             startActivity(intent)
         }
         val nextToColorBtn = findViewById<Button>(R.id.nextToColorBtn)
