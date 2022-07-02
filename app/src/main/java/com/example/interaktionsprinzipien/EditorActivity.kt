@@ -38,29 +38,55 @@ class EditorActivity : AppCompatActivity() {
         // ------------- Define Questions for Quiz -----------------
         questions.add(
             Question(
-                "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+                "Was ist hier das Problem?",
                 getString(R.string.answerQuiz01),
                 listOf(
-                    Answer("Aufgabenangemessen", true),
-                    Answer("Benutzerbindung", false),
-                    Answer("Steuerbarakeit", true),
-                    Answer("Robust gegen Benutzerfehler", true),
+                    Answer("Buttons falschherum (EK)", true),
+                    Answer("schlechte Steuerbarkeit", true),
+                    Answer("nichts", false),
+                    Answer("anfällig für Benutzerfehler", true),
                 ),
-                R.drawable.quiz01
+                R.drawable.quizeditor01
             )
         )
 
         questions.add(
             Question(
-                "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
+                "Wieso weiß der Nutzer hier nicht, worauf er klicken muss?",
                 getString(R.string.answerQuiz01),
                 listOf(
-                    Answer("Steuerbarakeit", true),
-                    Answer("Robust gegen Benutzerfehler", true),
-                    Answer("Benutzerbindung", false),
-                    Answer("Aufgabenangemessen", true),
+                    Answer("zu grelle Farben", false),
+                    Answer("Buttons zu klein", false),
+                    Answer("Icons nicht aussagekräftig", true),
+                    Answer("Buttons nicht beschrieben", true),
                 ),
-                R.drawable.quiz02)
+                R.drawable.quizeditor02)
+        )
+
+        questions.add(
+            Question(
+                "Wieso könnte der Nutzer hier die falsche Auswahl treffen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Grün verleitet zu ungewollter Aktion", true),
+                    Answer("Grau zeigt aktiven Zustand an", false),
+                    Answer("weiter wohin?", true),
+                    Answer("Elemente zu nah aneinander", false),
+                ),
+                R.drawable.quizeditor03)
+        )
+
+        questions.add(
+            Question(
+                "Wie könnte man die Aufgabenangemessenheit hier verbessern?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("weniger Elemente", false),
+                    Answer("Genaue Auswahl statt Random", true),
+                    Answer("schönere Farben", false),
+                    Answer("größerer Farbraum", false),
+                ),
+                R.drawable.quizeditor04)
         )
 
         // --------------------------------------------------------
@@ -121,7 +147,7 @@ class EditorActivity : AppCompatActivity() {
 
     private fun setColorButtons() {
         // BUTTONS COLOR //
-        val changeColorBtn = findViewById<Button>(R.id.changeColorBtn)
+        val changeColorBtn = findViewById<ImageButton>(R.id.changeColorBtn)
         changeColorBtn.setOnClickListener {
             coin.setColor(randomColor())
             val coinView : CoinView = findViewById(R.id.coinViewAll)
