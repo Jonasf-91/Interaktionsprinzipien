@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_option.*
 
 
@@ -26,7 +27,7 @@ class OptionActivity : AppCompatActivity() {
         val toggleMusic = findViewById<ToggleButton>(R.id.toggleMusic)
         val volumeSwitch = findViewById<Switch>(R.id.volumeSwitch)
         val helpSwitch = findViewById<Switch>(R.id.helpSwitch)
-        val toggleSpeed = findViewById<ToggleButton>(R.id.toggleSpeed)
+        val toggleSpeed = findViewById<ToggleButton>(R.id.toggleDifficulty)
         val saveButton = findViewById<Button>(R.id.saveButton)
         val forwardButton = findViewById<Button>(R.id.forwardButton)
         val infoMusic = findViewById<ImageView>(R.id.infoMusic)
@@ -126,8 +127,9 @@ class OptionActivity : AppCompatActivity() {
                 saved = true
                 saveData()
             }else{
-                Toast.makeText(applicationContext, "Geben Sie bitte die korrekte Displaygröße an", Toast.LENGTH_LONG).show()
-            }
+                val intent = Intent(this, StartActivity::class.java)
+                startActivity(intent)            }
+
         }
 
         forwardButton.setOnClickListener {
@@ -155,7 +157,7 @@ class OptionActivity : AppCompatActivity() {
             putString("STRING_RESOLUTION_X", resX)
             putString("STRING_RESOLUTION_Y", resY)
             putBoolean("BOOLEAN_MUSIC", toggleMusic.isChecked)
-            putBoolean("BOOLEAN_SPEED", toggleSpeed.isChecked)
+            putBoolean("BOOLEAN_SPEED", toggleDifficulty.isChecked)
             putBoolean("BOOLEAN_VOLUME", volumeSwitch.isChecked)
             putBoolean("BOOLEAN_HELP", helpSwitch.isChecked)
         }.apply()
@@ -178,7 +180,7 @@ class OptionActivity : AppCompatActivity() {
         resolutionX.setText(stringResolutionX)
         resolutionY.setText(stringResolutionY)
         toggleMusic.isChecked = booleanMusic
-        toggleSpeed.isChecked = booleanSpeed
+        toggleDifficulty.isChecked = booleanSpeed
         volumeSwitch.isChecked = booleanVolume
         helpSwitch.isChecked = booleanHelp
     }

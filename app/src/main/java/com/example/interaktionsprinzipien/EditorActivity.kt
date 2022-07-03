@@ -46,7 +46,7 @@ class EditorActivity : AppCompatActivity() {
                     Answer("nichts", false),
                     Answer("anfällig für Benutzerfehler", true),
                 ),
-                R.drawable.quizeditor01
+                R.drawable.quiz_editor01
             )
         )
 
@@ -60,7 +60,7 @@ class EditorActivity : AppCompatActivity() {
                     Answer("Icons nicht aussagekräftig", true),
                     Answer("Buttons nicht beschrieben", true),
                 ),
-                R.drawable.quizeditor02)
+                R.drawable.quiz_editor02)
         )
 
         questions.add(
@@ -73,7 +73,7 @@ class EditorActivity : AppCompatActivity() {
                     Answer("weiter wohin?", true),
                     Answer("Elemente zu nah aneinander", false),
                 ),
-                R.drawable.quizeditor03)
+                R.drawable.quiz_editor03)
         )
 
         questions.add(
@@ -86,7 +86,7 @@ class EditorActivity : AppCompatActivity() {
                     Answer("schönere Farben", false),
                     Answer("größerer Farbraum", false),
                 ),
-                R.drawable.quizeditor04)
+                R.drawable.quiz_editor04)
         )
 
         // --------------------------------------------------------

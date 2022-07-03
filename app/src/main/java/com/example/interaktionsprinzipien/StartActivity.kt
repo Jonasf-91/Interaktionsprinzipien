@@ -26,7 +26,7 @@ class StartActivity : AppCompatActivity() {
         }
 
         audioButton.setOnClickListener {
-            if(audioButton.isActivated){
+            if(true){
                 playMusic()
                 audioButton.setImageResource(R.drawable.audio_on)
             }

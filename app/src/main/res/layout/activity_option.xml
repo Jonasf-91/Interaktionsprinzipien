@@ -69,7 +69,7 @@
         android:text="@string/nextBtn"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speed" />
+        app:layout_constraintTop_toBottomOf="@+id/difficulty" />
 
     <Button
         android:id="@+id/saveButton"
@@ -80,7 +80,7 @@
         android:text="@string/saveButton"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speed" />
+        app:layout_constraintTop_toBottomOf="@+id/difficulty" />
 
     <EditText
         android:id="@+id/coinAmount"
@@ -134,15 +134,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
-        android:id="@+id/toggleSpeed"
+        android:id="@+id/toggleDifficulty"
         android:layout_width="98dp"
         android:layout_height="48dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="484dp"
         android:checked="false"
         android:text="ToggleButton"
-        android:textOff="JA"
-        android:textOn="NEIN"
+        android:textOff="1"
+        android:textOn="5"
         app:layout_constraintStart_toEndOf="@+id/music"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,12 +158,12 @@
         app:layout_constraintTop_toBottomOf="@+id/coins" />
 
     <TextView
-        android:id="@+id/speed"
+        android:id="@+id/difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="52dp"
-        android:text="@string/speed"
+        android:text="@string/difficulty"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resolution" />
@@ -257,7 +257,7 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_marginTop="36dp"
-        app:layout_constraintStart_toEndOf="@+id/speed"
+        app:layout_constraintStart_toEndOf="@+id/difficulty"
         app:layout_constraintTop_toBottomOf="@+id/resolution"
         app:srcCompat="@android:drawable/ic_dialog_info" />
 

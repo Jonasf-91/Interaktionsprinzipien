@@ -63,7 +63,7 @@
     <string name="coins">Coins</string>
     <string name="help">Hilfe</string>
     <string name="resolution">Auflösung</string>
-    <string name="speed">Schnelligkeit</string>
+    <string name="difficulty">Schwierigkeitsgrad</string>
     <string name="onOff">on/off</string>
     <string name="offOn">off/on</string>
     <string name="on">on</string>

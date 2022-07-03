@@ -42,6 +42,9 @@
             android:name=".GameActivity"
             android:exported="false" />
         <activity
+            android:name=".StartActivity"
+            android:exported="false" />
+        <activity
             android:name=".QuizActivity"
             android:exported="false" />
         <activity
