@@ -1,15 +1,18 @@
 package com.example.interaktionsprinzipien
 
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlinx.android.synthetic.main.activity_option.*
 
 class StartActivity : AppCompatActivity() {
 
     var global = GlobalClass()
     var player: MediaPlayer? = null
+    var musicOn: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,23 +21,51 @@ class StartActivity : AppCompatActivity() {
         val startButton = findViewById<Button>(R.id.startButton)
         val audioButton = findViewById<ImageButton>(R.id.audioButtonStart)
 
-        playMusic()
+        loadData()
+
+        if(musicOn){
+            playMusic()
+        }
+        else{
+            audioButton.setImageResource(R.drawable.audio_off)
+        }
 
         startButton.setOnClickListener {
+            pauseMusic()
+            saveData()
             val intent = Intent(this, LogInActivity::class.java)
             startActivity(intent)
         }
 
         audioButton.setOnClickListener {
-            if(true){
-                playMusic()
-                audioButton.setImageResource(R.drawable.audio_on)
-            }
-            else{
+            if(musicOn){
+                musicOn = false
                 pauseMusic()
                 audioButton.setImageResource(R.drawable.audio_off)
             }
+            else{
+                musicOn = true
+                playMusic()
+                audioButton.setImageResource(R.drawable.audio_on)
+            }
         }
+    }
+
+    private fun saveData(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("BOOLEAN_MUSIC_START", musicOn)
+        }.apply()
+    }
+
+    private fun loadData(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+
+        val booleanMusicStart = sharedPreferences.getBoolean("BOOLEAN_MUSIC_START", true)
+
+
+        musicOn = booleanMusicStart
     }
 
     fun playMusic() {
