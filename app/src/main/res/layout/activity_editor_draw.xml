@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".EditorActivity">
 
     <include
@@ -58,7 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/jobDraw"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/nextToEditorBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

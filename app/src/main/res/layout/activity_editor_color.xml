@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".EditorActivity">
 
 
@@ -32,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvIncludeColor"
-        app:tint="@color/purple_500" />
+        app:tint="@color/purple_200" />
 
     <Button
         android:id="@+id/nextToCornerBtn"
@@ -51,7 +50,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/jobColor"
-        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/nextToCornerBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

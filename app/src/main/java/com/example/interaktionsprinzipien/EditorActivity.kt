@@ -40,7 +40,7 @@ class EditorActivity : AppCompatActivity() {
         questions.add(
             Question(
                 "Was ist hier das Problem?",
-                getString(R.string.answerQuiz01),
+                getString(R.string.answerQuizEditor01),
                 listOf(
                     Answer("Buttons falschherum (EK)", true),
                     Answer("schlechte Steuerbarkeit", true),
@@ -54,7 +54,7 @@ class EditorActivity : AppCompatActivity() {
         questions.add(
             Question(
                 "Wieso weiß der Nutzer hier nicht, worauf er klicken muss?",
-                getString(R.string.answerQuiz01),
+                getString(R.string.answerQuizEditor02),
                 listOf(
                     Answer("zu grelle Farben", false),
                     Answer("Buttons zu klein", false),
@@ -67,7 +67,7 @@ class EditorActivity : AppCompatActivity() {
         questions.add(
             Question(
                 "Wieso könnte der Nutzer hier die falsche Auswahl treffen?",
-                getString(R.string.answerQuiz01),
+                getString(R.string.answerQuizEditor03),
                 listOf(
                     Answer("Grün verleitet zu ungewollter Aktion", true),
                     Answer("Grau zeigt aktiven Zustand an", false),
@@ -80,7 +80,7 @@ class EditorActivity : AppCompatActivity() {
         questions.add(
             Question(
                 "Wie könnte man die Aufgabenangemessenheit hier verbessern?",
-                getString(R.string.answerQuiz01),
+                getString(R.string.answerQuizEditor04),
                 listOf(
                     Answer("weniger Elemente", false),
                     Answer("Genaue Auswahl statt Random", true),
