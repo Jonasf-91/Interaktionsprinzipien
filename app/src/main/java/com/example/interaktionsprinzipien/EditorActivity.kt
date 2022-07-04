@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.coin.DrawingView
 import com.example.coin.com.example.coin.Coin
@@ -258,6 +259,35 @@ class EditorActivity : AppCompatActivity() {
         }
         return fileName
     }
+
+    override fun onBackPressed() {
+        val rnd = (1..18).random()
+        var text = ""
+        when(rnd){
+            1 -> text = "von hier gibt es kein zurück mehr"
+            2 -> text = "noch 1x drücken für eine andere Nachricht"
+            3 -> text = "Schwächling..."
+            4 -> text = "Angst, Potter!?"
+            5 -> text = "Mach weiter, du schaffst das!"
+            6 -> text = "Wo willst du denn hin?"
+            7 -> text = "Das ist doch Schnee von gestern!"
+            8 -> text = "Nope!"
+            9 -> text = "Geht nicht!"
+            10 -> text = "Vergiss es!"
+            11 -> text = "So wirst du niemals ein echter Jedi!"
+            12 -> text = "Soll ich deine Eltern anrufen?"
+            13 -> text = "Möchten Sie den Telefonjoker?"
+            14 -> text = "Das kann ja sogar deine Oma besser"
+            15 -> text = "Probieren geht über Studieren"
+            16 -> text = "Come on!"
+            17 -> text = "let it be"
+            18 -> text = "Deine Mutter geht zurück!"
+
+        }
+
+        Toast.makeText(applicationContext, text, Toast.LENGTH_LONG).show()
+    }
+
 
 
 

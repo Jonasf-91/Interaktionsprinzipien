@@ -73,6 +73,10 @@
     <string name="vierVerliert">Vier Verliert</string>
     <string name="start">Start</string>
     <string name="stressScore">stresslevel</string>
+    <string name="jobDraw">Male etwas in die Münze!</string>
+    <string name="jobCorner">Lege die Anzahl der Ecken fest!</string>
+    <string name="jobColor">Wähle ein Farbe!</string>
+
 
 
 </resources>
