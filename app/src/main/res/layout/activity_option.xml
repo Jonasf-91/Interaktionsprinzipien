@@ -64,7 +64,7 @@
         android:id="@+id/forwardButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="68dp"
         android:text="@string/nextBtn"
         android:textSize="20sp"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:text="@string/saveButton"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,19 +133,6 @@
         app:layout_constraintStart_toEndOf="@+id/music"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ToggleButton
-        android:id="@+id/toggleDifficulty"
-        android:layout_width="98dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="484dp"
-        android:checked="false"
-        android:text="ToggleButton"
-        android:textOff="1"
-        android:textOn="5"
-        app:layout_constraintStart_toEndOf="@+id/music"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/volume"
         android:layout_width="wrap_content"
@@ -156,17 +143,6 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coins" />
-
-    <TextView
-        android:id="@+id/difficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/difficulty"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resolution" />
 
     <TextView
         android:id="@+id/resolution"
@@ -253,11 +229,12 @@
         app:srcCompat="@android:drawable/ic_dialog_info" />
 
     <ImageView
-        android:id="@+id/infoSpeed"
+        android:id="@+id/infoFirstTurn"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintStart_toEndOf="@+id/difficulty"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/firstTurn"
         app:layout_constraintTop_toBottomOf="@+id/resolution"
         app:srcCompat="@android:drawable/ic_dialog_info" />
 
@@ -281,5 +258,57 @@
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/difficultySetting"
+        android:layout_width="38dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="552dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/difficulty"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/difficulty"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstTurn" />
+
+    <ImageView
+        android:id="@+id/infoSpeed"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintStart_toEndOf="@+id/difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/resolution"
+        app:srcCompat="@android:drawable/ic_dialog_info" />
+
+    <TextView
+        android:id="@+id/firstTurn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/firstTurn"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resolution" />
+
+    <CheckBox
+        android:id="@+id/checkFirstTurn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="16dp"
+        android:checked="false"
+        app:layout_constraintStart_toEndOf="@+id/firstTurn"
+        app:layout_constraintTop_toBottomOf="@+id/resolutionX" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

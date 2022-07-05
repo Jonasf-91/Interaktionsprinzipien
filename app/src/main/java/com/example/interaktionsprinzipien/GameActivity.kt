@@ -1,11 +1,13 @@
 package com.example.interaktionsprinzipien
 
 
+import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.animation.AlphaAnimation
@@ -16,16 +18,28 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
+import com.example.quiz.Answer
+import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
+import kotlinx.android.synthetic.main.activity_option.*
 import kotlin.math.abs
 
 
 class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var countDownTimer: CountDownTimer
-    private val maxCoinNumber = 6
+    private var numberHelpText = 1
+    private var maxCoinNumber = 6
     private var currentCoinNumber = 0
+
+    /*
+    val filePath: File = getFileStreamPath("mycoin")
+    val d = Drawable.createFromPath(filePath.toString())
+
+    private val playerTest = PlayerTest(1, d, "Jonas")
+
+    */
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
     private val playerTwo = Player(2,R.drawable.four_connect_player2 )
     private var virtualBoard = arrayOf(
@@ -36,8 +50,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         arrayOf(0,0,0,0,0,0,0),
         arrayOf(0,0,0,0,0,0,0)
     )
-    private val depth = 4
+    private var depth = 4
     private val computer = FourConnectCalculator(depth )
+
     private var currentPlayer = playerTwo
     val animation: Animation = AlphaAnimation(1F, 0F)
 
@@ -58,16 +73,158 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var coinOnArrow = false
     private var column = -1
 
+    private val questions = arrayListOf<Question>()
 
     private lateinit var board : Array<Array<ImageView>>
+
+
+    //ANFANG YASIN___________________________________________________________________________________________________
+    private var musicOn = false
+    private var volumeOn = false
+    var player: MediaPlayer? = null
+
+    private fun saveData(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("BOOLEAN_GAME_OPTIONS", true)
+        }.apply()
+    }
+
+    private fun loadData(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
+        val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
+        val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
+        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
+        val intCoin = sharedPreferences.getInt("INT_COINS", 0)
+
+
+        musicOn = booleanMusic
+        volumeOn = booleanVolume
+        depth = intDifficulty
+        maxCoinNumber = intCoin
+
+        currentPlayer = if(booleanFirstTurn){
+            playerOne
+        }else playerTwo
+
+    }
+
+    fun playMusic() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.marsel_minga)
+            player!!.isLooping = true
+            player!!.start()
+        }
+        if(player?.isPlaying == false){
+            player!!.start()
+        }
+    }
+
+    fun pauseMusic() {
+        if (player?.isPlaying == true) player?.pause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+
+        //HIER SOLLEN DIE PREFERENCES GELÖSCHT WERDEN, UM BEI NEUSTART DER APP KOMPLETT NEU ANFANGEN ZU KÖNNEN. FUNKTIONIERT NICHT!!!!!
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().clear()
+        sharedPreferences.edit().apply()
+
+        if (player != null) {
+            player!!.release()
+            player = null
+        }
+    }
+    //ENDE YASIN_____________________________________________________________________________________________________
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+
+        //ANFANG YASIN___________________________________________________________________________________________________
+        saveData()
+        loadData()
+
+        if(musicOn && !volumeOn){
+            playMusic()
+        }
+        //ENDE YASIN_____________________________________________________________________________________________________
+
+
+
+
+
+
+        // ------------- Define Questions for Quiz -----------------
+        questions.add(
+            Question(
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde bei der runterlaufenden Uhr verstoßen?",
+                getString(R.string.answerQuizGame01),
+                listOf(
+                    Answer("Aufgabenangemessen", true),
+                    Answer("Selbstbeschreibend", false),
+                    Answer("Steuerbarakeit", false),
+                    Answer("Erwartungskonformität", true),
+                ),
+                R.drawable.quizgame1,
+                false
+            )
+        )
+
+        questions.add(
+            Question(
+                "Gegen welches Interaktionsprinzip wurde beim Setzen eines Coins verstoßen?",
+                getString(R.string.answerQuizGame02),
+                listOf(
+                    Answer("Steuerbarakeit", false),
+                    Answer("Robust gegen Benutzerfehler", false),
+                    Answer("Erlernbarkeit", true),
+                    Answer("Aufgabenangemessen", true),
+                ),
+                R.drawable.quizgame2,
+            false),
+
+        )
+
+        // --------------------------------------------------------
+
+        /*
+        if(playerToStart == 1){
+            currentPlayer = playerOne
+        }else currentPlayer = playerTwo
+
+         */
+
         four_connect_btn_options.setOnClickListener {
             val intent = Intent(this, OptionActivity::class.java)
             startActivity(intent)
+        }
+
+        four_connect_btn_help.setOnClickListener {
+            var text = ""
+            when(numberHelpText) {
+                1 -> text = "Haha, das wäre ja zu einfach."
+                2 -> text = "Neee, nichts da"
+                3 -> text = "Hier geht's nicht weiter"
+                4 -> text = "Frag Mutti"
+                5 -> text = "Ich glaube an dich.."
+                6 -> text = "Wo willst du denn hin?"
+                7 -> text = "Noch ein mal drücken und es geht in den Entwicklermodus"
+                8 -> text = "Scherz."
+                9 -> text = "Hilfe eilt.."
+                10 -> text = "if(numberHelpText > 10) numberHelpText = 1"
+            }
+            numberHelpText++
+            if(numberHelpText > 10) numberHelpText = 1
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
         }
 
         buildBoard()
@@ -108,7 +265,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
         tv_four_connect_result.text = writeResultText(result)
         tv_four_connect_result.isVisible = true
-        setUpNextButton()
+        setUpNextButton(result)
 
     }
 
@@ -126,17 +283,18 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    private fun setUpNextButton() {
-        if(currentPlayer.id == 1){
+    private fun setUpNextButton(result : Int) {
+        if(result == 1){
             four_connect_btn_next.text = "Weiter"
             four_connect_btn_next.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, QuizActivity::class.java).apply{
+                    putParcelableArrayListExtra("questions", questions)
+                }
                 startActivity(intent)
             }
         }else{
             four_connect_btn_next.text = "Noch mal"
             four_connect_btn_next.setOnClickListener {
-
                 restartGame()
             }
         }
@@ -144,6 +302,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun restartGame() {
+        loadData()
+
         currentPlayer = playerTwo
         for(row in virtualBoard.indices){
             for(column in 0 until virtualBoard[0].size){
@@ -154,6 +314,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         animation.cancel()
         four_connect_btn_next.isVisible = false
         tv_four_connect_result.isVisible = false
+        currentCoinNumber = 0
         startFourConnect()
 
     }
@@ -187,7 +348,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             override fun onTick(p0: Long) {
                 countDownProgress ++
                 tv_countdown.text = (countDownStart - countDownProgress).toString()
-                //TODO add sound ticker
             }
 
             override fun onFinish() {
@@ -448,5 +608,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
         return newBoard
     }
+
+    override fun onBackPressed() {}
+
+    // class PlayerTest(val id: Int, val d: Drawable?, val name: String)
 
 }

@@ -8,26 +8,59 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.quiz.Answer
+import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_option.*
 
 
 class OptionActivity : AppCompatActivity() {
 
-    var global = GlobalClass()
-    var player: MediaPlayer? = null
+    private var global = GlobalClass()
+    private var player: MediaPlayer? = null
+    private var gameOptions = false
+    private val questions = arrayListOf<Question>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_option)
 
-        loadData()
+        questions.add(
+            Question(
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Aufgabenangemessen", true),
+                    Answer("Benutzerbindung", false),
+                    Answer("Steuerbarakeit", true),
+                    Answer("Robust gegen Benutzerfehler", true),
+                ),
+                R.drawable.quiz_options03
+            )
+        )
 
+        questions.add(
+            Question(
+                "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Steuerbarakeit", true),
+                    Answer("Robust gegen Benutzerfehler", true),
+                    Answer("Benutzerbindung", false),
+                    Answer("Aufgabenangemessen", true),
+                ),
+                R.drawable.quiz_options03)
+        )
+
+
+
+        gameOptions = false
+
+        loadData()
 
         val toggleMusic = findViewById<ToggleButton>(R.id.toggleMusic)
         val volumeSwitch = findViewById<Switch>(R.id.volumeSwitch)
         val helpSwitch = findViewById<Switch>(R.id.helpSwitch)
-        val toggleSpeed = findViewById<ToggleButton>(R.id.toggleDifficulty)
         val saveButton = findViewById<Button>(R.id.saveButton)
         val forwardButton = findViewById<Button>(R.id.forwardButton)
         val infoMusic = findViewById<ImageView>(R.id.infoMusic)
@@ -35,11 +68,19 @@ class OptionActivity : AppCompatActivity() {
         val infoVolume = findViewById<ImageView>(R.id.infoVolume)
         val infoHelp = findViewById<ImageView>(R.id.infoHelp)
         val infoGraphic = findViewById<ImageView>(R.id.infoGraphic)
-        val infoSpeed = findViewById<ImageView>(R.id.infoSpeed)
+        val infoDifficulty = findViewById<ImageView>(R.id.infoSpeed)
+        val infoFirstTurn = findViewById<ImageView>(R.id.infoFirstTurn)
         val displaySize = findViewById<TextView>(R.id.display)
 
         var saved = false
 
+
+        if(gameOptions){
+            forwardButton.setText("Zurück")
+        }
+        else{
+            forwardButton.setText("Weiter")
+        }
 
         if(toggleMusic.isChecked && !volumeSwitch.isChecked){
             playMusic()
@@ -64,21 +105,11 @@ class OptionActivity : AppCompatActivity() {
 
 
         volumeSwitch.setOnClickListener {
-            if(volumeSwitch.isChecked){
-                //SOUNDEFFEKTE AUSMACHEN
+            if(toggleMusic.isChecked && !volumeSwitch.isChecked){
+                playMusic()
             }
             else{
-                //SOUNDEFFEKTE ANMACHEN
-            }
-        }
-
-
-        toggleSpeed.setOnClickListener {
-            if(toggleSpeed.isChecked){
-                //SCHNELLES SPIEL EINSTELLEN)
-            }
-            else{
-                //LANGSAMES SPIEL EINSTELLEN
+                pauseMusic()
             }
         }
 
@@ -112,14 +143,22 @@ class OptionActivity : AppCompatActivity() {
             }
         }
 
-        infoSpeed.setOnClickListener {
+        infoFirstTurn.setOnClickListener {
             if (helpSwitch.isChecked){
-                Toast.makeText(applicationContext, "Spielgeschwindigkeit des Computergegners", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Wollen Sie den ersten Zug machen?", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        infoDifficulty.setOnClickListener {
+            if (helpSwitch.isChecked){
+                Toast.makeText(applicationContext, "Schwierigkeitsgrad des Computergegners von 1-3", Toast.LENGTH_LONG).show()
             }
         }
 
         displaySize.setOnClickListener {
             Toast.makeText(applicationContext, height.toString() + " x " + width.toString(), Toast.LENGTH_LONG).show()
+            val intent = Intent(this, StartActivity::class.java)
+            startActivity(intent)
         }
 
         saveButton.setOnClickListener {
@@ -127,18 +166,24 @@ class OptionActivity : AppCompatActivity() {
                 saved = true
                 saveData()
             }else{
-                val intent = Intent(this, StartActivity::class.java)
-                startActivity(intent)            }
-
+                Toast.makeText(applicationContext, "Geben Sie Ihre korrekte Displaygröße an!", Toast.LENGTH_LONG).show()
+            }
         }
 
         forwardButton.setOnClickListener {
-
-            if (saved){
-                val intent = Intent(this, QuizActivity::class.java)
+            if (saved && !gameOptions){
+                stopMusic()
+                val intent = Intent(this, QuizActivity::class.java).apply{
+                    putParcelableArrayListExtra("questions", questions)
+                }
+                startActivity(intent)
+            }
+            else if (saved && gameOptions){
+                val intent = Intent(this, GameActivity::class.java)
                 stopMusic()
                 startActivity(intent)
-            } else {
+            }
+            else {
                 Toast.makeText(applicationContext, "Sie müssen Ihre Optionen erst abspeichern!", Toast.LENGTH_LONG).show()
             }
         }
@@ -146,20 +191,41 @@ class OptionActivity : AppCompatActivity() {
 
     private fun saveData(){
 
-        val coinAmt = coinAmount.text.toString()
         val resX = resolutionX.text.toString()
         val resY = resolutionY.text.toString()
+        var diff = 0
+        var coinAmt = 1
+
+        if(coinAmount.text.toString() != ""){
+            coinAmt = coinAmount.text.toString().toInt()
+            if(coinAmt < 1){
+                coinAmt = 1
+            }
+        }
+
+        if(difficultySetting.text.toString() != ""){
+            diff = difficultySetting.text.toString().toInt()
+            if(diff > 3){
+                diff = 3
+            }
+            if(diff < 1){
+                diff = 1
+            }
+        }
+
 
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.apply{
-            putString("STRING_COINS", coinAmt)
             putString("STRING_RESOLUTION_X", resX)
             putString("STRING_RESOLUTION_Y", resY)
             putBoolean("BOOLEAN_MUSIC", toggleMusic.isChecked)
-            putBoolean("BOOLEAN_SPEED", toggleDifficulty.isChecked)
             putBoolean("BOOLEAN_VOLUME", volumeSwitch.isChecked)
             putBoolean("BOOLEAN_HELP", helpSwitch.isChecked)
+            putBoolean("BOOLEAN_FIRST_TURN", checkFirstTurn.isChecked)
+            putBoolean("BOOLEAN_GAME_OPTIONS", gameOptions)
+            putInt("INT_DIFFICULTY", diff)
+            putInt("INT_COINS", coinAmt)
         }.apply()
 
         Toast.makeText(this, "Optionen gespeichert", Toast.LENGTH_LONG).show()
@@ -167,22 +233,26 @@ class OptionActivity : AppCompatActivity() {
 
     private fun loadData(){
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val stringCoin = sharedPreferences.getString("STRING_COINS", null)
         val stringResolutionX = sharedPreferences.getString("STRING_RESOLUTION_X", null)
         val stringResolutionY = sharedPreferences.getString("STRING_RESOLUTION_Y", null)
         val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
-        val booleanSpeed= sharedPreferences.getBoolean("BOOLEAN_SPEED", false)
         val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
         val booleanHelp = sharedPreferences.getBoolean("BOOLEAN_HELP", false)
+        val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
+        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
+        val intCoin = sharedPreferences.getInt("INT_COINS", 0)
+        val booleanGameOptions = sharedPreferences.getBoolean("BOOLEAN_GAME_OPTIONS", false)
 
 
-        coinAmount.setText(stringCoin)
         resolutionX.setText(stringResolutionX)
         resolutionY.setText(stringResolutionY)
         toggleMusic.isChecked = booleanMusic
-        toggleDifficulty.isChecked = booleanSpeed
         volumeSwitch.isChecked = booleanVolume
         helpSwitch.isChecked = booleanHelp
+        checkFirstTurn.isChecked = booleanFirstTurn
+        difficultySetting.setText(intDifficulty.toString())
+        coinAmount.setText(intCoin.toString())
+        gameOptions = booleanGameOptions
     }
 
     fun playMusic() {
@@ -224,10 +294,6 @@ class OptionActivity : AppCompatActivity() {
         }
     }
 
-    fun setCoins() {
-        coinAmount
-    }
-
     fun validResolution(height : Int, width : Int): Boolean {
         var valid = false
         if(findViewById<EditText>(R.id.resolutionX).text.toString() != "" && findViewById<EditText>(R.id.resolutionY).text.toString() != ""){
@@ -240,5 +306,4 @@ class OptionActivity : AppCompatActivity() {
         }
         return valid
     }
-
 }
