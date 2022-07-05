@@ -121,35 +121,42 @@
 
 
         <b>1. Aufgabenangemessenheit</b>
-        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
-        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
-        "technologically advanced and open to imagination and magic.\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
+        Aufgabenangemessenheit ist in der Gebrauchstauglichkeits-Forschung ein Kriterium, das beschreibt, ob die Funktionen eines Systems (z. B. Maschine, Software oder Website) dazu dienen, die Ziele zu erreichen, die ein Nutzer damit verfolgt.\n
+        In der ISO 9241-110 wird für die Dialoggestaltung das Kriterium der Aufgabenangemessenheit definiert. Dazu wird formuliert:\n\n
+        „Ein interaktives System ist aufgabenangemessen, wenn es den Benutzer unterstützt,
+        seine Arbeitsaufgabe zu erledigen, d. h., wenn Funktionalität und Dialog auf den charakteristischen Eigenschaften
+        der Arbeitsaufgabe basieren, anstatt auf der zur Aufgabenerledigung eingesetzten Technologie.“\n\n
 
+        Die Aufgabenerfordernisse sollen daher bestimmend sein für die Qualität, Quantität und die
+        Art der dargestellten Informationen.\n
+        Beispiele:\n\n
+        „In einem Nutzungskontext, in dem die Verarbeitung einiger eingehender Mitteilungen zeitkritisch ist, zeigt das Dialogsystem die einzuhaltenden Termine an,
+        die von Bedeutung sind.“\n\
+        „Im Nutzungskontext eines Online-Shops bietet das Dialogsystem kontextsensitive Hilfe an, die die Schritte beschreibt, um die Bestellung zu vervollständigen.“\n\n
+        Die Informationseingabe und die Informationsausgabe sollen sich an der Arbeitsaufgabe
+        orientieren.\n
+        Aufgabenangemessenheit liegt vor, wenn der Benutzer nicht vom eigentlichen Aufgabenziel durch die Systembenutzung abgelenkt wird, sondern dieses durch weniger oder gleichen Aufwand erreicht und es außerdem vollständiger oder zumindest genauso erledigt wie zuvor.\n\n
         <b>2. Selbstbeschreibungsfähigkeit</b>
 
-        "The foundational elements of print based design typography, grids, space, scale, color, "
-        "and use of imagery guide visual treatments. These elements do far more than please the "
-        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
-        "imagery, large scale typography, and intentional white space create a bold and graphic "
-        "interface that immerse the user in the experience.\n"
-        "An emphasis on user actions makes core functionality immediately apparent and provides "
-        "waypoints for the user.\n\n"
+        Benutzungsschnittstellen sind im Idealfall unmittelbar verständlich, das bedeutet man benötigt zu ihrer Bedienung kein besonderes Vorwissen oder keine besonderen Hilfestellungen.
+        In der ISO 9241-110 wurde dazu die Selbstbeschreibungsfähigkeit definiert:\n\n
+        „Ein Dialog ist in dem Maße selbstbeschreibungsfähig, in dem für den Benutzer zu
+        jeder Zeit offensichtlich ist, in welchem Dialog, an welcher Stelle im Dialog sie sich
+        befinden, welche Handlungen unternommen werden können und wie diese ausgeführt
+        werden können.“\n\n
+
+        Die dargestellten Informationen sollen zu diesem Zweck Anleitungen, Rückmeldungen oder
+        Zustandsinformationen enthalten.\n
+        Beispiele:\n\n
+        „Ein Hotelreservierungssystem erlaubt es dem Benutzer, die notwendigen Daten
+        einzugeben und bietet eine [Nächste]-Taste und eine [Zurück]-Taste an, um den
+        Benutzer durch die Dialogschritte zu leiten.“\n\n
+        "Vorherige Erläuterung und Bestätigung bei folgenschweren Handlungen (Sicherheitsabfragen bei Löschen, Überschreiben, etc.)"\n\n
+        Die Selbstbeschreibungsfähigkeit einer Anwendung ist dann sichergestellt, wenn die 4 Punkte Orientierung, Beherrschbarkeit, Rückmeldung und Hilfestellung erfüllt sind.
 
         <b>3. Erwartungskonformität</b>
 
-        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
-        "inflection points that initiate motion, transforming the whole design.\n"
-        "All action takes place in a single environment. Objects are presented to the user without "
-        "breaking the continuity of experience even as they transform and reorganize.\n"
-        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
-        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
 
         <b>4. Erlernbarkeit</b>
 

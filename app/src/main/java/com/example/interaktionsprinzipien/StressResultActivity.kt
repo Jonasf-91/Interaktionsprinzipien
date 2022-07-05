@@ -22,7 +22,7 @@ class StressResultActivity : AppCompatActivity() {
         progr = StressScore.amount
         updateProgressBar()
 
-        //val fileName = intent.getStringExtra("myCoin")!!
+        //val fileName = intent.getStringExtra("mycoin")!!
         //val filePath: File = getFileStreamPath(fileName)
         //val d = Drawable.createFromPath(filePath.toString())
         //imageViewTest.setBackground(d)

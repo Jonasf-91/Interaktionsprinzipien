@@ -32,6 +32,14 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var numberHelpText = 1
     private var maxCoinNumber = 6
     private var currentCoinNumber = 0
+
+    /*
+    val filePath: File = getFileStreamPath("mycoin")
+    val d = Drawable.createFromPath(filePath.toString())
+
+    private val playerTest = PlayerTest(1, d, "Jonas")
+
+    */
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
     private val playerTwo = Player(2,R.drawable.four_connect_player2 )
     private var virtualBoard = arrayOf(
@@ -42,8 +50,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         arrayOf(0,0,0,0,0,0,0),
         arrayOf(0,0,0,0,0,0,0)
     )
-    private val depth = 4
+    private var depth = 4
     private val computer = FourConnectCalculator(depth )
+
     private var currentPlayer = playerTwo
     val animation: Animation = AlphaAnimation(1F, 0F)
 
@@ -72,9 +81,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     //ANFANG YASIN___________________________________________________________________________________________________
     private var musicOn = false
     private var volumeOn = false
-    private var firstTurn = false
-    private var diff = 0
-
     var player: MediaPlayer? = null
 
     private fun loadData(){
@@ -88,9 +94,13 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
         musicOn = booleanMusic
         volumeOn = booleanVolume
-        firstTurn = booleanFirstTurn    //true Spieler, false Computer
-        diff = intDifficulty
+        depth = intDifficulty
         maxCoinNumber = intCoin
+
+        currentPlayer = if(booleanFirstTurn){
+            playerOne
+        }else playerTwo
+
     }
 
     fun playMusic() {
@@ -155,7 +165,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     Answer("Steuerbarakeit", false),
                     Answer("Erwartungskonformität", true),
                 ),
-                R.drawable.quizgame01,
+                R.drawable.quizgame1,
                 false
             )
         )
@@ -170,12 +180,19 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     Answer("Erlernbarkeit", true),
                     Answer("Aufgabenangemessen", true),
                 ),
-                R.drawable.quizgame02,
+                R.drawable.quizgame2,
             false),
 
         )
 
         // --------------------------------------------------------
+
+        /*
+        if(playerToStart == 1){
+            currentPlayer = playerOne
+        }else currentPlayer = playerTwo
+
+         */
 
         four_connect_btn_options.setOnClickListener {
             val intent = Intent(this, OptionActivity::class.java)
@@ -582,4 +599,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
         return newBoard
     }
+
+    override fun onBackPressed() {}
+
+    // class PlayerTest(val id: Int, val d: Drawable?, val name: String)
+
 }
