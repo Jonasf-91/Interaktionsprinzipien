@@ -16,6 +16,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
+import com.example.quiz.Answer
+import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
 import kotlin.math.abs
@@ -58,12 +60,43 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var coinOnArrow = false
     private var column = -1
 
+    private val questions = arrayListOf<Question>()
 
     private lateinit var board : Array<Array<ImageView>>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        // ------------- Define Questions for Quiz -----------------
+        questions.add(
+            Question(
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde bei der runterlaufenden Uhr verstoßen?",
+                getString(R.string.answerQuizGame01),
+                listOf(
+                    Answer("Aufgabenangemessen", true),
+                    Answer("Selbstbeschreibend", false),
+                    Answer("Steuerbarakeit", false),
+                    Answer("Erwartungskonformität", true),
+                ),
+                R.drawable.quizgame01
+            )
+        )
+
+        questions.add(
+            Question(
+                "Gegen welches Interaktionsprinzip wurde beim Setzen eines Coins verstoßen?",
+                getString(R.string.answerQuizGame02),
+                listOf(
+                    Answer("Steuerbarakeit", false),
+                    Answer("Robust gegen Benutzerfehler", false),
+                    Answer("Erlernbarkeit", true),
+                    Answer("Aufgabenangemessen", true),
+                ),
+                R.drawable.quizgame02)
+        )
+
+        // --------------------------------------------------------
 
         four_connect_btn_options.setOnClickListener {
             val intent = Intent(this, OptionActivity::class.java)
@@ -130,7 +163,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         if(currentPlayer.id == 1){
             four_connect_btn_next.text = "Weiter"
             four_connect_btn_next.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, QuizActivity::class.java).apply{
+                    putParcelableArrayListExtra("questions", questions)
+                }
                 startActivity(intent)
             }
         }else{
@@ -187,7 +222,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             override fun onTick(p0: Long) {
                 countDownProgress ++
                 tv_countdown.text = (countDownStart - countDownProgress).toString()
-                //TODO add sound ticker
             }
 
             override fun onFinish() {

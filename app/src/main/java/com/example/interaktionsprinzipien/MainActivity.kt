@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.example.quiz.Answer
 import com.example.quiz.Question
 
@@ -34,6 +35,13 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, EditorActivity::class.java)
             startActivity(intent)
         }
+
+        val wikiActivityBtn = findViewById<Button>(R.id.wikiActivityBtn)
+        wikiActivityBtn.setOnClickListener {
+            val intent = Intent(this, WikiActivity::class.java)
+            startActivity(intent)
+        }
+
         val quizActivityBtn = findViewById<Button>(R.id.quizActivityBtn)
         quizActivityBtn.setOnClickListener {
 
