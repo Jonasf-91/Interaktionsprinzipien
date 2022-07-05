@@ -8,18 +8,53 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.quiz.Answer
+import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_option.*
 
 
 class OptionActivity : AppCompatActivity() {
 
-    var global = GlobalClass()
-    var player: MediaPlayer? = null
+    private var global = GlobalClass()
+    private var player: MediaPlayer? = null
+    private var gameOptions = false
+    private val questions = arrayListOf<Question>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_option)
+
+        questions.add(
+            Question(
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Aufgabenangemessen", true),
+                    Answer("Benutzerbindung", false),
+                    Answer("Steuerbarakeit", true),
+                    Answer("Robust gegen Benutzerfehler", true),
+                ),
+                R.drawable.quiz_options03
+            )
+        )
+
+        questions.add(
+            Question(
+                "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
+                getString(R.string.answerQuiz01),
+                listOf(
+                    Answer("Steuerbarakeit", true),
+                    Answer("Robust gegen Benutzerfehler", true),
+                    Answer("Benutzerbindung", false),
+                    Answer("Aufgabenangemessen", true),
+                ),
+                R.drawable.quiz02)
+        )
+
+
+
+        gameOptions = false
 
         loadData()
 
@@ -28,7 +63,6 @@ class OptionActivity : AppCompatActivity() {
         val helpSwitch = findViewById<Switch>(R.id.helpSwitch)
         val saveButton = findViewById<Button>(R.id.saveButton)
         val forwardButton = findViewById<Button>(R.id.forwardButton)
-        val firstTurnCheckbox = findViewById<CheckBox>(R.id.checkFirstTurn)
         val infoMusic = findViewById<ImageView>(R.id.infoMusic)
         val infoCoins = findViewById<ImageView>(R.id.infoCoins)
         val infoVolume = findViewById<ImageView>(R.id.infoVolume)
@@ -40,6 +74,13 @@ class OptionActivity : AppCompatActivity() {
 
         var saved = false
 
+
+        if(gameOptions){
+            forwardButton.setText("Zurück")
+        }
+        else{
+            forwardButton.setText("Weiter")
+        }
 
         if(toggleMusic.isChecked && !volumeSwitch.isChecked){
             playMusic()
@@ -64,11 +105,11 @@ class OptionActivity : AppCompatActivity() {
 
 
         volumeSwitch.setOnClickListener {
-            if(volumeSwitch.isChecked){
-                //SOUNDEFFEKTE AUSMACHEN
+            if(toggleMusic.isChecked && !volumeSwitch.isChecked){
+                playMusic()
             }
             else{
-                //SOUNDEFFEKTE ANMACHEN
+                pauseMusic()
             }
         }
 
@@ -110,7 +151,7 @@ class OptionActivity : AppCompatActivity() {
 
         infoDifficulty.setOnClickListener {
             if (helpSwitch.isChecked){
-                Toast.makeText(applicationContext, "Schwierigkeitsgrad des Computergegners", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Schwierigkeitsgrad des Computergegners von 1-3", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -125,18 +166,24 @@ class OptionActivity : AppCompatActivity() {
                 saved = true
                 saveData()
             }else{
-                val intent = Intent(this, StartActivity::class.java)
-                startActivity(intent)            }
-
+                Toast.makeText(applicationContext, "Geben Sie Ihre korrekte Displaygröße an!", Toast.LENGTH_LONG).show()
+            }
         }
 
         forwardButton.setOnClickListener {
-
-            if (saved){
-                val intent = Intent(this, QuizActivity::class.java)
+            if (saved && !gameOptions){
+                stopMusic()
+                val intent = Intent(this, QuizActivity::class.java).apply{
+                    putParcelableArrayListExtra("questions", questions)
+                }
+                startActivity(intent)
+            }
+            else if (saved && gameOptions){
+                val intent = Intent(this, GameActivity::class.java)
                 stopMusic()
                 startActivity(intent)
-            } else {
+            }
+            else {
                 Toast.makeText(applicationContext, "Sie müssen Ihre Optionen erst abspeichern!", Toast.LENGTH_LONG).show()
             }
         }
@@ -146,8 +193,25 @@ class OptionActivity : AppCompatActivity() {
 
         val resX = resolutionX.text.toString()
         val resY = resolutionY.text.toString()
-        val diff = difficultySetting.text.toString().toInt()
-        val coinAmt = coinAmount.text.toString().toInt()
+        var diff = 0
+        var coinAmt = 1
+
+        if(coinAmount.text.toString() != ""){
+            coinAmt = coinAmount.text.toString().toInt()
+            if(coinAmt < 1){
+                coinAmt = 1
+            }
+        }
+
+        if(difficultySetting.text.toString() != ""){
+            diff = difficultySetting.text.toString().toInt()
+            if(diff > 3){
+                diff = 3
+            }
+            if(diff < 1){
+                diff = 1
+            }
+        }
 
 
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
@@ -159,6 +223,7 @@ class OptionActivity : AppCompatActivity() {
             putBoolean("BOOLEAN_VOLUME", volumeSwitch.isChecked)
             putBoolean("BOOLEAN_HELP", helpSwitch.isChecked)
             putBoolean("BOOLEAN_FIRST_TURN", checkFirstTurn.isChecked)
+            putBoolean("BOOLEAN_GAME_OPTIONS", gameOptions)
             putInt("INT_DIFFICULTY", diff)
             putInt("INT_COINS", coinAmt)
         }.apply()
@@ -176,6 +241,7 @@ class OptionActivity : AppCompatActivity() {
         val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
         val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
         val intCoin = sharedPreferences.getInt("INT_COINS", 0)
+        val booleanGameOptions = sharedPreferences.getBoolean("BOOLEAN_GAME_OPTIONS", false)
 
 
         resolutionX.setText(stringResolutionX)
@@ -186,6 +252,7 @@ class OptionActivity : AppCompatActivity() {
         checkFirstTurn.isChecked = booleanFirstTurn
         difficultySetting.setText(intDifficulty.toString())
         coinAmount.setText(intCoin.toString())
+        gameOptions = booleanGameOptions
     }
 
     fun playMusic() {
@@ -239,5 +306,4 @@ class OptionActivity : AppCompatActivity() {
         }
         return valid
     }
-
 }

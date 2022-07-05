@@ -56,6 +56,7 @@ class StartActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.apply{
             putBoolean("BOOLEAN_MUSIC_START", musicOn)
+            putBoolean("BOOLEAN_GAME_OPTIONS", false)
         }.apply()
     }
 

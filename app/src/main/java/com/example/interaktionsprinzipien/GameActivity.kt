@@ -83,6 +83,14 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var volumeOn = false
     var player: MediaPlayer? = null
 
+    private fun saveData(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("BOOLEAN_GAME_OPTIONS", true)
+        }.apply()
+    }
+
     private fun loadData(){
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
@@ -142,9 +150,10 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
 
         //ANFANG YASIN___________________________________________________________________________________________________
+        saveData()
         loadData()
 
-        if(musicOn){
+        if(musicOn && !volumeOn){
             playMusic()
         }
         //ENDE YASIN_____________________________________________________________________________________________________
