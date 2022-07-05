@@ -27,15 +27,16 @@ class OptionActivity : AppCompatActivity() {
         val toggleMusic = findViewById<ToggleButton>(R.id.toggleMusic)
         val volumeSwitch = findViewById<Switch>(R.id.volumeSwitch)
         val helpSwitch = findViewById<Switch>(R.id.helpSwitch)
-        val toggleSpeed = findViewById<ToggleButton>(R.id.toggleDifficulty)
         val saveButton = findViewById<Button>(R.id.saveButton)
         val forwardButton = findViewById<Button>(R.id.forwardButton)
+        val firstTurnCheckbox = findViewById<CheckBox>(R.id.checkFirstTurn)
         val infoMusic = findViewById<ImageView>(R.id.infoMusic)
         val infoCoins = findViewById<ImageView>(R.id.infoCoins)
         val infoVolume = findViewById<ImageView>(R.id.infoVolume)
         val infoHelp = findViewById<ImageView>(R.id.infoHelp)
         val infoGraphic = findViewById<ImageView>(R.id.infoGraphic)
-        val infoSpeed = findViewById<ImageView>(R.id.infoSpeed)
+        val infoDifficulty = findViewById<ImageView>(R.id.infoSpeed)
+        val infoFirstTurn = findViewById<ImageView>(R.id.infoFirstTurn)
         val displaySize = findViewById<TextView>(R.id.display)
 
         var saved = false
@@ -72,16 +73,6 @@ class OptionActivity : AppCompatActivity() {
             }
         }
 
-
-        toggleSpeed.setOnClickListener {
-            if(toggleSpeed.isChecked){
-                //SCHNELLES SPIEL EINSTELLEN)
-            }
-            else{
-                //LANGSAMES SPIEL EINSTELLEN
-            }
-        }
-
         infoMusic.setOnClickListener {
             if (helpSwitch.isChecked){
                 Toast.makeText(applicationContext, "Musik an- oder ausschalten", Toast.LENGTH_LONG).show()
@@ -112,14 +103,22 @@ class OptionActivity : AppCompatActivity() {
             }
         }
 
-        infoSpeed.setOnClickListener {
+        infoFirstTurn.setOnClickListener {
             if (helpSwitch.isChecked){
-                Toast.makeText(applicationContext, "Spielgeschwindigkeit des Computergegners", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Wollen Sie den ersten Zug machen?", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        infoDifficulty.setOnClickListener {
+            if (helpSwitch.isChecked){
+                Toast.makeText(applicationContext, "Schwierigkeitsgrad des Computergegners", Toast.LENGTH_LONG).show()
             }
         }
 
         displaySize.setOnClickListener {
             Toast.makeText(applicationContext, height.toString() + " x " + width.toString(), Toast.LENGTH_LONG).show()
+            val intent = Intent(this, StartActivity::class.java)
+            startActivity(intent)
         }
 
         saveButton.setOnClickListener {
@@ -146,20 +145,23 @@ class OptionActivity : AppCompatActivity() {
 
     private fun saveData(){
 
-        val coinAmt = coinAmount.text.toString()
         val resX = resolutionX.text.toString()
         val resY = resolutionY.text.toString()
+        val diff = difficultySetting.text.toString().toInt()
+        val coinAmt = coinAmount.text.toString().toInt()
+
 
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.apply{
-            putString("STRING_COINS", coinAmt)
             putString("STRING_RESOLUTION_X", resX)
             putString("STRING_RESOLUTION_Y", resY)
             putBoolean("BOOLEAN_MUSIC", toggleMusic.isChecked)
-            putBoolean("BOOLEAN_SPEED", toggleDifficulty.isChecked)
             putBoolean("BOOLEAN_VOLUME", volumeSwitch.isChecked)
             putBoolean("BOOLEAN_HELP", helpSwitch.isChecked)
+            putBoolean("BOOLEAN_FIRST_TURN", checkFirstTurn.isChecked)
+            putInt("INT_DIFFICULTY", diff)
+            putInt("INT_COINS", coinAmt)
         }.apply()
 
         Toast.makeText(this, "Optionen gespeichert", Toast.LENGTH_LONG).show()
@@ -167,22 +169,24 @@ class OptionActivity : AppCompatActivity() {
 
     private fun loadData(){
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val stringCoin = sharedPreferences.getString("STRING_COINS", null)
         val stringResolutionX = sharedPreferences.getString("STRING_RESOLUTION_X", null)
         val stringResolutionY = sharedPreferences.getString("STRING_RESOLUTION_Y", null)
         val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
-        val booleanSpeed= sharedPreferences.getBoolean("BOOLEAN_SPEED", false)
         val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
         val booleanHelp = sharedPreferences.getBoolean("BOOLEAN_HELP", false)
+        val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
+        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
+        val intCoin = sharedPreferences.getInt("INT_COINS", 0)
 
 
-        coinAmount.setText(stringCoin)
         resolutionX.setText(stringResolutionX)
         resolutionY.setText(stringResolutionY)
         toggleMusic.isChecked = booleanMusic
-        toggleDifficulty.isChecked = booleanSpeed
         volumeSwitch.isChecked = booleanVolume
         helpSwitch.isChecked = booleanHelp
+        checkFirstTurn.isChecked = booleanFirstTurn
+        difficultySetting.setText(intDifficulty.toString())
+        coinAmount.setText(intCoin.toString())
     }
 
     fun playMusic() {
@@ -222,10 +226,6 @@ class OptionActivity : AppCompatActivity() {
             player!!.release()
             player = null
         }
-    }
-
-    fun setCoins() {
-        coinAmount
     }
 
     fun validResolution(height : Int, width : Int): Boolean {

@@ -1,11 +1,13 @@
 package com.example.interaktionsprinzipien
 
 
+import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.animation.AlphaAnimation
@@ -20,6 +22,7 @@ import com.example.quiz.Answer
 import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
+import kotlinx.android.synthetic.main.activity_option.*
 import kotlin.math.abs
 
 
@@ -27,7 +30,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var countDownTimer: CountDownTimer
     private var numberHelpText = 1
-    private val maxCoinNumber = 6
+    private var maxCoinNumber = 6
     private var currentCoinNumber = 0
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
     private val playerTwo = Player(2,R.drawable.four_connect_player2 )
@@ -65,9 +68,80 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var board : Array<Array<ImageView>>
 
+
+    //ANFANG YASIN___________________________________________________________________________________________________
+    private var musicOn = false
+    private var volumeOn = false
+    private var firstTurn = false
+    private var diff = 0
+    var player: MediaPlayer? = null
+
+    private fun loadData(){
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
+        val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
+        val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
+        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
+        val intCoin = sharedPreferences.getInt("INT_COINS", 0)
+
+
+        musicOn = booleanMusic
+        volumeOn = booleanVolume
+        firstTurn = booleanFirstTurn
+        diff = intDifficulty
+        maxCoinNumber = intCoin
+    }
+
+    fun playMusic() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.marsel_minga)
+            player!!.isLooping = true
+            player!!.start()
+        }
+        if(player?.isPlaying == false){
+            player!!.start()
+        }
+    }
+
+    fun pauseMusic() {
+        if (player?.isPlaying == true) player?.pause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+
+        //HIER SOLLEN DIE PREFERENCES GELÖSCHT WERDEN, UM BEI NEUSTART DER APP KOMPLETT NEU ANFANGEN ZU KÖNNEN. FUNKTIONIERT NICHT!!!!!
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().clear()
+        sharedPreferences.edit().apply()
+
+        if (player != null) {
+            player!!.release()
+            player = null
+        }
+    }
+    //ENDE YASIN_____________________________________________________________________________________________________
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+
+        //ANFANG YASIN___________________________________________________________________________________________________
+        loadData()
+
+        if(musicOn){
+            playMusic()
+        }
+        //ENDE YASIN_____________________________________________________________________________________________________
+
+
+
+
+
 
         // ------------- Define Questions for Quiz -----------------
         questions.add(
@@ -505,5 +579,4 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
         return newBoard
     }
-
 }

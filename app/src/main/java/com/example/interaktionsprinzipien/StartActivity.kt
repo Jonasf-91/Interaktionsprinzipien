@@ -82,4 +82,19 @@ class StartActivity : AppCompatActivity() {
     fun pauseMusic() {
         if (player?.isPlaying == true) player?.pause()
     }
+
+    override fun onStop() {
+        super.onStop()
+
+
+        //HIER SOLLEN DIE PREFERENCES GELÖSCHT WERDEN, UM BEI NEUSTART DER APP KOMPLETT NEU ANFANGEN ZU KÖNNEN. FUNKTIONIERT NICHT!!!!!
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().clear()
+        sharedPreferences.edit().apply()
+
+        if (player != null) {
+            player!!.release()
+            player = null
+        }
+    }
 }
