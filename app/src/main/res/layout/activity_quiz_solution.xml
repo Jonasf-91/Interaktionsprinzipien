@@ -6,6 +6,18 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/toWiki"
+        android:layout_width="@+id/nextQuestion"
+        android:layout_height="48dp"
+        android:text="Zum Wiki"
+        app:layout_constraintBottom_toTopOf="@+id/nextQuestion"
+        app:layout_constraintEnd_toEndOf="@+id/nextQuestion"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/nextQuestion"
+        app:layout_constraintTop_toTopOf="@+id/textViewQuizSolution"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
         android:id="@+id/nextQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

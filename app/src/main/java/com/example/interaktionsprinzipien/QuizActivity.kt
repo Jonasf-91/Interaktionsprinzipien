@@ -69,6 +69,10 @@ class QuizActivity : AppCompatActivity() {
             quizSolution.visibility = View.GONE
         }
 
+        toWiki.setOnClickListener {
+                val intent = Intent(this, WikiActivity::class.java)
+                startActivity(intent)
+        }
 
 
     }

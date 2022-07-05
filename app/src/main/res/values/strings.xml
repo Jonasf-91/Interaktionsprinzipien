@@ -60,8 +60,8 @@
                        </html>]]></string>
 
     <string name="answerQuizGame01"><![CDATA[<html>
-                       <b>Aufgabenangemessenheit:</b> Die Uhr läuft runter, hat aber keinen Einfluss auf das Spiel, außer Stress beim Spielenden zu erzeugen. <br/><br/>
-                       <b>Erwartungskonformität:</b> Die Uhr läuft ins Minus und bricht dann irgendwann ab. Das entspricht nicht den Vorerfahrungen der Spielenden.<br/><br/>
+                       <button>Aufgabenangemessenheit:</button> Die Uhr läuft runter, hat aber keinen Einfluss auf das Spiel, außer Stress beim Spielenden zu erzeugen. <br/><br/>
+                       <button>Erwartungskonformität:</button> Die Uhr läuft ins Minus und bricht dann irgendwann ab. Das entspricht nicht den Vorerfahrungen der Spielenden.<br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizGame02"><![CDATA[<html>
@@ -110,7 +110,7 @@
     <string name="jobColor">Wähle ein Farbe!</string>
 
 
-    <string name="title_activity_wiki">WikiActivity</string>
+    <string name="title_activity_wiki">Prinzipien-Wiki</string>
     <string name="large_text">
         <b>7 Grundsätze zur Interaktionsgestaltung</b>\n
         ISO9241 - Teil 110:2020\n\n

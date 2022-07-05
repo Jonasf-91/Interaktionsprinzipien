@@ -26,6 +26,7 @@ import kotlin.math.abs
 class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var countDownTimer: CountDownTimer
+    private var numberHelpText = 1
     private val maxCoinNumber = 6
     private var currentCoinNumber = 0
     private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
@@ -79,7 +80,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     Answer("Steuerbarakeit", false),
                     Answer("Erwartungskonformität", true),
                 ),
-                R.drawable.quizgame01
+                R.drawable.quizgame01,
+                false
             )
         )
 
@@ -93,7 +95,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                     Answer("Erlernbarkeit", true),
                     Answer("Aufgabenangemessen", true),
                 ),
-                R.drawable.quizgame02)
+                R.drawable.quizgame02,
+            false),
+
         )
 
         // --------------------------------------------------------
@@ -101,6 +105,25 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         four_connect_btn_options.setOnClickListener {
             val intent = Intent(this, OptionActivity::class.java)
             startActivity(intent)
+        }
+
+        four_connect_btn_help.setOnClickListener {
+            var text = ""
+            when(numberHelpText) {
+                1 -> text = "Haha, das wäre ja zu einfach."
+                2 -> text = "Neee, nichts da"
+                3 -> text = "Hier geht's nicht weiter"
+                4 -> text = "Frag Mutti"
+                5 -> text = "Ich glaube an dich.."
+                6 -> text = "Wo willst du denn hin?"
+                7 -> text = "Noch ein mal drücken und es geht in den Entwicklermodus"
+                8 -> text = "Scherz."
+                9 -> text = "Hilfe eilt.."
+                10 -> text = "if(numberHelpText > 10) numberHelpText = 1"
+            }
+            numberHelpText++
+            if(numberHelpText > 10) numberHelpText = 1
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
         }
 
         buildBoard()
@@ -141,7 +164,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
         tv_four_connect_result.text = writeResultText(result)
         tv_four_connect_result.isVisible = true
-        setUpNextButton()
+        setUpNextButton(result)
 
     }
 
@@ -159,8 +182,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    private fun setUpNextButton() {
-        if(currentPlayer.id == 1){
+    private fun setUpNextButton(result : Int) {
+        if(result == 1){
             four_connect_btn_next.text = "Weiter"
             four_connect_btn_next.setOnClickListener {
                 val intent = Intent(this, QuizActivity::class.java).apply{
@@ -171,7 +194,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }else{
             four_connect_btn_next.text = "Noch mal"
             four_connect_btn_next.setOnClickListener {
-
                 restartGame()
             }
         }
@@ -189,6 +211,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         animation.cancel()
         four_connect_btn_next.isVisible = false
         tv_four_connect_result.isVisible = false
+        currentCoinNumber = 0
         startFourConnect()
 
     }
