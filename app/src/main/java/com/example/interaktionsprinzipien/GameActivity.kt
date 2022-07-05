@@ -74,6 +74,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var volumeOn = false
     private var firstTurn = false
     private var diff = 0
+
     var player: MediaPlayer? = null
 
     private fun loadData(){
@@ -87,7 +88,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
         musicOn = booleanMusic
         volumeOn = booleanVolume
-        firstTurn = booleanFirstTurn
+        firstTurn = booleanFirstTurn    //true Spieler, false Computer
         diff = intDifficulty
         maxCoinNumber = intCoin
     }
@@ -275,6 +276,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun restartGame() {
+        loadData()
+
         currentPlayer = playerTwo
         for(row in virtualBoard.indices){
             for(column in 0 until virtualBoard[0].size){

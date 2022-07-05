@@ -23,7 +23,6 @@ class OptionActivity : AppCompatActivity() {
 
         loadData()
 
-
         val toggleMusic = findViewById<ToggleButton>(R.id.toggleMusic)
         val volumeSwitch = findViewById<Switch>(R.id.volumeSwitch)
         val helpSwitch = findViewById<Switch>(R.id.helpSwitch)
