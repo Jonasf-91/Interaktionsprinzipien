@@ -54,11 +54,20 @@
     <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consetetur sadipscing elitr?</string>
     <string name="answerPlaceholder">Antwort</string>
     <string name="answerQuiz01"><![CDATA[<html>
-                       <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum inkrementirern des Datums ist für eine konforable Nutzung unzureichend. <br/><br/>
+                       <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum Inkrementieren des Datums ist für eine komfortable Nutzung unzureichend. <br/><br/>
                        <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
                        <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
                        </html>]]></string>
-
+    <string name="answerQuiz02"><![CDATA[<html>
+                       <b>Steuerbarkeit:</b>Man bekommt ein Eingabefeld angezeigt, jedoch verhält sich dieses nicht dementsprechend. Stattdessen wird beim Klick auf den Butten ein zufälliger Benutzername gewählt.<br/><br/>
+                       <b>Benutzerbindung:</b> Da der Benutzer nur sehr eingeschränkte Möglichkeiten hat, seinen Benutzernamen individuell zu wählen, spricht dieses Interaktionselement gegen das Prinzip der Benutzerbindung.
+                       </html>]]></string>p
+    <string name="answerQuiz03"><![CDATA[<html>
+                       <b>Selbstbeschreibend:</b> Die Fehlermeldung gibt nur darüber Auskunft, dass etwas bei den Eingaben des Nutzers nicht stimmt. Um was es sich dabei genau handelt, ist nicht näher definiert.
+                        Damit ist diese Meldung nicht selbstbeschreibend. Um dies zu verbessern, könnte man noch genauer beschreiben, was mit den Eingaben nicht richtig ist und im Idealfall Korrekte bzw.
+                        nicht korrekte Benutzereingaben entsprechend hervorheben, damit der Nutzer schnell sieht, was er noch beheben muss.
+                       </html>]]></string>
+w
     <string name="answerQuizEditor01"><![CDATA[<html>
                        <b>Erwartungskonformität:</b> Nutzer würden erwarten, dass der rechte Button die Eckenanzahl erhöht(Leserichtung links nach rechts/wenig nach viel) <br/><br/>
                        <b>Steuerbarkeit:</b> Sobald ein Button berührt wurde, wird der andere gesperrt.<br/><br/>

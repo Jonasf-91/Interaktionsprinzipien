@@ -45,11 +45,10 @@ class MainActivity : AppCompatActivity() {
                     getString(R.string.answerQuiz01),
                     listOf(
                         Answer("A", true),
-                        Answer("B", false),
                         Answer("C", true),
                         Answer("D", true),
                     ),
-                    R.drawable.quiz01,
+                    R.drawable.quiz_login01,
                     true
                 ),
             )
@@ -64,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                         Answer("Benutzerbindung", false),
                         Answer("Aufgabenangemessen", true),
                     ),
-                    R.drawable.quiz02,
+                    R.drawable.quiz_login02,
                 false
                 ),
             )

@@ -30,21 +30,34 @@ class LogInActivity : AppCompatActivity() {
                 Answer("Steuerbarakeit", true),
                 Answer("Robust gegen Benutzerfehler", true),
             ),
-            R.drawable.quiz01
+            R.drawable.quiz_login01
         )
         )
 
         questions.add(
             Question(
-            "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
-            getString(R.string.answerQuiz01),
+            "Welchen Aussagen würden Sie zustimmen, bei der Eingabe des Benutzernamens?",
+            getString(R.string.answerQuiz02),
             listOf(
-                Answer("Steuerbarakeit", true),
-                Answer("Robust gegen Benutzerfehler", true),
-                Answer("Benutzerbindung", false),
-                Answer("Aufgabenangemessen", true),
+                Answer("Die Steuerbarakeit ist eingeschränkt.", true),
+                Answer("Das Verhalten ist Erwartungskonform.", false),
+                Answer("Der Benutzername trägt nicht zur Benutzerbindung zu.", true),
+                Answer("Die Wahl der Interaktionsmöglichkeiten ist Aufgabenangemessen.", false),
             ),
-            R.drawable.quiz02)
+            R.drawable.quiz_login02)
+        )
+
+        questions.add(
+            Question(
+                "Was fällt dir bei dieser Fehlermeldung auf?",
+                getString(R.string.answerQuiz03),
+                listOf(
+                    Answer("Die Meldung ist nicht selbstbeschreibend.", true),
+                    Answer("Die Meldung ist selbstbeschreibend.", false),
+                    Answer("Ich weiß sofort,was ich falsch gemacht habe.", false),
+                    Answer("Der Kontrast ist zu gering.", false),
+                ),
+                R.drawable.quiz_login03)
         )
 
         // --------------------------------------------------------

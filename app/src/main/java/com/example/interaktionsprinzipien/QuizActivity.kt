@@ -89,6 +89,9 @@ class QuizActivity : AppCompatActivity() {
         questionXY.text = "Frage " + questionIndex++ + " von " + questions.size
 
         textViewQuizSolution.text = HtmlCompat.fromHtml(question.getSolutionText(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+        if (questionIndex == questions.size){
+            nextQuestion.text = "Weiter";
+        }
         imageViewQuestion.setImageDrawable(ContextCompat.getDrawable(this, question.image))
 
         if (question.isSelfInput) {
