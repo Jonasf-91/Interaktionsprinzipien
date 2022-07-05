@@ -57,6 +57,15 @@
                        <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum Inkrementieren des Datums ist für eine komfortable Nutzung unzureichend. <br/><br/>
                        <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
                        <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
+                        <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum Inkrementieren des Datums ist für eine komfortable Nutzung unzureichend. <br/><br/>
+                       <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
+                       <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
+                        <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum Inkrementieren des Datums ist für eine komfortable Nutzung unzureichend. <br/><br/>
+                       <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
+                       <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
+                        <b>Aufgabenangemessenheit:</b> Ein einziges Steuerelement zum Inkrementieren des Datums ist für eine komfortable Nutzung unzureichend. <br/><br/>
+                       <b>Steuerbarkeit:</b> Da nur ein Button zur Steuerung zur Verfügung steht, ist die Steuerbarkeit nicht ausreichend implementiert.<br/><br/>
+                       <b>Robustheit gegen Benutzerfehler:</b> Da es keine Möglichkeit gibt, das Datum wieder zu dekrementieren, ist ein Benutzerfehler fatal.
                        </html>]]></string>
 
     <string name="answerQuiz02"><![CDATA[<html>

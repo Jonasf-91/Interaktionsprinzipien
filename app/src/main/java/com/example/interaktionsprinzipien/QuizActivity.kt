@@ -74,6 +74,11 @@ class QuizActivity : AppCompatActivity() {
                 startActivity(intent)
         }
 
+        buttonGetSolutions.setOnClickListener {
+            quizAnswers.visibility = View.GONE
+            quizSolution.visibility = View.VISIBLE
+        }
+
 
     }
 

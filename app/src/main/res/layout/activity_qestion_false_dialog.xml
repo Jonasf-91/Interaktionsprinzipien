@@ -31,14 +31,6 @@
             android:layout_marginEnd="32dp"
             android:text="Antworten verbessern" />
 
-        <Button
-            android:id="@+id/buttonGetSolutions"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:text="Direkt zur Lösung" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
