@@ -3,6 +3,7 @@ package com.example.interaktionsprinzipien
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -16,6 +17,8 @@ import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
 import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
 import com.example.quiz.Answer
@@ -23,6 +26,7 @@ import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
 import kotlinx.android.synthetic.main.activity_option.*
+import java.io.File
 import kotlin.math.abs
 
 
@@ -33,15 +37,11 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var maxCoinNumber = 6
     private var currentCoinNumber = 0
 
-    /*
-    val filePath: File = getFileStreamPath("mycoin")
-    val d = Drawable.createFromPath(filePath.toString())
 
-    private val playerTest = PlayerTest(1, d, "Jonas")
+    private lateinit var playerOne : Player
+    private lateinit var playerTwo : Player
 
-    */
-    private val playerOne = Player(1, R.drawable.four_connect_player1, "Jonas")
-    private val playerTwo = Player(2,R.drawable.four_connect_player2 )
+
     private var virtualBoard = arrayOf(
         arrayOf(0,0,0,0,0,0,0),
         arrayOf(0,0,0,0,0,0,0),
@@ -53,7 +53,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var depth = 4
     private val computer = FourConnectCalculator(depth )
 
-    private var currentPlayer = playerTwo
+    private lateinit var currentPlayer : Player
     val animation: Animation = AlphaAnimation(1F, 0F)
 
 
@@ -97,7 +97,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
         val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
         val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
-        val intCoin = sharedPreferences.getInt("INT_COINS", 0)
+        val intCoin = sharedPreferences.getInt("INT_COINS", 10)
 
 
         musicOn = booleanMusic
@@ -147,6 +147,20 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+        val computerImage: Drawable? = ResourcesCompat.getDrawable(this.resources, R.drawable.four_connect_player2, null)
+        var playerImage : Drawable? = ResourcesCompat.getDrawable(this.resources, R.drawable.four_connect_player1, null)
+
+        val filePath: File = getFileStreamPath("mycoin")
+        val d = Drawable.createFromPath(filePath.toString())
+        if(d != null){
+            playerImage = d
+        }
+
+
+        if(playerImage != null || computerImage != null){
+            playerOne = Player(1, playerImage, "Jonas")
+            playerTwo = Player(2,computerImage )
+        }
 
 
         //ANFANG YASIN___________________________________________________________________________________________________
@@ -196,12 +210,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
         // --------------------------------------------------------
 
-        /*
-        if(playerToStart == 1){
-            currentPlayer = playerOne
-        }else currentPlayer = playerTwo
-
-         */
 
         four_connect_btn_options.setOnClickListener {
             val intent = Intent(this, OptionActivity::class.java)
@@ -307,8 +315,9 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         currentPlayer = playerTwo
         for(row in virtualBoard.indices){
             for(column in 0 until virtualBoard[0].size){
+                val emptyImage: Drawable? = ResourcesCompat.getDrawable(this.resources, R.drawable.four_connect_empty_coin, null)
                 virtualBoard[row][column] = 0
-                board[row][column].setImageResource(R.drawable.four_connect_empty_coin)
+                board[row][column].setImageDrawable(emptyImage)
             }
         }
         animation.cancel()
@@ -361,56 +370,57 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private fun setUpArrowButtons(){
             ib_four_connect_arrow0.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow0.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow0.setImageDrawable(currentPlayer.img)
                 column = 0
                 coinOnArrow = true
             }
             ib_four_connect_arrow1.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow1.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow1.setImageDrawable(currentPlayer.img)
                 column = 1
                 coinOnArrow = true
             }
             ib_four_connect_arrow2.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow2.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow2.setImageDrawable(currentPlayer.img)
                 column = 2
                 coinOnArrow = true
             }
             ib_four_connect_arrow3.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow3.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow3.setImageDrawable(currentPlayer.img)
                 column = 3
                 coinOnArrow = true
             }
             ib_four_connect_arrow4.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow4.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow4.setImageDrawable(currentPlayer.img)
                 column = 4
                 coinOnArrow = true
             }
             ib_four_connect_arrow5.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow5.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow5.setImageDrawable(currentPlayer.img)
                 column = 5
                 coinOnArrow = true
             }
             ib_four_connect_arrow6.setOnClickListener {
                 resetArrows()
-                ib_four_connect_arrow6.setImageResource(currentPlayer.img)
+                ib_four_connect_arrow6.setImageDrawable(currentPlayer.img)
                 column = 6
                 coinOnArrow = true
             }
     }
 
     private fun resetArrows(){
-        ib_four_connect_arrow0.setImageResource(R.drawable.four_connect_arrow)
-        ib_four_connect_arrow1.setImageResource(R.drawable.four_connect_arrow)
-        ib_four_connect_arrow2.setImageResource(R.drawable.four_connect_arrow)
-        ib_four_connect_arrow3.setImageResource(R.drawable.four_connect_arrow)
-        ib_four_connect_arrow4.setImageResource(R.drawable.four_connect_arrow)
-        ib_four_connect_arrow5.setImageResource(R.drawable.four_connect_arrow)
-        ib_four_connect_arrow6.setImageResource(R.drawable.four_connect_arrow)
+        val arrowImage: Drawable? = ResourcesCompat.getDrawable(this.resources, R.drawable.four_connect_arrow, null)
+        ib_four_connect_arrow0.setImageDrawable(arrowImage)
+        ib_four_connect_arrow1.setImageDrawable(arrowImage)
+        ib_four_connect_arrow2.setImageDrawable(arrowImage)
+        ib_four_connect_arrow3.setImageDrawable(arrowImage)
+        ib_four_connect_arrow4.setImageDrawable(arrowImage)
+        ib_four_connect_arrow5.setImageDrawable(arrowImage)
+        ib_four_connect_arrow6.setImageDrawable(arrowImage)
     }
 
     private fun setUpSensor(){
@@ -484,7 +494,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun placeCoinOnBoard(row : Int, column : Int){
-        board[row][column].setImageResource(currentPlayer.img)
+        board[row][column].setImageDrawable(currentPlayer.img)
     }
 
     private fun getRowNumber(column : Int) : Int {
@@ -563,7 +573,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         return false
     }
 
-    class Player(val id : Int, val img : Int, var name : String = "Computer")
+    class Player(val id : Int, val img : Drawable?, var name : String = "Computer")
 
     private fun startFourConnect(){
          //TODO start annoying music
