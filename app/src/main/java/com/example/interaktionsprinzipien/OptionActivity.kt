@@ -33,7 +33,7 @@ class OptionActivity : AppCompatActivity() {
                     Answer("Fehlertoleranz", false),
                     Answer("Erlernbarkeit", true),
                     Answer("Steuerbarkeit", false),
-                    Answer("Erwartungskonformitat", true),
+                    Answer("Erwartungskonformität", true),
                 ),
                 R.drawable.quiz_options07,
                 false
@@ -42,13 +42,13 @@ class OptionActivity : AppCompatActivity() {
 
         questions.add(
             Question(
-                "Welche(s) Interaktionsprinzip(ien) wurde hier erfüllt?",
+                "Was könnte hier das Problem sein?",
                 getString(R.string.answerQuizOptions02),
                 listOf(
-                    Answer("Aufgabenangemessen", false),
-                    Answer("Selbstbeschreibend", false),
-                    Answer("Steuerbarkeit", false),
-                    Answer("Erwartungskonformitat", false),
+                    Answer("Das Angeben der Displaygröße ist unnötig", true),
+                    Answer("Man kennt die pixelgenaue Displaygröße nicht", true),
+                    Answer("Verpflichtende Angabe verhindert das Weiterkommen", true),
+                    Answer("Hilfestellung schwer auffindbar", true),
                 ),
                 R.drawable.quiz_options08,
                 false
@@ -57,19 +57,18 @@ class OptionActivity : AppCompatActivity() {
 
         questions.add(
             Question(
-                "Was ist hier das Problem?",
+                "Welche(s) Interaktionsprinzip(ien) wurde hier erfüllt?",
                 getString(R.string.answerQuizOptions03),
                 listOf(
-                    Answer("", false),
                     Answer("Selbstbeschreibend", false),
-                    Answer("Steuerbarkeit", false),
-                    Answer("Erwartungskonformitat", false),
+                    Answer("Aufgabenangemessen", true),
+                    Answer("Erwartungskonformität", true),
+                    Answer("Benutzerbindung", false),
                 ),
-                R.drawable.quiz_options05,
+                R.drawable.quiz_options06,
                 false
             )
         )
-
 
 
         gameOptions = false
