@@ -42,21 +42,21 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginEnd="64dp"
         android:text="@string/nextBtn"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/saveButton"
         app:layout_constraintTop_toBottomOf="@+id/difficulty" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="32dp"
         android:text="@string/saveButton"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/forwardButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulty" />
 
@@ -96,6 +96,7 @@
         android:text="ToggleButton"
         android:textOff="@string/on"
         android:textOn="@string/off"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/music"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,6 +108,7 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/coins"
         app:layout_constraintTop_toBottomOf="@+id/toggleMusic"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -119,6 +121,7 @@
         android:layout_marginTop="16dp"
         android:minHeight="48dp"
         android:text="@string/offOn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/help"
         app:layout_constraintTop_toBottomOf="@+id/volumeSwitch" />
 
@@ -131,6 +134,7 @@
         android:checked="true"
         android:minHeight="48dp"
         android:text="@string/onOff"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/volume"
         app:layout_constraintTop_toBottomOf="@+id/coinAmount" />
 
@@ -243,10 +247,11 @@
         android:id="@+id/optionsHeader"
         android:layout_width="154dp"
         android:layout_height="48dp"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="32dp"
         android:text="Optionen"
         android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -275,10 +280,12 @@
         android:layout_width="122dp"
         android:layout_height="31dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         android:max="3"
         android:min="1"
         android:progress="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/difficulty"
         app:layout_constraintTop_toBottomOf="@+id/resolutionX" />
 
