@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import com.example.quiz.StressScore
 import kotlinx.android.synthetic.main.activity_option.*
 
 class StartActivity : AppCompatActivity() {
@@ -17,6 +18,8 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
+        StressScore.level = 0
+        StressScore.amount = 0
 
         val startButton = findViewById<Button>(R.id.startButton)
         val audioButton = findViewById<ImageButton>(R.id.audioButtonStart)

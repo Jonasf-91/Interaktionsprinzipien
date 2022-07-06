@@ -42,7 +42,7 @@ class EditorActivity : AppCompatActivity() {
                 "Was ist hier das Problem?",
                 getString(R.string.answerQuizEditor01),
                 listOf(
-                    Answer("Buttons falschherum (EK)", true),
+                    Answer("Buttons falschherum", true),
                     Answer("schlechte Steuerbarkeit", true),
                     Answer("nichts", false),
                     Answer("anfällig für Benutzerfehler", true),
@@ -185,11 +185,6 @@ class EditorActivity : AppCompatActivity() {
         }
 
         lessCornersBtn.setOnClickListener {
-            val coinView : CoinView = findViewById(R.id.coinViewAll)
-            coinView.update(coin, printBitmap)
-            textView.textSize = 50f
-            textView.text = coin.corners.toString()
-            textView.setTextColor(standardColor)
             if(coin.corners>3){
                 coin.corners--
             } else{
@@ -197,6 +192,12 @@ class EditorActivity : AppCompatActivity() {
                 textView.text = "Reicht jetzt auch mal!"
                 textView.setTextColor(dangerColor)
             }
+            val coinView : CoinView = findViewById(R.id.coinViewAll)
+            coinView.update(coin, printBitmap)
+            textView.textSize = 50f
+            textView.text = coin.corners.toString()
+            textView.setTextColor(standardColor)
+
 
             moreCornersBtn.setOnClickListener {
                 textView.textSize = 20f
