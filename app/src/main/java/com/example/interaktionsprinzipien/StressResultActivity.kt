@@ -1,6 +1,7 @@
 package com.example.interaktionsprinzipien
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Button
@@ -26,6 +27,12 @@ class StressResultActivity : AppCompatActivity() {
         //val filePath: File = getFileStreamPath(fileName)
         //val d = Drawable.createFromPath(filePath.toString())
         //imageViewTest.setBackground(d)
+        val newBtn = findViewById<Button>(R.id.newBtn)
+        newBtn.setOnClickListener {
+            val intent = Intent(this, StartActivity::class.java)
+            startActivity(intent)
+            }
+
 
 
     }
@@ -35,13 +42,13 @@ class StressResultActivity : AppCompatActivity() {
         progress_bar.progress = percentage
         text_view_progress.text = progr.toString()
 
-        if (progr<=25)
+        if (progr<=10)
             editTextTextMultiLine.setText(resources.getString(R.string.result25))
-        else if (progr<=50)
+        else if (progr<=20)
             editTextTextMultiLine.setText(getResources().getString(R.string.result50))
-        else if (progr<=75)
+        else if (progr<=30)
             editTextTextMultiLine.setText(getResources().getString(R.string.result75))
-        else if (progr<=100)
+        else if (progr<=40)
             editTextTextMultiLine.setText(getResources().getString(R.string.result100))
 
     }

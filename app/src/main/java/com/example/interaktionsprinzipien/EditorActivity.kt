@@ -42,7 +42,7 @@ class EditorActivity : AppCompatActivity() {
                 "Was ist hier das Problem?",
                 getString(R.string.answerQuizEditor01),
                 listOf(
-                    Answer("Buttons falschherum", true),
+                    Answer("Buttons falsch herum", true),
                     Answer("schlechte Steuerbarkeit", true),
                     Answer("nichts", false),
                     Answer("anfällig für Benutzerfehler", true),
@@ -102,7 +102,6 @@ class EditorActivity : AppCompatActivity() {
             val coinView : CoinView = findViewById(R.id.coinViewAll)
             coinView.update(coin, printBitmap)
             setColorButtons()
-
         }
         val btnCornerMenu = findViewById<ImageButton>(R.id.btnCornerMenu)
         btnCornerMenu.setOnClickListener {

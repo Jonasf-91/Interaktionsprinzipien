@@ -87,7 +87,7 @@
 
 
     <string name="answerQuizEditor01"><![CDATA[<html>
-                       <b>Erwartungskonformität:</b> Nutzer würden erwarten, dass der rechte Button die Eckenanzahl erhöht(Leserichtung links nach rechts/wenig nach viel) <br/><br/>
+                       <b>Erwartungskonformität:</b> Nutzer würden erwarten, dass der rechte Button die Eckenanzahl erhöht. (Leserichtung links nach rechts/wenig nach viel) <br/><br/>
                        <b>Steuerbarkeit:</b> Sobald ein Button berührt wurde, wird der andere gesperrt.<br/><br/>
                        <b>Robustheit gegen Benutzerfehler:</b> Nach einem Fehler kann man sich nicht noch einmal umentscheiden.<br/><br/>
                        <b>Benutzerbindung:</b> Der Benutzer bekommt eine flapsige Nachricht auf sein Handeln.
@@ -98,12 +98,12 @@
                        </html>]]></string>
 
     <string name="answerQuizEditor03"><![CDATA[<html>
-                       <b>Erwartungskonformität:</b> Der Zurücksetzen-Button ist grün (suggeriert: empfohlene Auswahl) und der Speichern-Button ist grau (suggeriert: deaktiviert) unterlegt. Man sollte bei der Farbauswahl mit Bedacht vorgehen. <br/><br/>
-                       <b>Steuerbarkeit:</b> Der Weiter-Button führt wieder zur Farbauswahl und bietet nur ein Rondell zur Fortbewegung. Es sollte von jedem Untermenü möglich sein zurück zu gehen oder direkt zum gewünschten Punkt zu springen.<br/><br/>
+                       <b>Erwartungskonformität:</b> Der Zurücksetzen-Button ist grün (suggeriert: empfohlene Auswahl) und der Speichern-Button ist grau (suggeriert: deaktiviert). Man sollte bei der Farbauswahl mit Bedacht vorgehen. <br/><br/>
+                       <b>Steuerbarkeit:</b> Der Weiter-Button führt wieder zur Farbauswahl und bietet nur ein Rondell zur Fortbewegung. Es sollte von jedem Untermenü möglich sein, zurück zu gehen oder direkt zum gewünschten Punkt zu springen.<br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizEditor04"><![CDATA[<html>
-                       <b>Steuerbarkeit / Aufgabenangemessenheit:</b> Es ist nicht möglich eine genaue Farbe auszuwählen, man kann nur hoffen, dass die gewünschte Farbe nach x Versuchen erscheint. Ein zusätzliches Farbmenü wäre angebracht. <br/><br/>
+                       <b>Steuerbarkeit / Aufgabenangemessenheit:</b> Es ist nicht möglich eine genaue Farbe auszuwählen. Man kann nur hoffen, dass die gewünschte Farbe nach x Versuchen erscheint. Ein zusätzliches Farbmenü wäre angebracht. <br/><br/>
                        </html>]]></string>
 
     <string name="volume">Lautstärke</string>
@@ -129,6 +129,7 @@
     <string name="jobDraw">Male etwas in die Münze!</string>
     <string name="jobCorner">Lege die Anzahl der Ecken fest!</string>
     <string name="jobColor">Wähle ein Farbe!</string>
+    <string name="toStart">Neu</string>
 
 
     <string name="title_activity_wiki">Prinzipien-Wiki</string>
