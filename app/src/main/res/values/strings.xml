@@ -5,7 +5,7 @@
     <string name="four_connect_coin">Coin</string>
     <string name="four_connect_time_placeholder">10</string>
     <string name="four_connect_warning_to_decide">Entscheide Dich!</string>
-    <string name="createCoin">erstellen Sie 1 Münze!</string>
+    <string name="createCoin">Erstellen Sie <eine></eine> Münze!</string>
     <string name="changeColor">Farbe ändern</string>
     <string name="editorBtnColorDesc">Farbe</string>
     <string name="editorBtnDrawDesc">Zeichnen</string>
@@ -143,7 +143,7 @@
     <string name="stressScore">stresslevel</string>
     <string name="jobDraw">Male etwas in die Münze!</string>
     <string name="jobCorner">Lege die Anzahl der Ecken fest!</string>
-    <string name="jobColor">Wähle ein Farbe!</string>
+    <string name="jobColor">Wähle eine Farbe!</string>
     <string name="toStart">Neu</string>
 
 
