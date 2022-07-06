@@ -2,7 +2,6 @@ package com.example.interaktionsprinzipien
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -10,7 +9,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.quiz.Answer
 import com.example.quiz.Question
-import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_option.*
 
 
@@ -35,7 +33,7 @@ class OptionActivity : AppCompatActivity() {
                     Answer("Steuerbarkeit", false),
                     Answer("Erwartungskonformität", true),
                 ),
-                R.drawable.quiz_options07,
+                R.drawable.quiz_options01,
                 false
             )
         )
@@ -45,27 +43,27 @@ class OptionActivity : AppCompatActivity() {
                 "Was könnte hier das Problem sein?",
                 getString(R.string.answerQuizOptions02),
                 listOf(
-                    Answer("Das Angeben der Displaygröße ist unnötig", true),
-                    Answer("Man kennt die pixelgenaue Displaygröße nicht", true),
-                    Answer("Verpflichtende Angabe verhindert das Weiterkommen", true),
-                    Answer("Hilfestellung schwer auffindbar", true),
+                    Answer("Die Funktion ist von Anfang an deaktiviert", true),
+                    Answer("Man kann erst auf die Info klicken, nachdem man die Funktion aktiviert hat", true),
+                    Answer("Die Option steht nicht am Anfang", true),
+                    Answer("Infobuttons scheinen nicht zu funktionieren", true),
                 ),
-                R.drawable.quiz_options08,
+                R.drawable.quiz_options02,
                 false
             )
         )
 
         questions.add(
             Question(
-                "Welche(s) Interaktionsprinzip(ien) wurde hier erfüllt?",
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde bei dieser Option verstoßen?",
                 getString(R.string.answerQuizOptions03),
                 listOf(
                     Answer("Selbstbeschreibend", false),
-                    Answer("Aufgabenangemessen", true),
-                    Answer("Erwartungskonformität", true),
-                    Answer("Benutzerbindung", false),
+                    Answer("Aufgabenangemessen", false),
+                    Answer("Erwartungskonformität", false),
+                    Answer("Steuerbarkeit", false),
                 ),
-                R.drawable.quiz_options06,
+                R.drawable.quiz_options03,
                 false
             )
         )
@@ -193,7 +191,7 @@ class OptionActivity : AppCompatActivity() {
 
         infoDifficulty.setOnClickListener {
             if (helpSwitch.isChecked){
-                Toast.makeText(applicationContext, "Schwierigkeitsgrad des Computergegners von 1-3", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Schwierigkeitsgrad des Computergegners", Toast.LENGTH_LONG).show()
             }
         }
 

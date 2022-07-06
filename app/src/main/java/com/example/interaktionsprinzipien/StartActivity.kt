@@ -42,6 +42,7 @@ class StartActivity : AppCompatActivity() {
         }
 
         navigationButton.setOnClickListener {
+            saveData()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

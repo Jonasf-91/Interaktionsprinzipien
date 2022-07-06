@@ -71,18 +71,19 @@
                        </html>]]></string>
 
     <string name="answerQuizOptions01"><![CDATA[<html>
-                       <button>:</button>  <br/><br/>
-                       <button>:</button>  <br/><br/>
+                       <b>Erlernbarkeit:</b> Die beiden Buttons sind nicht gleich beschrieben, obwohl deren Funktion die Gleiche ist.<br/><br/>
+                       <b>Erwartungskonformität:</b> Bei der Lautstärke ist der Button aktiviert und die Funktion deaktiviert.
+                        Durch die gewohnte Leserichtung und farblicher Darstellung im "aktivierten" Zustand würde man fälschlicherweise erwarten, dass die Funktion ebenfalls aktiviert ist.<br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizOptions02"><![CDATA[<html>
-                       <button>:</button>  <br/><br/>
-                       <button>:</button>  <br/><br/>
+                       <b>Robustheit gegen Benutzungsfehler:</b> Da die Option erst weit unten steht, betätigt der Nutzer eventuell falsche Eingaben, die erst nach Aktivierung des Buttons und erneutem Aufrufen der Infobuttons deutlich werden. <br/><br/>
+                       <b>Erwartungskonformität:</b> Drückt man auf einen Infobutton würde man eine Rückmeldung erwarten, Diese aber vergeblich suchen.
+                       So erscheint der Eindruck, dass etwas nicht stimmt, solange man die entsprechende Option nicht aktiviert hat.<br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizOptions03"><![CDATA[<html>
-                       <button>:</button>  <br/><br/>
-                       <button>:</button>  <br/><br/>
+                       Hier wurde kein Kriterium verletzt. <br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizGame01"><![CDATA[<html>
