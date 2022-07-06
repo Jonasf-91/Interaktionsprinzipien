@@ -1,4 +1,4 @@
-package com.example.coin.com.example.interaktionsprinzipien
+package com.example.fourconnect
 
 class FourConnectBoard (private val calc : FourConnectCalculator, var field : Array<Array<Int>>, var currentPlayer : Int = 2, private val computerId : Int = 2, private val humanId : Int = 1 ){
 
@@ -107,7 +107,7 @@ class FourConnectBoard (private val calc : FourConnectCalculator, var field : Ar
         return points
     }
 
-    fun copy() : FourConnectBoard{
+    fun copy() : FourConnectBoard {
         val newField = copyBoard(field)
         return FourConnectBoard(calc, newField, currentPlayer)
     }

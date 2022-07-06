@@ -18,14 +18,12 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.isVisible
-import com.example.coin.com.example.interaktionsprinzipien.FourConnectCalculator
+import com.example.fourconnect.FourConnectCalculator
 import com.example.quiz.Answer
 import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
-import kotlinx.android.synthetic.main.activity_option.*
 import java.io.File
 import kotlin.math.abs
 

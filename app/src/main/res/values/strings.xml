@@ -137,10 +137,22 @@
     <string name="large_text">
         <b>7 Grundsätze zur Interaktionsgestaltung</b>\n
         ISO9241 - Teil 110:2020\n\n
+        Im Rahmen der Software-Ergonomie wurden die unterschiedlichsten Kriterien und Kriteriensysteme
+        erarbeitet. Ausgewählte Kriteriensysteme wurden in internationalen Standards sowie
+        in gesetzlichen Verordnungen festgeschrieben, andere wurden einfach als Empfehlungen in
+        diversen Publikationen formuliert.\n
+        So finden sich in der ISO 9241 einige Kriteriensysteme, vor allem in den Teilen ISO 9241-
+        11 (Leitsätze an die Gebrauchstauglichkeit) und ISO 9241-110 (Grundsätze der Dialoggestaltung).
 
+        Kriterien zur Dialoggestaltung beziehen sich dabei auf die Interaktion des Benutzers mit den Objekten und Funktionen
+        der Anwendung und seine damit verbundene Wahrnehmung. Im
+        Rahmen der Standardisierung werden solche Kriterien in der ISO 9241-110 (früher DIN
+        66233/66234 sowie ISO 9241-10) beschrieben. Auch wenn sich diese Kriterien begrifflich
+        teilweise vermeintlich auf die Anwendungsfunktionalität beziehen, ist doch die dialogtechnische
+        Abbildung der Funktionalität und nicht die Funktionalität selbst adressiert.
+        Dabei wird in folgende 7 Grundsätze unterschieden:
 
-
-        <b>1. Aufgabenangemessenheit</b>
+        <b>1. Aufgabenangemessenheit</b>\n
         Aufgabenangemessenheit ist in der Gebrauchstauglichkeits-Forschung ein Kriterium, das beschreibt, ob die Funktionen eines Systems (z. B. Maschine, Software oder Website) dazu dienen, die Ziele zu erreichen, die ein Nutzer damit verfolgt.\n
         In der ISO 9241-110 wird für die Dialoggestaltung das Kriterium der Aufgabenangemessenheit definiert. Dazu wird formuliert:\n\n
         „Ein interaktives System ist aufgabenangemessen, wenn es den Benutzer unterstützt,
@@ -156,7 +168,7 @@
         Die Informationseingabe und die Informationsausgabe sollen sich an der Arbeitsaufgabe
         orientieren.\n
         Aufgabenangemessenheit liegt vor, wenn der Benutzer nicht vom eigentlichen Aufgabenziel durch die Systembenutzung abgelenkt wird, sondern dieses durch weniger oder gleichen Aufwand erreicht und es außerdem vollständiger oder zumindest genauso erledigt wie zuvor.\n\n
-        <b>2. Selbstbeschreibungsfähigkeit</b>
+        <b>2. Selbstbeschreibungsfähigkeit</b>\n
 
         Benutzungsschnittstellen sind im Idealfall unmittelbar verständlich, das bedeutet man benötigt zu ihrer Bedienung kein besonderes Vorwissen oder keine besonderen Hilfestellungen.
         In der ISO 9241-110 wurde dazu die Selbstbeschreibungsfähigkeit definiert:\n\n
@@ -172,11 +184,33 @@
         einzugeben und bietet eine [Nächste]-Taste und eine [Zurück]-Taste an, um den
         Benutzer durch die Dialogschritte zu leiten.“\n\n
         "Vorherige Erläuterung und Bestätigung bei folgenschweren Handlungen (Sicherheitsabfragen bei Löschen, Überschreiben, etc.)"\n\n
-        Die Selbstbeschreibungsfähigkeit einer Anwendung ist dann sichergestellt, wenn die 4 Punkte Orientierung, Beherrschbarkeit, Rückmeldung und Hilfestellung erfüllt sind.
+        Die Selbstbeschreibungsfähigkeit einer Anwendung ist dann sichergestellt, wenn die 4 Punkte Orientierung, Beherrschbarkeit, Rückmeldung und Hilfestellung erfüllt sind.\n\n
 
-        <b>3. Erwartungskonformität</b>
+        <b>3. Erwartungskonformität</b>\n
 
-
+        Bei der Arbeit mit Computersystemen entstehen Erfahrungen in Form von mentalen Modellen
+        der Benutzer und damit auch Erwartungen an die benutzten Systeme. Ein
+        wichtiges Kriterium und Qualitätsmerkmal von interaktiven Anwendungssystemen ist daher der
+        Grad, wie gut die Systeme die Erwartungen von Benutzern erfüllen. In diesem Zusammenhang
+        ist das Kriterium Erwartungskonformität von Systemen zu sehen.
+        Nicht erwartungskonforme bzw.
+        inkonsistente Systeme behindern die Bildung eines stabilen und transparenten mentalen
+        Modells vom System und erschweren die Vorhersehbarkeit (Antizipation) des Dialogverlaufes.\n
+        In der ISO 9241-110 wird Erwartungskonformität folgendermaßen definiert:\n\n
+        „Ein Dialog ist erwartungskonform, wenn er den aus dem Nutzungskontext heraus
+        vorhersehbaren Benutzerbelangen sowie allgemein anerkannten Konventionen entspricht.“\n\n
+        Als nähere Empfehlung wird dazu weiter ausgeführt:\n\n
+        „Das interaktive System sollte das Vokabular verwenden, das dem Benutzer bei der
+        Ausführung der Arbeitsaufgabe vertraut ist oder von ihm auf Grund seiner Kenntnisse
+        und Erfahrungen verwendet wird.“\n\n
+        Beispiele:\n\n
+        „Eine Anwendung für die Abwicklung von Bankgeschäften nutzt bankenübliche
+        Begriffe wie ‚Überweisung’ und ‚Girokonto’.“\n\n
+        „Für internationale Benutzer einer Anwendung mit Kreditkartenzahlung werden
+        die Eingabefelder zur Angabe des vollständigen Eigennamens eher bezeichnet
+        mit ‚Nachname’ und ‚Vorname’ als mit ‚Name’ und ‚Rufname’.“\n\n
+        Benutzer, welche bereits Erfahrungen mit dem Aufbau verschiedener Webseiten gesammelt haben,
+        erheben Ansprüche an die Konformität von neu besuchten Webseiten. Unerfahrene Benutzer haben in dieser Hinsicht keine Ansprüche für die Bedienung einer Website.\n\n
 
         <b>4. Erlernbarkeit</b>
 
@@ -189,18 +223,56 @@
 
         <b>5. Steuerbarkeit</b>
 
-        "Within the material environment, virtual lights illuminate the scene. Key lights create "
-        "directional shadows, while ambient light creates soft shadows from all angles.\n"
-        "Shadows in the material environment are cast by these two light sources. In Android "
-        "development, shadows occur when light sources are blocked by sheets of material at "
-        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
-        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+        Bei der Interaktion zwischen Benutzer und Computer kann die Initiative (Dialogkontrolle)
+        entweder beim Benutzer oder beim System liegen. Die Initiative kann auch wechseln. Somit
+        lassen sich drei Dialogtypen unterscheiden:\n
+        <em>Systemgesteuerter Dialog</em>: Die Dialogkontrolle liegt beim System. Dabei fordert das
+        System immer Eingaben vom Benutzer an und verarbeitet
+        diese. Der Benutzer hat dabei keinen direkten Einfluss auf
+        die nächste geforderte Eingabe oder auf die als nächstes auszuführenden
+        Aktivitäten.\n
+        <em>Benutzergesteuerter Dialog</em>: Die Dialogkontrolle liegt beim Benutzer. Der Benutzer initiiert
+        Aktionen, die nach ihrer Durchführung Ergebnisse bzw.
+        die Fertigstellung zurückmelden. Das System kann bei dieser
+        Art von Kontrolle keine Initiative ergreifen.\n
+        <em>Gemischter (hybrider) Dialog</em>: Bei Mischformen der Dialogkontrolle wechselt diese während
+        der Arbeit mit dem System. Der Wechsel der Initiative
+        kann wiederum system- oder benutzerinitiiert sein.\n
+        In der ISO 9241-110 versteht man unter Steuerbarkeit:\n\n
+        „Ein Dialog ist steuerbar, wenn der Benutzer in der Lage ist, den Dialogablauf zu
+        starten sowie seine Richtung und Geschwindigkeit zu beeinflussen, bis das Ziel erreicht
+        ist.“\n\n
+        Der Benutzer soll keinem Arbeitstakt ausgesetzt sein, sondern die Geschwindigkeit des Systems
+        an seine persönliche Arbeitsgeschwindigkeit anpassen können. Der Arbeitsweg und die
+        Arbeitsmittel sollen durch den Benutzer frei gewählt werden können. Systemmeldungen
+        dürfen nicht zeitgesteuert automatisch vom Bildschirm gelöscht werden.\n
+        Im Rahmen der Steuerbarkeit fordert man in der ISO 9241-110 die Rücknehmbarkeit von
+        Aktionen (Undo):\n\n
+        „Wenigstens der letzte Dialogschritt sollte zurückgenommen werden können, soweit
+        Handlungsschritte reversibel sind und falls es der Nutzungskontext erfordert.“\n\n
 
         <b>6. Robustheit gegen Benutzungsfehler</b>
 
-        "All material objects, regardless of size, have a resting elevation, or default elevation "
-        "that does not change. If an object changes elevation, it should return to its resting "
-        "elevation as soon as possible.\n\n"
+        Bei der Mensch-Computer-Kommunikation können Benutzungsfehler auftreten. Genauer
+        betrachtet gibt es unterschiedlichste Fehlerarten. Fehler haben Ursachen. Sie müssen entsprechend ihrer Entstehungsursache unterschiedlich
+        behandelt werden. Wenn sich trotzdem allgemeine Maßnahmen zur Fehlerbehandlung beschreiben
+        lassen, so liegt dies vor allem daran, dass einige Fehlersituationen und Fehlertypen
+        besonders häufig und in vielen Kontexten auftreten und in Form von Fehlerarten
+        abstrahierbar sind.\n
+        Die ISO 9241-110 beschreibt einige Grundsätze für fehlertolerante Systeme:\n\n
+        „Ein Dialog ist fehlertolerant, wenn das beabsichtigte Arbeitsergebnis trotz erkennbar
+        fehlerhafter Eingaben entweder mit keinem oder mit minimalem Korrekturaufwand
+        seitens des Benutzers erreicht werden kann. Fehlertoleranz wird mit den Mitteln
+        erreicht:\n
+        - Fehlererkennung und -vermeidung (Schadensbegrenzung)\n
+        - Fehlerkorrektur oder\n
+        - Fehlermanagement, um mit Fehlern umzugehen, die sich ereignen.“\n\n
+        Dazu werden in der Norm folgende Empfehlungen gegeben:\n\n
+        „Das interaktive System sollte den Benutzer dabei unterstützen, Eingabefehler zu entdecken
+        und zu vermeiden.“\n\n
+        Beispiel:/n/n
+        „Eine e-Commerce-Anwendung verweist den Benutzer auf Pflichtfelder, die vom
+        Benutzer noch nicht ausgefüllt wurden.“\n\n
 
         <b>7. Benutzerbindung („User Engagement“)</b>
 
@@ -208,6 +280,9 @@
         "does not vary from 6dp in one app to 16dp in another app).\n"
         "Components may have different resting elevations across platforms, depending on the depth "
         "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        Quelle:\n
+        <b>Software-Ergonomie</b> von Michael Herczeg,\nDe Gruyter Studium
 
     </string>
     <string name="action_settings">Settings</string>
