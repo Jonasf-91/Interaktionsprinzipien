@@ -23,6 +23,7 @@ class StressMeasureActivity : AppCompatActivity() {
             override fun onProgressChanged(seek: SeekBar,
                                            progress: Int, fromUser: Boolean) {
                 // write custom code for progress is changed
+                score.text = seek.progress.toString()
             }
 
             override fun onStartTrackingTouch(seek: SeekBar) {
@@ -31,8 +32,7 @@ class StressMeasureActivity : AppCompatActivity() {
 
             override fun onStopTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is stopped
-                score.text = seek.progress.toString()
-                            }
+            }
         })
 
 

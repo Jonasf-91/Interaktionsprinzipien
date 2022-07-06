@@ -27,29 +27,47 @@ class OptionActivity : AppCompatActivity() {
 
         questions.add(
             Question(
-                "Gegen welche(s) Interaktionsprinzip(ien) wurde hier verstoßen?",
-                getString(R.string.answerQuiz01),
+                "Gegen welche(s) Interaktionsprinzip(ien) wurde bei diesen Buttons verstoßen?",
+                getString(R.string.answerQuizOptions01),
                 listOf(
-                    Answer("Aufgabenangemessen", true),
-                    Answer("Benutzerbindung", false),
-                    Answer("Steuerbarakeit", true),
-                    Answer("Robust gegen Benutzerfehler", true),
+                    Answer("Fehlertoleranz", false),
+                    Answer("Erlernbarkeit", true),
+                    Answer("Steuerbarkeit", false),
+                    Answer("Erwartungskonformitat", true),
                 ),
-                R.drawable.quiz_options06
+                R.drawable.quiz_options07,
+                false
             )
         )
 
         questions.add(
             Question(
-                "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
-                getString(R.string.answerQuiz01),
+                "Welche(s) Interaktionsprinzip(ien) wurde hier erfüllt?",
+                getString(R.string.answerQuizOptions02),
                 listOf(
-                    Answer("Steuerbarakeit", true),
-                    Answer("Robust gegen Benutzerfehler", true),
-                    Answer("Benutzerbindung", false),
-                    Answer("Aufgabenangemessen", true),
+                    Answer("Aufgabenangemessen", false),
+                    Answer("Selbstbeschreibend", false),
+                    Answer("Steuerbarkeit", false),
+                    Answer("Erwartungskonformitat", false),
                 ),
-                R.drawable.quiz_options03)
+                R.drawable.quiz_options08,
+                false
+            )
+        )
+
+        questions.add(
+            Question(
+                "Was ist hier das Problem?",
+                getString(R.string.answerQuizOptions03),
+                listOf(
+                    Answer("", false),
+                    Answer("Selbstbeschreibend", false),
+                    Answer("Steuerbarkeit", false),
+                    Answer("Erwartungskonformitat", false),
+                ),
+                R.drawable.quiz_options05,
+                false
+            )
         )
 
 
@@ -69,7 +87,6 @@ class OptionActivity : AppCompatActivity() {
         val infoHelp = findViewById<ImageView>(R.id.infoHelp)
         val infoGraphic = findViewById<ImageView>(R.id.infoGraphic)
         val infoDifficulty = findViewById<ImageView>(R.id.infoSpeed)
-        val infoFirstTurn = findViewById<ImageView>(R.id.infoFirstTurn)
         val displaySize = findViewById<TextView>(R.id.display)
 
         val difficultySeekBar = findViewById<SeekBar>(R.id.seekBarDifficulty)
@@ -169,11 +186,11 @@ class OptionActivity : AppCompatActivity() {
             }
         }
 
-        infoFirstTurn.setOnClickListener {
+        /*infoFirstTurn.setOnClickListener {
             if (helpSwitch.isChecked){
                 Toast.makeText(applicationContext, "Wollen Sie den ersten Zug machen?", Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
         infoDifficulty.setOnClickListener {
             if (helpSwitch.isChecked){
@@ -183,8 +200,6 @@ class OptionActivity : AppCompatActivity() {
 
         displaySize.setOnClickListener {
             Toast.makeText(applicationContext, height.toString() + " x " + width.toString(), Toast.LENGTH_LONG).show()
-            val intent = Intent(this, StartActivity::class.java)
-            startActivity(intent)
         }
 
         saveButton.setOnClickListener {
@@ -215,26 +230,6 @@ class OptionActivity : AppCompatActivity() {
         }
     }
 
-    private fun getDiffText(): String {
-        var diff = 0
-        var diffText = ""
-
-        if(difficultyText.text.toString() != ""){
-            diff = difficultyText.text.toString().toInt()
-            if(diff >= 3){
-                diff = 4
-            }
-            if(diff <= 1){
-                diff = 0
-            }
-        }
-        when (diff) {
-            0 -> diffText = "EASY"
-            2 -> diffText = "MEDIUM"
-            4 -> diffText = "HARD"
-        }
-        return diffText
-    }
 
     private fun saveData(){
 
@@ -258,7 +253,7 @@ class OptionActivity : AppCompatActivity() {
             putBoolean("BOOLEAN_MUSIC", toggleMusic.isChecked)
             putBoolean("BOOLEAN_VOLUME", volumeSwitch.isChecked)
             putBoolean("BOOLEAN_HELP", helpSwitch.isChecked)
-            putBoolean("BOOLEAN_FIRST_TURN", checkFirstTurn.isChecked)
+            //putBoolean("BOOLEAN_FIRST_TURN", checkFirstTurn.isChecked)
             putBoolean("BOOLEAN_GAME_OPTIONS", gameOptions)
             putInt("INT_DIFFICULTY", diff)
             putInt("INT_COINS", coinAmt)
@@ -274,7 +269,7 @@ class OptionActivity : AppCompatActivity() {
         val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
         val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
         val booleanHelp = sharedPreferences.getBoolean("BOOLEAN_HELP", false)
-        val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
+        //val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
         val intDifficulty = sharedPreferences.getInt("INT_DIFFICULTY", 1)
         val intCoin = sharedPreferences.getInt("INT_COINS", 0)
         val booleanGameOptions = sharedPreferences.getBoolean("BOOLEAN_GAME_OPTIONS", false)
@@ -285,7 +280,7 @@ class OptionActivity : AppCompatActivity() {
         toggleMusic.isChecked = booleanMusic
         volumeSwitch.isChecked = booleanVolume
         helpSwitch.isChecked = booleanHelp
-        checkFirstTurn.isChecked = booleanFirstTurn
+        //checkFirstTurn.isChecked = booleanFirstTurn
         seekBarDifficulty.progress = intDifficulty
         coinAmount.setText(intCoin.toString())
         gameOptions = booleanGameOptions
