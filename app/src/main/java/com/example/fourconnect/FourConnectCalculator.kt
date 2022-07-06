@@ -1,4 +1,4 @@
-package com.example.coin.com.example.interaktionsprinzipien
+package com.example.fourconnect
 
 class FourConnectCalculator ( private val depth : Int = 0) {
 
