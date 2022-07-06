@@ -53,8 +53,8 @@ class StressMeasureActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
-
     }
+
+    override fun onBackPressed() {}
 
 }

@@ -40,7 +40,7 @@ class StressResultActivity : AppCompatActivity() {
     private fun updateProgressBar() {
         val percentage = (progr * 100) / 40
         progress_bar.progress = percentage
-        text_view_progress.text = progr.toString()
+        text_view_progress.text = progr.toString() + "/40"
 
         if (progr<=10)
             editTextTextMultiLine.setText(resources.getString(R.string.result25))
@@ -52,5 +52,7 @@ class StressResultActivity : AppCompatActivity() {
             editTextTextMultiLine.setText(getResources().getString(R.string.result100))
 
     }
+
+    override fun onBackPressed() {}
 
 }
