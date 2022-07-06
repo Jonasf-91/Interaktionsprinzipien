@@ -23,6 +23,7 @@ class StartActivity : AppCompatActivity() {
 
         val startButton = findViewById<Button>(R.id.startButton)
         val audioButton = findViewById<ImageButton>(R.id.audioButtonStart)
+        val mainActButton = findViewById<TextView>(R.id.textView14)
 
         loadData()
 
@@ -37,6 +38,11 @@ class StartActivity : AppCompatActivity() {
             pauseMusic()
             saveData()
             val intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
+        }
+
+        mainActButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -101,4 +107,5 @@ class StartActivity : AppCompatActivity() {
             player = null
         }
     }
+
 }

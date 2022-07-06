@@ -272,7 +272,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private fun showResult(result : Int) {
 
-        if((result == 2 || result == 1) && depth > 0){
+        if(result == 2  && depth > 0){
             blinkWinningList()
         }
         tv_four_connect_result.text = writeResultText(result)
