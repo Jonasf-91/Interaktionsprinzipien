@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.611" />
+        app:layout_constraintVertical_bias="0.244" />
 
     <TextView
         android:id="@+id/textView17"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="64dp"
         android:text="@string/vierVerliert"
         android:textColor="@android:color/black"
         android:textSize="48sp"
@@ -71,7 +71,8 @@
         android:id="@+id/imageView3"
         android:layout_width="413dp"
         android:layout_height="207dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="164dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vier_verliert" />
