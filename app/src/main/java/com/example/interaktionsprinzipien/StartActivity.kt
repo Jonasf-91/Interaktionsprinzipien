@@ -23,7 +23,7 @@ class StartActivity : AppCompatActivity() {
 
         val startButton = findViewById<Button>(R.id.startButton)
         val audioButton = findViewById<ImageButton>(R.id.audioButtonStart)
-        val mainActButton = findViewById<TextView>(R.id.textView14)
+        val navigationButton = findViewById<TextView>(R.id.navigation)
 
         loadData()
 
@@ -41,7 +41,7 @@ class StartActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        mainActButton.setOnClickListener {
+        navigationButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                     "Gegen welches Interaktionsprinzip wurde hier verstoßen?",
                     getString(R.string.answerQuiz01),
                     listOf(
-                        Answer("Steuerbarakeit", true),
+                        Answer("Steuerbarkeit", true),
                         Answer("Robust gegen Benutzerfehler", true),
                         Answer("Benutzerbindung", false),
                         Answer("Aufgabenangemessen", true),

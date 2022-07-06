@@ -124,6 +124,7 @@
     <string name="appDescription">Lernen Sie die 7 Interaktionsprinzipien der DIN EN ISO 9241-110 anhand praktischer Erfahrung in Form normverletzend gestalteter Dialoge und anschließendem Quiz kennen. Zur Anschauung dient das einfache Spiel \"Vier gewinnt\" und dafür unnötige Spielvorbereitungen. Viel Spaß bei einer frustrierenden User Experience!</string>
     <string name="vierVerliert">Vier Verliert</string>
     <string name="start">Start</string>
+    <string name="navigation">Navigation</string>
     <string name="stressScore">stresslevel</string>
     <string name="jobDraw">Male etwas in die Münze!</string>
     <string name="jobCorner">Lege die Anzahl der Ecken fest!</string>

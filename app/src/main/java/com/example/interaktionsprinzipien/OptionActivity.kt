@@ -35,7 +35,7 @@ class OptionActivity : AppCompatActivity() {
                     Answer("Steuerbarakeit", true),
                     Answer("Robust gegen Benutzerfehler", true),
                 ),
-                R.drawable.quiz_options03
+                R.drawable.quiz_options06
             )
         )
 
@@ -71,6 +71,32 @@ class OptionActivity : AppCompatActivity() {
         val infoDifficulty = findViewById<ImageView>(R.id.infoSpeed)
         val infoFirstTurn = findViewById<ImageView>(R.id.infoFirstTurn)
         val displaySize = findViewById<TextView>(R.id.display)
+
+        val difficultySeekBar = findViewById<SeekBar>(R.id.seekBarDifficulty)
+        difficultySeekBar?.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seek: SeekBar,
+                                           progress: Int, fromUser: Boolean) {
+                // write custom code for progress is changed
+                var diff = difficultySeekBar.progress
+                when (diff) {
+                    1 -> difficultyText.setText("Leicht")
+                    2 -> difficultyText.setText("Mittelschwer")
+                    3 -> difficultyText.setText("Schwer")
+                }
+            }
+
+            override fun onStartTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is started
+            }
+
+            override fun onStopTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is stopped
+
+            }
+        })
+
+
 
         var saved = false
 
@@ -189,11 +215,32 @@ class OptionActivity : AppCompatActivity() {
         }
     }
 
+    private fun getDiffText(): String {
+        var diff = 0
+        var diffText = ""
+
+        if(difficultyText.text.toString() != ""){
+            diff = difficultyText.text.toString().toInt()
+            if(diff >= 3){
+                diff = 4
+            }
+            if(diff <= 1){
+                diff = 0
+            }
+        }
+        when (diff) {
+            0 -> diffText = "EASY"
+            2 -> diffText = "MEDIUM"
+            4 -> diffText = "HARD"
+        }
+        return diffText
+    }
+
     private fun saveData(){
 
         val resX = resolutionX.text.toString()
         val resY = resolutionY.text.toString()
-        var diff = 0
+        var diff = seekBarDifficulty.progress
         var coinAmt = 1
 
         if(coinAmount.text.toString() != ""){
@@ -202,17 +249,6 @@ class OptionActivity : AppCompatActivity() {
                 coinAmt = 1
             }
         }
-
-        if(difficultySetting.text.toString() != ""){
-            diff = difficultySetting.text.toString().toInt()
-            if(diff > 3){
-                diff = 3
-            }
-            if(diff < 1){
-                diff = 1
-            }
-        }
-
 
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -239,7 +275,7 @@ class OptionActivity : AppCompatActivity() {
         val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
         val booleanHelp = sharedPreferences.getBoolean("BOOLEAN_HELP", false)
         val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
-        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
+        val intDifficulty = sharedPreferences.getInt("INT_DIFFICULTY", 1)
         val intCoin = sharedPreferences.getInt("INT_COINS", 0)
         val booleanGameOptions = sharedPreferences.getBoolean("BOOLEAN_GAME_OPTIONS", false)
 
@@ -250,9 +286,16 @@ class OptionActivity : AppCompatActivity() {
         volumeSwitch.isChecked = booleanVolume
         helpSwitch.isChecked = booleanHelp
         checkFirstTurn.isChecked = booleanFirstTurn
-        difficultySetting.setText(intDifficulty.toString())
+        seekBarDifficulty.progress = intDifficulty
         coinAmount.setText(intCoin.toString())
         gameOptions = booleanGameOptions
+
+        var diff = seekBarDifficulty.progress
+        when (diff) {
+            1 -> difficultyText.setText("Leicht")
+            2 -> difficultyText.setText("Mittelschwer")
+            3 -> difficultyText.setText("Schwer")
+        }
     }
 
     fun playMusic() {

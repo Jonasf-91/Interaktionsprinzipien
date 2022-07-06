@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".OptionActivity">
 
-    <Switch
-        android:id="@+id/helpSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="36dp"
-        android:minHeight="48dp"
-        android:text="@string/offOn"
-        app:layout_constraintStart_toEndOf="@+id/help"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSwitch" />
-
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
@@ -48,18 +37,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Switch
-        android:id="@+id/volumeSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="28dp"
-        android:checked="true"
-        android:minHeight="48dp"
-        android:text="@string/onOff"
-        app:layout_constraintStart_toEndOf="@+id/volume"
-        app:layout_constraintTop_toBottomOf="@+id/coinAmount" />
-
     <Button
         android:id="@+id/forwardButton"
         android:layout_width="wrap_content"
@@ -81,18 +58,6 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulty" />
-
-    <EditText
-        android:id="@+id/coinAmount"
-        android:layout_width="98dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/coins"
-        app:layout_constraintTop_toBottomOf="@+id/toggleMusic"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/resolutionX"
@@ -124,7 +89,7 @@
         android:id="@+id/toggleMusic"
         android:layout_width="98dp"
         android:layout_height="48dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="120dp"
         android:checked="false"
         android:text="ToggleButton"
@@ -132,6 +97,41 @@
         android:textOn="@string/off"
         app:layout_constraintStart_toEndOf="@+id/music"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/coinAmount"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/coins"
+        app:layout_constraintTop_toBottomOf="@+id/toggleMusic"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Switch
+        android:id="@+id/helpSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="36dp"
+        android:minHeight="48dp"
+        android:text="@string/offOn"
+        app:layout_constraintStart_toEndOf="@+id/help"
+        app:layout_constraintTop_toBottomOf="@+id/volumeSwitch" />
+
+    <Switch
+        android:id="@+id/volumeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="28dp"
+        android:checked="true"
+        android:minHeight="48dp"
+        android:text="@string/onOff"
+        app:layout_constraintStart_toEndOf="@+id/volume"
+        app:layout_constraintTop_toBottomOf="@+id/coinAmount" />
 
     <TextView
         android:id="@+id/volume"
@@ -259,23 +259,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/difficultySetting"
-        android:layout_width="38dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="552dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/difficulty"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/difficulty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:text="@string/difficulty"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -305,10 +294,34 @@
         android:id="@+id/checkFirstTurn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
+        android:layout_marginStart="168dp"
         android:layout_marginTop="16dp"
         android:checked="false"
         app:layout_constraintStart_toEndOf="@+id/firstTurn"
         app:layout_constraintTop_toBottomOf="@+id/resolutionX" />
+
+    <SeekBar
+        android:id="@+id/seekBarDifficulty"
+        android:layout_width="122dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:max="3"
+        android:min="1"
+        android:progress="2"
+        app:layout_constraintStart_toEndOf="@+id/difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/checkFirstTurn" />
+
+    <TextView
+        android:id="@+id/difficultyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="4dp"
+        android:text="difficulty"
+        app:layout_constraintBottom_toTopOf="@+id/seekBarDifficulty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toEndOf="@+id/difficulty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
