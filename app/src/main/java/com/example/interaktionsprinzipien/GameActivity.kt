@@ -24,6 +24,7 @@ import com.example.quiz.Answer
 import com.example.quiz.Question
 import kotlinx.android.synthetic.main.activity_game.*
 import kotlinx.android.synthetic.main.activity_game_four_connect_content.*
+import kotlinx.android.synthetic.main.activity_option.*
 import java.io.File
 import kotlin.math.abs
 
@@ -94,10 +95,14 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 0)
         val intCoin = sharedPreferences.getInt("INT_COINS", 10)
 
+        when (intDifficulty) {
+            1 -> depth = 0
+            2 -> depth = 2
+            3 -> depth = 4
+        }
 
         musicOn = booleanMusic
         volumeOn = booleanVolume
-        depth = intDifficulty
         maxCoinNumber = intCoin
 
         currentPlayer = if(booleanFirstTurn){

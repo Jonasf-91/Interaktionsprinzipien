@@ -70,6 +70,21 @@
                         nicht korrekte Benutzereingaben entsprechend hervorheben, damit der Nutzer schnell sieht, was er noch beheben muss.
                        </html>]]></string>
 
+    <string name="answerQuizOptions01"><![CDATA[<html>
+                       <button>:</button>  <br/><br/>
+                       <button>:</button>  <br/><br/>
+                       </html>]]></string>
+
+    <string name="answerQuizOptions02"><![CDATA[<html>
+                       <button>:</button>  <br/><br/>
+                       <button>:</button>  <br/><br/>
+                       </html>]]></string>
+
+    <string name="answerQuizOptions03"><![CDATA[<html>
+                       <button>:</button>  <br/><br/>
+                       <button>:</button>  <br/><br/>
+                       </html>]]></string>
+
     <string name="answerQuizGame01"><![CDATA[<html>
                        <button>Aufgabenangemessenheit:</button> Die Uhr läuft runter, hat aber keinen Einfluss auf das Spiel, außer Stress beim Spielenden zu erzeugen. <br/><br/>
                        <button>Erwartungskonformität:</button> Die Uhr läuft ins Minus und bricht dann irgendwann ab. Das entspricht nicht den Vorerfahrungen der Spielenden.<br/><br/>
