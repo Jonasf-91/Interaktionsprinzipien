@@ -42,7 +42,8 @@
     <string name="saveButton">Speichern</string>
     <string name="CancelButton">Abbrechen</string>
     <string name="copyrightHsd">Copyright HSD</string>
-    <string name="four_connect_btn_next">Weiter</string>
+    <string name="four_connect_btn_next">Zu den Fragen</string>
+    <string name="four_connect_btn_again">Noch ein mal</string>
     <string name="stresslevel">Frust-o-meter</string>
     <string name="result">Auswertung</string>
     <string name="updateBtn">aktualisieren</string>
@@ -77,6 +78,11 @@
     <string name="answerQuizGame02"><![CDATA[<html>
                        <b>Erlernbarkeit:</b> Es wird kein Hinweis gegeben, wie man als Spielender ein Coin setzen kann. <br/><br/>
                        <b>Erwartungskonformität:</b> Das Schütteln des Smartphones, um einen Coin zu setzen, entspricht nicht den erwartenden Vorefahrungen der Spielenden.<br/><br/>
+                       </html>]]></string>
+
+    <string name="answerQuizGame03"><![CDATA[<html>
+                       <b>Aufgabenangemessenheit:</b> Toasts dienen der Rückmeldung von kurzen Informationen wie zum Beispiel Nachrichten über einen Lade-Status. Zur Erklärung von Dingen sind sie nicht angemessen, da sie nach einer bestimmten Zeit wieder verschwinden und nicht in der Richtung der Information beeinflussbar sind. (Steuerbarkeit). <br/><br/>
+                       <b>Erwartungskonformität:</b> Das mentale Modell entsteht durch die Erfahrung mit anderen Systemen. Dadurch entsteht eine Erwartungshaltung. Diese Erwartungshaltung wird mit dieser Art der Hilfe nicht erfüllt.<br/><br/>
                        </html>]]></string>
 
 
@@ -141,7 +147,7 @@
         66233/66234 sowie ISO 9241-10) beschrieben. Auch wenn sich diese Kriterien begrifflich
         teilweise vermeintlich auf die Anwendungsfunktionalität beziehen, ist doch die dialogtechnische
         Abbildung der Funktionalität und nicht die Funktionalität selbst adressiert.
-        Dabei wird in folgende 7 Grundsätze unterschieden:
+        Dabei wird in folgende 7 Grundsätze unterschieden:\n\n
 
         <b>1. Aufgabenangemessenheit</b>\n
         Aufgabenangemessenheit ist in der Gebrauchstauglichkeits-Forschung ein Kriterium, das beschreibt, ob die Funktionen eines Systems (z. B. Maschine, Software oder Website) dazu dienen, die Ziele zu erreichen, die ein Nutzer damit verfolgt.\n
@@ -205,12 +211,12 @@
 
         <b>4. Erlernbarkeit</b>
 
-        "The material environment is a 3D space, which means all objects have x, y, and z "
-        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
-        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
-        "position along the z-axis and has a standard 1dp thickness.\n"
-        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
-        "emulated by manipulating the y-axis.\n\n"
+        Tutorials die nach der Neuinstallation von Programmen oder Applikationen gezeigt werden,
+        zu einem späteren Zeitpunkt wieder aufgerufen werden können, und den Nutzer schrittweise durch das System führen,
+        fördern die Erlernbarkeit - besonders bei komplizierten Systemen oder Systemen mit vielen Funktionen.
+        Ein weiteres Beispiel für eine hohe Erlernbarkeit von Funktionen eines Programmes,
+        welche ansonsten nur durch viele navigationale Umwege und viele Klicks zu erreichen sind,
+        ist die Bereitstellung von Tastenkombinationen, sogenannten Shortcuts oder Kurzwahltasten.\n\n"
 
         <b>5. Steuerbarkeit</b>
 
@@ -267,10 +273,13 @@
 
         <b>7. Benutzerbindung („User Engagement“)</b>
 
-        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
-        "does not vary from 6dp in one app to 16dp in another app).\n"
-        "Components may have different resting elevations across platforms, depending on the depth "
-        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+        Wenn ein System eine einladende Wirkung auf den Nutzer hat, stärkt dies die Nutzerbindung, also das „User Engagement“.
+         Ein Beispiel dafür sind neu freigeschaltete Funktionen oder Erfolge in Videospielen, die durch einen sich bewegenden Pfeil gekennzeichnet sind,
+        eine andere Farbe oder Größe aufweisen, oder durch Animationen bewegt werden (z. B. Wackeln).
+        Der Nutzer wird somit durch einladende Gestaltung auf ein positives Erlebnis hingewiesen.
+        Die glaubwürdige Vermittlung, dass durch die Nutzung keine Risiken für den Benutzer entstehen,
+        fördert ebenfalls eine Nutzerbindung. Dies ist beispielsweise der Fall, wenn ein System explizit darauf hinweist,
+        dass vertraulich mit persönlichen Daten umgegangen wird und Verwendungszwecke für jegliche Daten transparent dargestellt werden.\n\n"
 
         Quelle:\n
         <b>Software-Ergonomie</b> von Michael Herczeg,\nDe Gruyter Studium

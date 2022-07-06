@@ -35,10 +35,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private var maxCoinNumber = 6
     private var currentCoinNumber = 0
 
-
     private lateinit var playerOne : Player
     private lateinit var playerTwo : Player
-
 
     private var virtualBoard = arrayOf(
         arrayOf(0,0,0,0,0,0,0),
@@ -48,12 +46,11 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         arrayOf(0,0,0,0,0,0,0),
         arrayOf(0,0,0,0,0,0,0)
     )
-    private var depth = 4
-    private val computer = FourConnectCalculator(depth )
+    private var depth = 2
+    private lateinit var computer : FourConnectCalculator
 
     private lateinit var currentPlayer : Player
     val animation: Animation = AlphaAnimation(1F, 0F)
-
 
     private lateinit var mSensorManager : SensorManager
     private lateinit var mAccelerometer: Sensor
@@ -94,7 +91,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         val booleanMusic = sharedPreferences.getBoolean("BOOLEAN_MUSIC", false)
         val booleanVolume = sharedPreferences.getBoolean("BOOLEAN_VOLUME", true)
         val booleanFirstTurn = sharedPreferences.getBoolean("BOOLEAN_FIRST_TURN", false)
-        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 1)
+        val intDifficulty= sharedPreferences.getInt("INT_DIFFICULTY", 0)
         val intCoin = sharedPreferences.getInt("INT_COINS", 10)
 
 
@@ -164,7 +161,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         //ANFANG YASIN___________________________________________________________________________________________________
         saveData()
         loadData()
-
+        computer = FourConnectCalculator(depth)
         if(musicOn && !volumeOn){
             playMusic()
         }
@@ -183,7 +180,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 listOf(
                     Answer("Aufgabenangemessen", true),
                     Answer("Selbstbeschreibend", false),
-                    Answer("Steuerbarakeit", false),
+                    Answer("Steuerbarkeit", false),
                     Answer("Erwartungskonformität", true),
                 ),
                 R.drawable.quizgame1,
@@ -196,16 +193,29 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 "Gegen welches Interaktionsprinzip wurde beim Setzen eines Coins verstoßen?",
                 getString(R.string.answerQuizGame02),
                 listOf(
-                    Answer("Steuerbarakeit", false),
+                    Answer("Steuerbarkeit", false),
                     Answer("Robust gegen Benutzerfehler", false),
                     Answer("Erlernbarkeit", true),
-                    Answer("Aufgabenangemessen", true),
+                    Answer("Erwartungskonformität", true),
                 ),
                 R.drawable.quizgame2,
             false),
 
         )
-
+        questions.add(
+            Question(
+                "Was ist das Problem an der Hilfe?",
+                getString(R.string.answerQuizGame03),
+                listOf(
+                    Answer("Die Hilfe hilft nicht", false),
+                    Answer("Toasts sind hier aufgabenunangemessen", true),
+                    Answer("Das mentale Modell des:der Benutzer:in wird nicht beachtet", true),
+                    Answer("Der Button ist nicht selbstbeschreibend", false),
+                    Answer("Mist, ich habe die Hilfe nicht ausprobiert", false),
+                ),
+                R.drawable.quizgame3,
+                false),
+        )
         // --------------------------------------------------------
 
 
@@ -217,19 +227,15 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         four_connect_btn_help.setOnClickListener {
             var text = ""
             when(numberHelpText) {
-                1 -> text = "Haha, das wäre ja zu einfach."
-                2 -> text = "Neee, nichts da"
-                3 -> text = "Hier geht's nicht weiter"
-                4 -> text = "Frag Mutti"
-                5 -> text = "Ich glaube an dich.."
-                6 -> text = "Wo willst du denn hin?"
-                7 -> text = "Noch ein mal drücken und es geht in den Entwicklermodus"
-                8 -> text = "Scherz."
-                9 -> text = "Hilfe eilt.."
-                10 -> text = "if(numberHelpText > 10) numberHelpText = 1"
+                1 -> text = "Ernsthaft, du brauchst Hilfe?"
+                2 -> text = "So schnell willst du schon aufgeben?"
+                3 -> text = "Das ist ja langweilig.."
+                4 -> text = "Klick ein Dreieck und schmeiß dein Smartphone aus dem Fenster.."
+                5 -> text = "..also kurz schütteln reicht auch."
+                6 -> text = "Sorry, das geht jetzt hier wieder von vorne los.."
             }
             numberHelpText++
-            if(numberHelpText > 10) numberHelpText = 1
+            if(numberHelpText > 6) numberHelpText = 1
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
         }
 
@@ -266,13 +272,12 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
     private fun showResult(result : Int) {
 
-        if(result == 1 || result == 2){
+        if((result == 2 || result == 1) && depth > 0){
             blinkWinningList()
         }
         tv_four_connect_result.text = writeResultText(result)
         tv_four_connect_result.isVisible = true
-        setUpNextButton(result)
-
+        setUpNextButton()
     }
 
     private fun blinkWinningList() {
@@ -289,22 +294,20 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    private fun setUpNextButton(result : Int) {
-        if(result == 1){
-            four_connect_btn_next.text = "Weiter"
-            four_connect_btn_next.setOnClickListener {
-                val intent = Intent(this, QuizActivity::class.java).apply{
-                    putParcelableArrayListExtra("questions", questions)
-                }
-                startActivity(intent)
+    private fun setUpNextButton() {
+
+        four_connect_btn_next.setOnClickListener {
+            val intent = Intent(this, QuizActivity::class.java).apply{
+                putParcelableArrayListExtra("questions", questions)
             }
-        }else{
-            four_connect_btn_next.text = "Noch mal"
-            four_connect_btn_next.setOnClickListener {
-                restartGame()
-            }
+            startActivity(intent)
+        }
+
+        four_connect_btn_again.setOnClickListener {
+            restartGame()
         }
         four_connect_btn_next.isVisible = true
+        four_connect_btn_again.isVisible = true
     }
 
     private fun restartGame() {
@@ -320,6 +323,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         }
         animation.cancel()
         four_connect_btn_next.isVisible = false
+        four_connect_btn_again.isVisible = false
         tv_four_connect_result.isVisible = false
         currentCoinNumber = 0
         startFourConnect()
@@ -335,10 +339,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 2 -> text =
                     "Ja, gewonnen hast Du.\nAber jetzt hab mal bisschen Anspruch und erhöhe die Schwierigkeit.\nDann wollen wir sehen, wer zuletzt lacht "
                 4 -> text =
-                    "Nicht schlecht. Du scheinst ein kluges Köpfchen zu sein.\nAber gewinnst du auch gegen die größte Schwierigkeit?"
-                6 -> text =
-                    "Herzlichen Glückwunsch! Du bist ein wahrer Champion im Vier Gewinnt.\nUnd wir müssen jetzt mal schauen, dass wir den Algortihmus verbessern.\nSO kann das nicht weitergehen."
-
+                    "Nicht schlecht. Du scheinst ein kluges Köpfchen zu sein."
             }
         }else if(result == 2) {
                text =  "Netter Versuch.\nAber vielleicht versuchst du es noch mal."
@@ -358,9 +359,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             }
 
             override fun onFinish() {
-                //TODO get text from string.xml instead of hard-coding
                 tv_countdown.text = "Entscheide Dich!"
-                //TODO add sound highlight
             }
         }.start()
     }
@@ -574,7 +573,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     class Player(val id : Int, val img : Drawable?, var name : String = "Computer")
 
     private fun startFourConnect(){
-         //TODO start annoying music
         if(currentPlayer.id == 1){
             setUpArrowButtons()
             startCountdown()
@@ -618,7 +616,5 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onBackPressed() {}
-
-    // class PlayerTest(val id: Int, val d: Drawable?, val name: String)
 
 }
