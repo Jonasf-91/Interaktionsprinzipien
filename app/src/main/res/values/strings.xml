@@ -86,17 +86,17 @@
                        </html>]]></string>
 
     <string name="answerQuizGame01"><![CDATA[<html>
-                       <button>Aufgabenangemessenheit:</button> Die Uhr läuft runter, hat aber keinen Einfluss auf das Spiel, außer Stress beim Spielenden zu erzeugen. <br/><br/>
-                       <button>Erwartungskonformität:</button> Die Uhr läuft ins Minus und bricht dann irgendwann ab. Das entspricht nicht den Vorerfahrungen der Spielenden.<br/><br/>
+                       <b>Aufgabenangemessenheit:</b> Die Uhr läuft runter, hat aber keinen Einfluss auf das Spiel, außer Stress beim Spielenden zu erzeugen. <br/><br/>
+                       <b>Erwartungskonformität:</b> Die Uhr läuft ins Minus und bricht dann irgendwann ab. Das entspricht nicht den Vorerfahrungen der Spielenden.<br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizGame02"><![CDATA[<html>
-                       <b>Erlernbarkeit:</b> Es wird kein Hinweis gegeben, wie man als Spielender ein Coin setzen kann. <br/><br/>
-                       <b>Erwartungskonformität:</b> Das Schütteln des Smartphones, um einen Coin zu setzen, entspricht nicht den erwartenden Vorefahrungen der Spielenden.<br/><br/>
+                       <b>Erlernbarkeit:</b> Es wird kein Hinweis gegeben, wie man als Spielender einen Coin setzen kann. <br/><br/>
+                       <b>Erwartungskonformität:</b>Das Schütteln des Smartphones als Interaktion ist unkoventionell und entspricht nicht den Erwartungen des Spielenden.<br/><br/>
                        </html>]]></string>
 
     <string name="answerQuizGame03"><![CDATA[<html>
-                       <b>Aufgabenangemessenheit:</b> Toasts dienen der Rückmeldung von kurzen Informationen wie zum Beispiel Nachrichten über einen Lade-Status. Zur Erklärung von Dingen sind sie nicht angemessen, da sie nach einer bestimmten Zeit wieder verschwinden und nicht in der Richtung der Information beeinflussbar sind. (Steuerbarkeit). <br/><br/>
+                       <b>Aufgabenangemessenheit:</b> Toasts dienen der Rückmeldung von kurzen Informationen wie zum Beispiel Nachrichten über einen Lade-Status. Zur Erklärung von Dingen sind sie nicht angemessen, da sie nach einer bestimmten Zeit wieder verschwinden und nicht in der Richtung der Information beeinflussbar sind (Steuerbarkeit). <br/><br/>
                        <b>Erwartungskonformität:</b> Das mentale Modell entsteht durch die Erfahrung mit anderen Systemen. Dadurch entsteht eine Erwartungshaltung. Diese Erwartungshaltung wird mit dieser Art der Hilfe nicht erfüllt.<br/><br/>
                        </html>]]></string>
 
@@ -284,7 +284,7 @@
         Dazu werden in der Norm folgende Empfehlungen gegeben:\n\n
         „Das interaktive System sollte den Benutzer dabei unterstützen, Eingabefehler zu entdecken
         und zu vermeiden.“\n\n
-        Beispiel:/n/n
+        Beispiel:\n\n
         „Eine e-Commerce-Anwendung verweist den Benutzer auf Pflichtfelder, die vom
         Benutzer noch nicht ausgefüllt wurden.“\n\n
 
@@ -296,9 +296,9 @@
         Der Nutzer wird somit durch einladende Gestaltung auf ein positives Erlebnis hingewiesen.
         Die glaubwürdige Vermittlung, dass durch die Nutzung keine Risiken für den Benutzer entstehen,
         fördert ebenfalls eine Nutzerbindung. Dies ist beispielsweise der Fall, wenn ein System explizit darauf hinweist,
-        dass vertraulich mit persönlichen Daten umgegangen wird und Verwendungszwecke für jegliche Daten transparent dargestellt werden.\n\n"
+        dass vertraulich mit persönlichen Daten umgegangen wird und Verwendungszwecke für jegliche Daten transparent dargestellt werden.\n"
 
-        Quelle:\n
+        Quelle:
         <b>Software-Ergonomie</b> von Michael Herczeg,\nDe Gruyter Studium
 
     </string>

@@ -233,14 +233,12 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
             var text = ""
             when(numberHelpText) {
                 1 -> text = "Ernsthaft, du brauchst Hilfe?"
-                2 -> text = "So schnell willst du schon aufgeben?"
-                3 -> text = "Das ist ja langweilig.."
-                4 -> text = "Klick ein Dreieck und schmeiß dein Smartphone aus dem Fenster.."
-                5 -> text = "..also kurz schütteln reicht auch."
-                6 -> text = "Sorry, das geht jetzt hier wieder von vorne los.."
+                2 -> text = "Klick ein Dreieck und schmeiß dein Smartphone aus dem Fenster.."
+                3 -> text = "..also kurz schütteln reicht auch."
+                4 -> text = "Sorry, das geht jetzt hier wieder von vorne los.."
             }
             numberHelpText++
-            if(numberHelpText > 6) numberHelpText = 1
+            if(numberHelpText > 4) numberHelpText = 1
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
         }
 
