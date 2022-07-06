@@ -245,7 +245,7 @@ class EditorActivity : AppCompatActivity() {
     }
 
     fun createImageFromBitmap(bitmap: Bitmap): String? {
-        var fileName: String? = "myCoin" //no .png or .jpg needed
+        var fileName: String? = "mycoin" //no .png or .jpg needed
         try {
             val bytes = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
