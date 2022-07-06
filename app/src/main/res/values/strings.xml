@@ -66,7 +66,7 @@
                        </html>]]></string>p
     <string name="answerQuiz03"><![CDATA[<html>
                        <b>Selbstbeschreibend:</b> Die Fehlermeldung gibt nur darüber Auskunft, dass etwas bei den Eingaben des Nutzers nicht stimmt. Um was es sich dabei genau handelt, ist nicht näher definiert.
-                        Damit ist diese Meldung nicht selbstbeschreibend. Um dies zu verbessern, könnte man noch genauer beschreiben, was mit den Eingaben nicht richtig ist und im Idealfall Korrekte bzw.
+                        Damit ist diese Meldung nicht selbstbeschreibend. Um dies zu verbessern, könnte man noch genauer beschreiben, was mit den Eingaben nicht richtig ist und im Idealfall korrekte bzw.
                         nicht korrekte Benutzereingaben entsprechend hervorheben, damit der Nutzer schnell sieht, was er noch beheben muss.
                        </html>]]></string>
 

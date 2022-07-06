@@ -27,7 +27,7 @@ class LogInActivity : AppCompatActivity() {
             listOf(
                 Answer("Aufgabenangemessen", true),
                 Answer("Benutzerbindung", false),
-                Answer("Steuerbarakeit", true),
+                Answer("Steuerbarkeit", true),
                 Answer("Robust gegen Benutzerfehler", true),
             ),
             R.drawable.quiz_login01
@@ -36,13 +36,13 @@ class LogInActivity : AppCompatActivity() {
 
         questions.add(
             Question(
-            "Welchen Aussagen würden Sie zustimmen, bei der Eingabe des Benutzernamens?",
+            "Welchen Aussagen würden Sie bei der Eingabe des Benutzernamens zustimmen?",
             getString(R.string.answerQuiz02),
             listOf(
-                Answer("Die Steuerbarakeit ist eingeschränkt.", true),
-                Answer("Das Verhalten ist Erwartungskonform.", false),
-                Answer("Der Benutzername trägt nicht zur Benutzerbindung zu.", true),
-                Answer("Die Wahl der Interaktionsmöglichkeiten ist Aufgabenangemessen.", false),
+                Answer("Die Steuerbarkeit ist eingeschränkt", true),
+                Answer("Das Verhalten ist Erwartungskonform", false),
+                Answer("Der Benutzername trägt nicht zur Benutzerbindung bei", true),
+                Answer("Die Wahl der Interaktionsmöglichkeiten ist Aufgabenangemessen", false),
             ),
             R.drawable.quiz_login02)
         )
@@ -52,10 +52,10 @@ class LogInActivity : AppCompatActivity() {
                 "Was fällt dir bei dieser Fehlermeldung auf?",
                 getString(R.string.answerQuiz03),
                 listOf(
-                    Answer("Die Meldung ist nicht selbstbeschreibend.", true),
-                    Answer("Die Meldung ist selbstbeschreibend.", false),
-                    Answer("Ich weiß sofort,was ich falsch gemacht habe.", false),
-                    Answer("Der Kontrast ist zu gering.", false),
+                    Answer("Die Meldung ist nicht selbstbeschreibend", true),
+                    Answer("Die Meldung ist selbstbeschreibend", false),
+                    Answer("Ich weiß sofort, was ich falsch gemacht habe", false),
+                    Answer("Der Kontrast ist zu gering", false),
                 ),
                 R.drawable.quiz_login03)
         )
