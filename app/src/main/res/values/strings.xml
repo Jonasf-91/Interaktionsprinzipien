@@ -5,7 +5,7 @@
     <string name="four_connect_coin">Coin</string>
     <string name="four_connect_time_placeholder">10</string>
     <string name="four_connect_warning_to_decide">Entscheide Dich!</string>
-    <string name="createCoin">Erstellen Sie <eine></eine> Münze!</string>
+    <string name="createCoin">Erstellen Sie eine Münze!</string>
     <string name="changeColor">Farbe ändern</string>
     <string name="editorBtnColorDesc">Farbe</string>
     <string name="editorBtnDrawDesc">Zeichnen</string>
