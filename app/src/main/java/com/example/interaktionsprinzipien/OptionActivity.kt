@@ -63,7 +63,7 @@ class OptionActivity : AppCompatActivity() {
                     Answer("Erwartungskonformität", false),
                     Answer("Steuerbarkeit", false),
                 ),
-                R.drawable.quiz_options03,
+                R.drawable.quiz_options09,
                 false
             )
         )
