@@ -17,7 +17,7 @@ class ValidateErrorDialogFragment : DialogFragment(){
         var rootView : View = inflater.inflate(R.layout.activity_custom_dialog, container, false)
 
         rootView.buttonCancelPopUp.setOnClickListener {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, StartActivity::class.java)
             startActivity(intent)
         }
 
