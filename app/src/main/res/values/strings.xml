@@ -136,7 +136,7 @@
     <string name="firstTurn">1. Zug</string>
     <string name="computer">Computer</string>
     <string name="player">Spieler</string>
-    <string name="developers">Entwickelt von Hannes Richter, Jonas Feige, Michael Jesenko und Yasin Atasoy im Rahmen der Vorlesung \"Interaktive Systeme\" von \n Prof. Dr. Markus Dahm</string>
+    <string name="developers">Entwickelt von Hannes Richter, Jonas Feige, Michael Jesenko und Yasin Atasoy im Rahmen der Vorlesung \"Interaktive Systeme\" von \nProf. Dr. Markus Dahm</string>
     <string name="appDescription">Lernen Sie die 7 Interaktionsprinzipien der DIN EN ISO 9241-110:2020 anhand praktischer Erfahrung in Form normverletzend gestalteter Dialoge und anschließendem Quiz kennen. Zur Anschauung dient das Spiel \"Vier gewinnt\" und dafür unnötige Spielvorbereitungen. Viel Spaß bei einer frustrierenden User Experience!</string>
     <string name="vierVerliert">Vier Verliert</string>
     <string name="start">Start</string>
